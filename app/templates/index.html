@@ -5,62 +5,268 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canada Labour Market Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
+    <div class="noise"></div>
+
     <header>
-        <div class="header-content">
-            <h1>🇨🇦 Canada Labour Market Analysis</h1>
-            <p class="subtitle">From Pandemic Boom to 2026 Crisis — A Data Story</p>
-            <div class="stat-cards">
-                <div class="stat-card">
-                    <span class="stat-value">6.7%</span>
-                    <span class="stat-label">Canada Unemployment Feb 2026</span>
-                </div>
-                <div class="stat-card warning">
-                    <span class="stat-value">7.6%</span>
-                    <span class="stat-label">Ontario Unemployment Feb 2026</span>
-                </div>
-                <div class="stat-card positive">
-                    <span class="stat-value">6.3%</span>
-                    <span class="stat-label">Alberta Unemployment Feb 2026</span>
-                </div>
-                <div class="stat-card negative">
-                    <span class="stat-value">-84K</span>
-                    <span class="stat-label">Jobs Lost in February 2026</span>
-                </div>
+        <div class="header-top">
+            <div class="tag">STATISTICS CANADA · LFS 2020–2026</div>
+            <div class="tag">UPDATED · MARCH 2026</div>
+        </div>
+        <h1>From Boom to Crisis:<br>Canada's Labour Market<br>2020–2026</h1>
+        <p class="subtitle">From pandemic boom to the worst job loss since 2022 — a data-driven analysis of Canada's employment landscape and what it means for workers in transition.</p>
+
+        <div class="stat-cards">
+            <div class="stat-card" data-geo="Canada">
+                <div class="stat-country">🇨🇦 Canada</div>
+                <div class="stat-value neutral-val">6.7<span class="stat-unit">%</span></div>
+                <div class="stat-label">Unemployment · Feb 2026</div>
+                <div class="stat-delta negative">▲ +0.2 pts from Jan</div>
+            </div>
+            <div class="stat-card" data-geo="Ontario">
+                <div class="stat-country">🏙️ Ontario</div>
+                <div class="stat-value warning-val">7.6<span class="stat-unit">%</span></div>
+                <div class="stat-label">Unemployment · Feb 2026</div>
+                <div class="stat-delta negative">▲ Worst province</div>
+            </div>
+            <div class="stat-card" data-geo="Alberta">
+                <div class="stat-country">🛢️ Alberta</div>
+                <div class="stat-value positive-val">6.3<span class="stat-unit">%</span></div>
+                <div class="stat-label">Unemployment · Feb 2026</div>
+                <div class="stat-delta positive-delta">▼ Best performer</div>
+            </div>
+            <div class="stat-card no-filter">
+                <div class="stat-country">📉 February 2026</div>
+                <div class="stat-value danger-val">-84<span class="stat-unit">K</span></div>
+                <div class="stat-label">Jobs Lost · One Month</div>
+                <div class="stat-delta negative">Worst since Jan 2022</div>
             </div>
         </div>
     </header>
 
     <main>
+        <!-- CHART 1 — Unemployment Trend -->
         <section class="chart-section">
-            <h2>Unemployment Rate Trend (2020–2026)</h2>
-            <p class="chart-desc">Canada vs Ontario vs Alberta — Pandemic crash, recovery, and the 2026 slowdown</p>
+            <div class="section-header">
+                <div>
+                    <div class="section-tag">CHART 01</div>
+                    <h2>Unemployment Rate Trend (2020–2026)</h2>
+                    <p class="chart-desc">Canada vs Ontario vs Alberta — Pandemic crash, recovery, and the 2026 slowdown</p>
+                </div>
+            </div>
+            <div class="controls-bar">
+                <div class="control-group">
+                    <label>FROM</label>
+                    <select id="yearFrom">
+                        <option value="2020" selected>2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>TO</label>
+                    <select id="yearTo">
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026" selected>2026</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>PROVINCE</label>
+                    <select id="geoFilter">
+                        <option value="all">All</option>
+                        <option value="Canada">Canada</option>
+                        <option value="Ontario">Ontario</option>
+                        <option value="Alberta">Alberta</option>
+                    </select>
+                </div>
+                <button class="apply-btn" onclick="applyUnemploymentFilter()">Apply</button>
+            </div>
             <div class="chart-container large">
                 <canvas id="unemploymentChart"></canvas>
             </div>
         </section>
 
+        <!-- CHART 2 — Year Comparison -->
         <section class="chart-section">
-            <h2>Ontario vs Canada Gap (2022–2026)</h2>
-            <p class="chart-desc">Ontario has been consistently above the national average — and the gap is widening</p>
+            <div class="section-header">
+                <div>
+                    <div class="section-tag">CHART 02</div>
+                    <h2>Year-over-Year Comparison</h2>
+                    <p class="chart-desc">Compare unemployment rates between any two years, month by month</p>
+                </div>
+            </div>
+            <div class="controls-bar">
+                <div class="control-group">
+                    <label>YEAR A</label>
+                    <select id="compareYearA">
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023" selected>2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>YEAR B</label>
+                    <select id="compareYearB">
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026" selected>2026</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>PROVINCE</label>
+                    <select id="compareGeo">
+                        <option value="Canada">Canada</option>
+                        <option value="Ontario">Ontario</option>
+                        <option value="Alberta">Alberta</option>
+                    </select>
+                </div>
+                <button class="apply-btn" onclick="applyCompareFilter()">Apply</button>
+            </div>
             <div class="chart-container">
-                <canvas id="ontarioGapChart"></canvas>
+                <canvas id="compareChart"></canvas>
             </div>
         </section>
 
-        <section class="chart-section">
-            <h2>Industry Winners & Losers (2023 vs 2026)</h2>
-            <p class="chart-desc">While tariff-exposed sectors struggle, healthcare and tech continue to grow</p>
-            <div class="chart-container">
-                <canvas id="industryChart"></canvas>
+        <!-- CHARTS 3 & 4 -->
+        <div class="two-col">
+            <section class="chart-section">
+                <div class="section-header">
+                    <div>
+                        <div class="section-tag">CHART 03</div>
+                        <h2>The Ontario Gap</h2>
+                        <p class="chart-desc">Ontario vs national average — gap is widening</p>
+                    </div>
+                </div>
+                <div class="controls-bar">
+                    <div class="control-group">
+                        <label>FROM</label>
+                        <select id="gapYearFrom">
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022" selected>2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label>TO</label>
+                        <select id="gapYearTo">
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026" selected>2026</option>
+                        </select>
+                    </div>
+                    <button class="apply-btn" onclick="applyGapFilter()">Apply</button>
+                </div>
+                <div class="chart-container">
+                    <canvas id="ontarioGapChart"></canvas>
+                </div>
+            </section>
+
+            <section class="chart-section">
+                <div class="section-header">
+                    <div>
+                        <div class="section-tag">CHART 04</div>
+                        <h2>Industry Winners & Losers</h2>
+                        <p class="chart-desc">Employment change by sector</p>
+                    </div>
+                </div>
+                <div class="controls-bar">
+                    <div class="control-group">
+                        <label>BASE YEAR</label>
+                        <select id="industryYearFrom">
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023" selected>2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label>VS YEAR</label>
+                        <select id="industryYearTo">
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026" selected>2026</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label>PROVINCE</label>
+                        <select id="industryGeo">
+                            <option value="Canada">Canada</option>
+                            <option value="Ontario">Ontario</option>
+                            <option value="Alberta">Alberta</option>
+                        </select>
+                    </div>
+                    <button class="apply-btn" onclick="applyIndustryFilter()">Apply</button>
+                </div>
+                <div class="chart-container">
+                    <canvas id="industryChart"></canvas>
+                </div>
+            </section>
+        </div>
+
+        <!-- AI INSIGHTS -->
+        <section class="insight-section">
+            <div class="section-tag">AI INSIGHTS</div>
+            <div class="ai-insights-container">
+                <div class="ai-header">
+                    <div>
+                        <h2>AI-Powered Analysis</h2>
+                        <p class="chart-desc">Claude AI analyzes the current data and generates insights in real time</p>
+                    </div>
+                    <button class="generate-btn" onclick="generateInsights()">
+                        <span id="generateBtnText">✦ Generate Analysis</span>
+                    </button>
+                </div>
+                <div id="insightsOutput" class="insights-output">
+                    <p class="insights-placeholder">Click "Generate Analysis" to get AI-powered insights based on the current labour market data.</p>
+                </div>
             </div>
         </section>
 
         <footer class="dashboard-footer">
-            <p>Data source: Statistics Canada — Labour Force Survey (Tables 14-10-0287-01, 14-10-0355-01)</p>
-            <p>Built by <a href="https://github.com/moisesvivass" target="_blank">Moises Vivas</a> — Python · PostgreSQL · FastAPI · Chart.js</p>
+            <div class="footer-left">
+                <p>Data: Statistics Canada — Labour Force Survey</p>
+                <p>Tables 14-10-0287-01 · 14-10-0355-01 · Updated March 2026</p>
+            </div>
+            <div class="footer-right">
+                <p>Built by <a href="https://github.com/moisesvivass" target="_blank">Moises Vivas</a></p>
+                <p>Python · PostgreSQL · FastAPI · Chart.js · Claude AI</p>
+            </div>
         </footer>
     </main>
 

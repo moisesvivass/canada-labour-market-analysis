@@ -7,3 +7,4 @@ jupyter
 fastapi
 uvicorn
 jinja2
+anthropic

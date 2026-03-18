@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canada Labour Market Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>🇨🇦 Canada Labour Market Analysis</h1>
+            <p class="subtitle">From Pandemic Boom to 2026 Crisis — A Data Story</p>
+            <div class="stat-cards">
+                <div class="stat-card">
+                    <span class="stat-value">6.7%</span>
+                    <span class="stat-label">Canada Unemployment Feb 2026</span>
+                </div>
+                <div class="stat-card warning">
+                    <span class="stat-value">7.6%</span>
+                    <span class="stat-label">Ontario Unemployment Feb 2026</span>
+                </div>
+                <div class="stat-card positive">
+                    <span class="stat-value">6.3%</span>
+                    <span class="stat-label">Alberta Unemployment Feb 2026</span>
+                </div>
+                <div class="stat-card negative">
+                    <span class="stat-value">-84K</span>
+                    <span class="stat-label">Jobs Lost in February 2026</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="chart-section">
+            <h2>Unemployment Rate Trend (2020–2026)</h2>
+            <p class="chart-desc">Canada vs Ontario vs Alberta — Pandemic crash, recovery, and the 2026 slowdown</p>
+            <div class="chart-container large">
+                <canvas id="unemploymentChart"></canvas>
+            </div>
+        </section>
+
+        <section class="chart-section">
+            <h2>Ontario vs Canada Gap (2022–2026)</h2>
+            <p class="chart-desc">Ontario has been consistently above the national average — and the gap is widening</p>
+            <div class="chart-container">
+                <canvas id="ontarioGapChart"></canvas>
+            </div>
+        </section>
+
+        <section class="chart-section">
+            <h2>Industry Winners & Losers (2023 vs 2026)</h2>
+            <p class="chart-desc">While tariff-exposed sectors struggle, healthcare and tech continue to grow</p>
+            <div class="chart-container">
+                <canvas id="industryChart"></canvas>
+            </div>
+        </section>
+
+        <footer class="dashboard-footer">
+            <p>Data source: Statistics Canada — Labour Force Survey (Tables 14-10-0287-01, 14-10-0355-01)</p>
+            <p>Built by <a href="https://github.com/moisesvivass" target="_blank">Moises Vivas</a> — Python · PostgreSQL · FastAPI · Chart.js</p>
+        </footer>
+    </main>
+
+    <script src="/static/js/charts.js"></script>
+</body>
+</html>

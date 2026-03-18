@@ -419,3 +419,28 @@ main {
 
 .footer-right { text-align: right; }
 .footer-left p, .footer-right p { line-height: 1.8; }
+
+/* ============ READ MORE ============ */
+.insights-implication {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent-blue);
+    margin-top: 10px;
+    margin-bottom: 12px;
+}
+
+.read-more-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    cursor: pointer;
+    padding: 0;
+    letter-spacing: 0.04em;
+    transition: color 0.2s ease;
+}
+
+.read-more-btn:hover {
+    color: var(--accent-blue);
+}

@@ -64,6 +64,8 @@ const baseOptions = {
 }
 
 let unemploymentChart, compareChart, ontarioGapChart, industryChart
+window._insightParams = {}
+window._insightFull = {}
 
 // ============================================
 // AI INSIGHTS
@@ -78,17 +80,52 @@ async function fetchInsight(params, outputId, btnId) {
     output.style.display = 'block'
 
     try {
+        window._insightParams[outputId] = { ...params }
+
         const queryString = new URLSearchParams(params).toString()
         const res = await fetch(`/api/insights?${queryString}`)
         const data = await res.json()
 
-        output.innerHTML = `<p class="insights-text">${data.insight.replace(/\n\n/g, '</p><p class="insights-text">')}</p>`
+        const fullText = data.insight
+        const parts = fullText.split('[MORE]')
+        const preview = parts[0].trim()
+        const rest = parts[1] ? parts[1].trim() : ''
+
+        const previewParts = preview.split('→')
+        const summary = previewParts[0].trim()
+        const implication = previewParts[1] ? previewParts[1].trim() : ''
+
+        window._insightFull[outputId] = rest
+
+        output.innerHTML = `
+            <p class="insights-text">${summary}</p>
+            ${implication ? `<p class="insights-implication">→ ${implication}</p>` : ''}
+            ${rest ? `<button class="read-more-btn" onclick="expandInsight('${outputId}')">Read full analysis ↓</button>` : ''}
+        `
     } catch (err) {
         output.innerHTML = '<p class="insights-error">Error generating analysis. Please try again.</p>'
     }
 
     btn.disabled = false
     btn.textContent = '✦ Analyze'
+}
+
+function expandInsight(outputId) {
+    const output = document.getElementById(outputId)
+    const rest = window._insightFull[outputId]
+
+    if (!rest) return
+
+    const btn = output.querySelector('.read-more-btn')
+    if (btn) btn.remove()
+
+    const paragraphs = rest.split('\n\n').filter(p => p.trim())
+    paragraphs.forEach(p => {
+        const el = document.createElement('p')
+        el.className = 'insights-text'
+        el.textContent = p.trim()
+        output.appendChild(el)
+    })
 }
 
 // ============================================

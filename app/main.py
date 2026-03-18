@@ -168,7 +168,8 @@ async def get_insights(
     geo: str = Query(default="Canada"),
     year_from: int = Query(default=2020),
     year_to: int = Query(default=2026),
-    extra: str = Query(default="")
+    extra: str = Query(default=""),
+    full: bool = Query(default=False)
 ):
     with engine.connect() as conn:
         if chart == "unemployment":
@@ -179,11 +180,14 @@ async def get_insights(
                 AND EXTRACT(YEAR FROM ref_date) BETWEEN {year_from} AND {year_to}
                 ORDER BY ref_date
             """)).fetchall()
-            data_summary = f"Unemployment rate for {geo} from {year_from} to {year_to}:\n"
+            data_summary = f"Unemployment rate for {geo} — ONLY the period {year_from} to {year_to}:\n"
             data_summary += f"Start: {rows[0][2]}% ({rows[0][1]})\n"
             data_summary += f"End: {rows[-1][2]}% ({rows[-1][1]})\n"
             data_summary += f"Peak: {max(r[2] for r in rows)}%\n"
-            data_summary += f"Low: {min(r[2] for r in rows)}%"
+            data_summary += f"Low: {min(r[2] for r in rows)}%\n"
+            data_summary += f"Total change: {round(rows[-1][2] - rows[0][2], 1)} percentage points\n"
+            data_summary += f"Number of months analyzed: {len(rows)}\n"
+            data_summary += "Monthly data: " + ", ".join([f"{r[1]}:{r[2]}%" for r in rows])
 
         elif chart == "compare":
             parts = extra.split(",") if extra else ["2023", "2026"]
@@ -204,10 +208,14 @@ async def get_insights(
             """)).fetchall()
             avg_a = sum(r[1] for r in rows_a) / len(rows_a) if rows_a else 0
             avg_b = sum(r[1] for r in rows_b) / len(rows_b) if rows_b else 0
-            data_summary = f"Year comparison for {geo}:\n"
+            data_summary = f"Year comparison for {geo} — ONLY {year_a} vs {year_b}:\n"
             data_summary += f"{year_a} average: {round(avg_a, 1)}%\n"
             data_summary += f"{year_b} average: {round(avg_b, 1)}%\n"
-            data_summary += f"Change: {round(avg_b - avg_a, 1)} percentage points"
+            data_summary += f"Change: {round(avg_b - avg_a, 1)} percentage points\n"
+            if rows_a:
+                data_summary += f"{year_a} monthly: " + ", ".join([f"{r[0]}:{r[1]}%" for r in rows_a]) + "\n"
+            if rows_b:
+                data_summary += f"{year_b} monthly: " + ", ".join([f"{r[0]}:{r[1]}%" for r in rows_b])
 
         elif chart == "gap":
             rows = conn.execute(text(f"""
@@ -219,10 +227,11 @@ async def get_insights(
                 GROUP BY ref_date ORDER BY ref_date
             """)).fetchall()
             gaps = [round(r[2] - r[1], 1) for r in rows if r[1] and r[2]]
-            data_summary = f"Ontario vs Canada gap ({year_from}-{year_to}):\n"
+            data_summary = f"Ontario vs Canada gap — ONLY {year_from} to {year_to}:\n"
             data_summary += f"Current gap: {gaps[-1]} pts\n"
             data_summary += f"Max gap: {max(gaps)} pts\n"
-            data_summary += f"Average gap: {round(sum(gaps)/len(gaps), 1)} pts"
+            data_summary += f"Average gap: {round(sum(gaps)/len(gaps), 1)} pts\n"
+            data_summary += "Monthly gaps: " + ", ".join([f"{r[0]}:{round(r[2]-r[1],1)}pts" for r in rows if r[1] and r[2]])
 
         elif chart == "industry":
             rows = conn.execute(text(f"""
@@ -246,29 +255,33 @@ async def get_insights(
                 WHERE b.industry != 'Total employed, all industries'
                 ORDER BY pct_change DESC
             """)).fetchall()
-            data_summary = f"Industry employment change in {geo} ({year_from} vs {year_to}):\n"
+            data_summary = f"Industry employment change in {geo} — ONLY {year_from} vs {year_to}:\n"
             for r in rows:
                 data_summary += f"{r[0].split('[')[0].strip()}: {r[1]:+}%\n"
+
+    prompt = (
+        "You are a sharp, opinionated Canadian labour market economist. "
+        "You don't hedge, you don't repeat the obvious, you always find the angle nobody else is talking about.\n\n"
+        f"Data:\n{data_summary}\n\n"
+        "CRITICAL RULES:\n"
+        "1. Analyze ONLY the specific period and data provided above. Do NOT reference any other time periods.\n"
+        "2. Every claim must be directly supported by the numbers above. No invented trends.\n"
+        "3. If the data only covers a short period, say what you can honestly say about that period only.\n\n"
+        "Write exactly this structure, separated by the marker [MORE]:\n"
+        "BEFORE [MORE]: One punchy sentence capturing the real story of THIS specific period. "
+        "Then on a new line write: → followed by one brutal specific implication for Canadian workers based on THIS data.\n"
+        "AFTER [MORE]: Two more paragraphs going deeper into THIS period only. "
+        "Who won, who lost, what the numbers reveal. Bold specific predictions grounded only in what the data shows.\n\n"
+        "Rules: No bullet points. No em-dashes. No hedging. "
+        "Use specific numbers from the data above. Plain text only. "
+        "Write like you are briefing a smart busy executive who has zero patience for corporate speak."
+    )
 
     client = anthropic.Anthropic()
     message = client.messages.create(
         model="claude-haiku-4-5",
-        max_tokens=400,
-        messages=[
-            {
-                "role": "user",
-                "content": f"""You are a senior labour market economist analyzing Canadian employment data.
-
-Based on this data:
-{data_summary}
-
-Provide a sharp, insightful 3-paragraph analysis. Be specific with numbers.
-Mention implications for workers, businesses, and the broader economy.
-Focus on what the data reveals that isn't immediately obvious.
-Write in a professional but accessible tone — like The Economist magazine.
-Do not use bullet points. Use flowing paragraphs only."""
-            }
-        ]
+        max_tokens=500,
+        messages=[{"role": "user", "content": prompt}]
     )
 
     return {"insight": message.content[0].text}

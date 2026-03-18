@@ -57,6 +57,7 @@
                     <h2>Unemployment Rate Trend (2020–2026)</h2>
                     <p class="chart-desc">Canada vs Ontario vs Alberta — Pandemic crash, recovery, and the 2026 slowdown</p>
                 </div>
+                <button class="analyze-btn" id="btnUnemployment" onclick="analyzeUnemployment()">✦ Analyze</button>
             </div>
             <div class="controls-bar">
                 <div class="control-group">
@@ -84,19 +85,25 @@
                     </select>
                 </div>
                 <div class="control-group">
-                    <label>PROVINCE</label>
-                    <select id="geoFilter">
-                        <option value="all">All</option>
-                        <option value="Canada">Canada</option>
-                        <option value="Ontario">Ontario</option>
-                        <option value="Alberta">Alberta</option>
-                    </select>
+                    <label>PROVINCES</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="province-checkbox" value="Canada" checked> Canada
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="province-checkbox" value="Ontario" checked> Ontario
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="province-checkbox" value="Alberta" checked> Alberta
+                        </label>
+                    </div>
                 </div>
                 <button class="apply-btn" onclick="applyUnemploymentFilter()">Apply</button>
             </div>
             <div class="chart-container large">
                 <canvas id="unemploymentChart"></canvas>
             </div>
+            <div id="insightUnemployment" class="insight-output" style="display:none"></div>
         </section>
 
         <!-- CHART 2 — Year Comparison -->
@@ -107,6 +114,7 @@
                     <h2>Year-over-Year Comparison</h2>
                     <p class="chart-desc">Compare unemployment rates between any two years, month by month</p>
                 </div>
+                <button class="analyze-btn" id="btnCompare" onclick="analyzeCompare()">✦ Analyze</button>
             </div>
             <div class="controls-bar">
                 <div class="control-group">
@@ -146,6 +154,7 @@
             <div class="chart-container">
                 <canvas id="compareChart"></canvas>
             </div>
+            <div id="insightCompare" class="insight-output" style="display:none"></div>
         </section>
 
         <!-- CHARTS 3 & 4 -->
@@ -157,6 +166,7 @@
                         <h2>The Ontario Gap</h2>
                         <p class="chart-desc">Ontario vs national average — gap is widening</p>
                     </div>
+                    <button class="analyze-btn" id="btnGap" onclick="analyzeGap()">✦ Analyze</button>
                 </div>
                 <div class="controls-bar">
                     <div class="control-group">
@@ -188,6 +198,7 @@
                 <div class="chart-container">
                     <canvas id="ontarioGapChart"></canvas>
                 </div>
+                <div id="insightGap" class="insight-output" style="display:none"></div>
             </section>
 
             <section class="chart-section">
@@ -197,6 +208,7 @@
                         <h2>Industry Winners & Losers</h2>
                         <p class="chart-desc">Employment change by sector</p>
                     </div>
+                    <button class="analyze-btn" id="btnIndustry" onclick="analyzeIndustry()">✦ Analyze</button>
                 </div>
                 <div class="controls-bar">
                     <div class="control-group">
@@ -236,27 +248,9 @@
                 <div class="chart-container">
                     <canvas id="industryChart"></canvas>
                 </div>
+                <div id="insightIndustry" class="insight-output" style="display:none"></div>
             </section>
         </div>
-
-        <!-- AI INSIGHTS -->
-        <section class="insight-section">
-            <div class="section-tag">AI INSIGHTS</div>
-            <div class="ai-insights-container">
-                <div class="ai-header">
-                    <div>
-                        <h2>AI-Powered Analysis</h2>
-                        <p class="chart-desc">Claude AI analyzes the current data and generates insights in real time</p>
-                    </div>
-                    <button class="generate-btn" onclick="generateInsights()">
-                        <span id="generateBtnText">✦ Generate Analysis</span>
-                    </button>
-                </div>
-                <div id="insightsOutput" class="insights-output">
-                    <p class="insights-placeholder">Click "Generate Analysis" to get AI-powered insights based on the current labour market data.</p>
-                </div>
-            </div>
-        </section>
 
         <footer class="dashboard-footer">
             <div class="footer-left">

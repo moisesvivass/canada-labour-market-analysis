@@ -5,7 +5,7 @@ Canada Labour Market Analysis (2020–2026)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-analytics-blue?logo=postgresql)](https://postgresql.org)
 [![Claude AI](https://img.shields.io/badge/Claude-AI%20Insights-orange)](https://anthropic.com)
 
-End-to-end data analysis of Canada's labour market using official Statistics Canada data — built during the country's worst job crisis since the pandemic. Covers unemployment trends, employment by industry, and provincial comparisons across Canada, Ontario, and Alberta from January 2020 to 2026.
+End-to-end data analysis of Canada's labour market using official Statistics Canada data, built during the country's worst job crisis since the pandemic. Covers unemployment trends, employment by industry, and provincial comparisons across Canada, Ontario, and Alberta from January 2020 to 2026.
 
 ## 📊 What This Project Does
 

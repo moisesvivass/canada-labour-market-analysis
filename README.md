@@ -1,5 +1,4 @@
-cat > README.md << 'EOF'
-# 🇨🇦 Canada Labour Market Analysis (2020–2026)
+Canada Labour Market Analysis (2020–2026)
 
 [![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-dashboard-green?logo=fastapi)](https://fastapi.tiangolo.com)

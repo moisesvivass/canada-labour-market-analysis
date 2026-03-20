@@ -5,6 +5,11 @@ Canada Labour Market Analysis (2020–2026)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-analytics-blue?logo=postgresql)](https://postgresql.org)
 [![Claude AI](https://img.shields.io/badge/Claude-AI%20Insights-orange)](https://anthropic.com)
 
+**The problem:** Canada's labour market data is publicly available but scattered across Statistics Canada tables, making it hard for anyone to quickly understand what is happening with employment trends by province or industry.
+
+**What this solves:** An end-to-end pipeline that ingests official Statistics Canada data, loads it into PostgreSQL, and surfaces the answers through an interactive dashboard with AI-generated insights per chart.
+```
+
 End-to-end data analysis of Canada's labour market using official Statistics Canada data, built during the country's worst job crisis since the pandemic. Covers unemployment trends, employment by industry, and provincial comparisons across Canada, Ontario, and Alberta from January 2020 to 2026.
 
 ## 📊 What This Project Does

@@ -5,7 +5,11 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-analytics-blue?logo=postgresql)](https://postgresql.org)
 [![Claude AI](https://img.shields.io/badge/Claude-AI%20Insights-orange)](https://anthropic.com)
 
-> 🚀 **Live demo:** [web-production-6f4de.up.railway.app](https://web-production-6f4de.up.railway.app)
+## 🚀 Live Demo
+
+| Interface | URL |
+|-----------|-----|
+| 📊 Dashboard | [web-production-6f4de.up.railway.app](https://web-production-6f4de.up.railway.app) |
 
 **The problem:** Canada's labour market data is publicly available but scattered across Statistics Canada tables, making it hard to quickly understand employment trends by province or industry.
 

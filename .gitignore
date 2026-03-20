@@ -5,3 +5,4 @@ __pycache__/
 data/raw/
 *.zip
 .ipynb_checkpoints/
+backup.sql

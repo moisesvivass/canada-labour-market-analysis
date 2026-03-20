@@ -5,6 +5,8 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-analytics-blue?logo=postgresql)](https://postgresql.org)
 [![Claude AI](https://img.shields.io/badge/Claude-AI%20Insights-orange)](https://anthropic.com)
 
+> 🚀 **Live demo:** [web-production-6f4de.up.railway.app](https://web-production-6f4de.up.railway.app)
+
 **The problem:** Canada's labour market data is publicly available but scattered across Statistics Canada tables, making it hard to quickly understand employment trends by province or industry.
 
 **What this solves:** An end-to-end pipeline that ingests official Statistics Canada data, loads it into PostgreSQL, and surfaces the answers through an interactive dashboard with AI-generated insights per chart.

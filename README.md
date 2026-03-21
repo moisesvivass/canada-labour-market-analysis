@@ -108,6 +108,6 @@ uvicorn app.main:app --reload
 
 ## 👨‍💻 Author
 
-**Moises Vivas** — CS graduate building backend systems in Python · Toronto, Canada
+**Moises Vivas** — IT graduate and self-taught developer | Python · Data Analytics · AI integrations
 
 - GitHub: [github.com/moisesvivass](https://github.com/moisesvivass)

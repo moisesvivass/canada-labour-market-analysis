@@ -1,0 +1,1777 @@
+ref_date,geography,industry,data_type,value
+2020-01-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,19204.7
+2020-01-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1509.6
+2020-01-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1741.1
+2020-01-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2940.6
+2020-01-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1034.2
+2020-01-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1574
+2020-01-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2518.1
+2020-01-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,990.8
+2020-01-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7516.9
+2020-01-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,565.8
+2020-01-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,756.7
+2020-01-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1132.6
+2020-01-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,394.3
+2020-01-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,693.8
+2020-01-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,910.4
+2020-01-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,378.3
+2020-01-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2289.3
+2020-01-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,225.3
+2020-01-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,137.4
+2020-01-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,339.1
+2020-01-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,131.8
+2020-01-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,182
+2020-01-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,292.7
+2020-01-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,102.7
+2020-02-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,19202.9
+2020-02-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1503.5
+2020-02-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1755.8
+2020-02-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2959.5
+2020-02-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1032.5
+2020-02-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1565.5
+2020-02-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2519.4
+2020-02-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,989.6
+2020-02-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7501.2
+2020-02-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,565.2
+2020-02-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,770.5
+2020-02-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1139
+2020-02-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,393.5
+2020-02-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,684.8
+2020-02-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,908
+2020-02-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,382.1
+2020-02-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2294.8
+2020-02-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,220.2
+2020-02-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,141
+2020-02-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,344.1
+2020-02-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,131.6
+2020-02-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,181.7
+2020-02-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,296.5
+2020-02-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,104.2
+2020-03-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,18058.2
+2020-03-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1481
+2020-03-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1721
+2020-03-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2746.1
+2020-03-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,990.1
+2020-03-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1587.7
+2020-03-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2375
+2020-03-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,989.2
+2020-03-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7036.8
+2020-03-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,555.7
+2020-03-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,737.9
+2020-03-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1054.7
+2020-03-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,387.4
+2020-03-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,694.8
+2020-03-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,842.8
+2020-03-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,381.5
+2020-03-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2167.2
+2020-03-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,231.1
+2020-03-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,137.8
+2020-03-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,315
+2020-03-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,126
+2020-03-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,184.1
+2020-03-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,268.6
+2020-03-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,106.2
+2020-04-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,16085.8
+2020-04-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1189.4
+2020-04-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1452.3
+2020-04-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2330.2
+2020-04-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,890.2
+2020-04-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1495.7
+2020-04-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2245
+2020-04-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,975.4
+2020-04-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,6346.9
+2020-04-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,464.8
+2020-04-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,624.2
+2020-04-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,894.2
+2020-04-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,337.1
+2020-04-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,663.2
+2020-04-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,791.4
+2020-04-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,373.2
+2020-04-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,1939.3
+2020-04-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,191.6
+2020-04-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,120.1
+2020-04-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,268.6
+2020-04-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,113.7
+2020-04-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,164.4
+2020-04-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,266.7
+2020-04-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,104.8
+2020-05-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,16410.7
+2020-05-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1292
+2020-05-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1537.1
+2020-05-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2431.3
+2020-05-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,860.4
+2020-05-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1497.1
+2020-05-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2250.2
+2020-05-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,977.3
+2020-05-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,6334
+2020-05-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,480
+2020-05-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,644.6
+2020-05-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,905.1
+2020-05-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,327.2
+2020-05-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,659.3
+2020-05-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,786.1
+2020-05-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,380
+2020-05-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,1953
+2020-05-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,195.9
+2020-05-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,127.8
+2020-05-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,269.1
+2020-05-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,113.4
+2020-05-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,162.4
+2020-05-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,266.9
+2020-05-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,101.1
+2020-06-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,17469.3
+2020-06-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1404.7
+2020-06-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1605.2
+2020-06-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2668
+2020-06-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,905.9
+2020-06-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1503.8
+2020-06-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2387.4
+2020-06-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,983
+2020-06-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,6751.4
+2020-06-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,531.1
+2020-06-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,706.9
+2020-06-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1018.2
+2020-06-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,336.8
+2020-06-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,656.2
+2020-06-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,836.7
+2020-06-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,382.3
+2020-06-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2056.5
+2020-06-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,216.7
+2020-06-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,116.2
+2020-06-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,301.3
+2020-06-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,113.6
+2020-06-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,164.3
+2020-06-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,287.1
+2020-06-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,100.3
+2020-07-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,17895.5
+2020-07-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1401.6
+2020-07-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1652.8
+2020-07-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2785.2
+2020-07-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,924.4
+2020-07-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1543.5
+2020-07-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2404.2
+2020-07-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,987.3
+2020-07-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,6913.9
+2020-07-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,529.4
+2020-07-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,724.4
+2020-07-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1069.3
+2020-07-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,345.4
+2020-07-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,675.7
+2020-07-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,844.6
+2020-07-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,382.4
+2020-07-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2117.3
+2020-07-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,219.4
+2020-07-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,119.7
+2020-07-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,318.9
+2020-07-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,124.9
+2020-07-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,165
+2020-07-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,285.4
+2020-07-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,100.5
+2020-08-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,18129.3
+2020-08-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1427.5
+2020-08-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1686.2
+2020-08-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2814.8
+2020-08-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,922.7
+2020-08-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1565.2
+2020-08-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2410.9
+2020-08-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,996.9
+2020-08-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7047.5
+2020-08-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,533
+2020-08-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,739.7
+2020-08-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1077.3
+2020-08-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,336.5
+2020-08-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,688.4
+2020-08-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,872.1
+2020-08-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,393.1
+2020-08-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2126.6
+2020-08-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,221.1
+2020-08-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,118.5
+2020-08-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,319.1
+2020-08-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,125.1
+2020-08-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,180.9
+2020-08-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,283.2
+2020-08-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,97.1
+2020-09-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,18555.9
+2020-09-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1440.8
+2020-09-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1746.3
+2020-09-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2838.4
+2020-09-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,938.6
+2020-09-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1592.3
+2020-09-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2437.5
+2020-09-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1007.8
+2020-09-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7234.2
+2020-09-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,532.8
+2020-09-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,782.1
+2020-09-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1078.3
+2020-09-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,336
+2020-09-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,704.8
+2020-09-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,888.2
+2020-09-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,390
+2020-09-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2167.2
+2020-09-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,224.6
+2020-09-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,120.7
+2020-09-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,324.8
+2020-09-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,126.4
+2020-09-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,181.3
+2020-09-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,278.9
+2020-09-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,104.1
+2020-10-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,18616.4
+2020-10-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1439.5
+2020-10-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1745.7
+2020-10-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2862.5
+2020-10-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,926.9
+2020-10-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1628.2
+2020-10-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2441.6
+2020-10-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1018.7
+2020-10-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7278.1
+2020-10-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,536
+2020-10-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,785
+2020-10-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1100.8
+2020-10-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,321.4
+2020-10-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,731.7
+2020-10-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,864
+2020-10-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,390.3
+2020-10-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2183.5
+2020-10-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,228.9
+2020-10-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,125.4
+2020-10-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,326.8
+2020-10-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,127.2
+2020-10-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,178.6
+2020-10-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,290.4
+2020-10-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,101.7
+2020-11-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,18650
+2020-11-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1443.1
+2020-11-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1748.8
+2020-11-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2883.9
+2020-11-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,958.8
+2020-11-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1619.8
+2020-11-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2464.3
+2020-11-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1018.4
+2020-11-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7302.9
+2020-11-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,544.7
+2020-11-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,791.9
+2020-11-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1110
+2020-11-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,339.3
+2020-11-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,725.1
+2020-11-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,881.7
+2020-11-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,385.7
+2020-11-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2182.8
+2020-11-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,223.9
+2020-11-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,120.8
+2020-11-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,331.3
+2020-11-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,131.1
+2020-11-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,168.9
+2020-11-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,293.9
+2020-11-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,100.7
+2020-12-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,18591.7
+2020-12-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1449.8
+2020-12-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1764.1
+2020-12-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2892.4
+2020-12-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,958.1
+2020-12-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1641.3
+2020-12-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2453.3
+2020-12-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1036.1
+2020-12-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7288.2
+2020-12-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,552.5
+2020-12-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,802.3
+2020-12-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1112.2
+2020-12-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,338.6
+2020-12-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,732
+2020-12-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,873.8
+2020-12-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,394.1
+2020-12-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2172.2
+2020-12-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,214.3
+2020-12-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,125
+2020-12-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,335.2
+2020-12-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,131.3
+2020-12-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,174.2
+2020-12-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,299.3
+2020-12-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,102.3
+2021-01-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,18392.1
+2021-01-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1466
+2021-01-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1756.4
+2021-01-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2709.3
+2021-01-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,964.2
+2021-01-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1668.2
+2021-01-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2465.2
+2021-01-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1043.4
+2021-01-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7112.7
+2021-01-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,543
+2021-01-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,795.2
+2021-01-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1021
+2021-01-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,343.8
+2021-01-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,741.4
+2021-01-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,876.9
+2021-01-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,394.8
+2021-01-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2186.9
+2021-01-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,222.6
+2021-01-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,121
+2021-01-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,336.8
+2021-01-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,131.9
+2021-01-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,183.9
+2021-01-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,300.5
+2021-01-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,101
+2021-02-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,18632
+2021-02-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1454.8
+2021-02-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1763.8
+2021-02-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2824.4
+2021-02-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,997
+2021-02-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1653.7
+2021-02-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2465
+2021-02-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1045.1
+2021-02-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7227.6
+2021-02-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,538
+2021-02-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,802.5
+2021-02-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1055.2
+2021-02-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,355.2
+2021-02-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,736.5
+2021-02-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,871.5
+2021-02-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,393.2
+2021-02-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2206.3
+2021-02-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,223.4
+2021-02-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,119.7
+2021-02-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,348
+2021-02-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,135.7
+2021-02-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,180.2
+2021-02-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,304.3
+2021-02-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,98.8
+2021-03-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,18873
+2021-03-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1467.3
+2021-03-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1766.4
+2021-03-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2892.2
+2021-03-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,992.3
+2021-03-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1659.8
+2021-03-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2512.5
+2021-03-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1042.4
+2021-03-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7371.8
+2021-03-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,538.6
+2021-03-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,796.2
+2021-03-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1111.3
+2021-03-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,358.9
+2021-03-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,738.8
+2021-03-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,898
+2021-03-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,393.4
+2021-03-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2240.4
+2021-03-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,226.6
+2021-03-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,120.8
+2021-03-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,341.9
+2021-03-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,142.3
+2021-03-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,183.7
+2021-03-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,306.5
+2021-03-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,97.6
+2021-04-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,18673.8
+2021-04-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1469.5
+2021-04-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1760.1
+2021-04-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2812
+2021-04-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,967.2
+2021-04-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1673.7
+2021-04-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2509.8
+2021-04-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1052.3
+2021-04-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7228.9
+2021-04-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,541.3
+2021-04-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,777.7
+2021-04-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1071.6
+2021-04-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,356.6
+2021-04-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,737.8
+2021-04-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,884.9
+2021-04-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,401.3
+2021-04-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2222.7
+2021-04-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,227.6
+2021-04-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,129.2
+2021-04-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,332.7
+2021-04-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,130.8
+2021-04-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,185.6
+2021-04-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,306.4
+2021-04-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,97.2
+2021-05-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,18623.6
+2021-05-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1454.4
+2021-05-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1740.7
+2021-05-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2776.5
+2021-05-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,981.1
+2021-05-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1690.3
+2021-05-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2503.4
+2021-05-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1056.4
+2021-05-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7196.4
+2021-05-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,539.3
+2021-05-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,761
+2021-05-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1034.1
+2021-05-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,364.4
+2021-05-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,750.4
+2021-05-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,889.1
+2021-05-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,399.1
+2021-05-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2218.5
+2021-05-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,226
+2021-05-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,132.9
+2021-05-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,334.7
+2021-05-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,128.8
+2021-05-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,190
+2021-05-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,306
+2021-05-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,99.6
+2021-06-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,18894.4
+2021-06-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1442
+2021-06-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1737
+2021-06-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2869.3
+2021-06-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,975.2
+2021-06-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1709.4
+2021-06-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2530.9
+2021-06-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1070.4
+2021-06-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7324.7
+2021-06-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,541.3
+2021-06-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,770.7
+2021-06-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1089.9
+2021-06-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,360.7
+2021-06-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,761.6
+2021-06-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,912.9
+2021-06-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,418.3
+2021-06-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2230.6
+2021-06-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,220.6
+2021-06-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,126.4
+2021-06-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,334.2
+2021-06-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,126.7
+2021-06-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,188.4
+2021-06-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,299.2
+2021-06-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,98.7
+2021-07-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,19016.5
+2021-07-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1456.7
+2021-07-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1719.1
+2021-07-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2892.2
+2021-07-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,968.5
+2021-07-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1716.1
+2021-07-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2533.8
+2021-07-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1077.2
+2021-07-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7429.9
+2021-07-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,536.1
+2021-07-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,770.8
+2021-07-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1129.9
+2021-07-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,360
+2021-07-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,763.8
+2021-07-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,898.3
+2021-07-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,417.6
+2021-07-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2235
+2021-07-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,223.7
+2021-07-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,126.2
+2021-07-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,331
+2021-07-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,126.4
+2021-07-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,193.1
+2021-07-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,302.8
+2021-07-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,98.5
+2021-08-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,19081.7
+2021-08-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1463
+2021-08-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1741
+2021-08-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2896.2
+2021-08-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,979.2
+2021-08-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1715.6
+2021-08-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2520.8
+2021-08-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1077.8
+2021-08-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7463.1
+2021-08-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,542.6
+2021-08-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,774.3
+2021-08-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1108.3
+2021-08-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,365.6
+2021-08-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,763.6
+2021-08-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,899.3
+2021-08-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,408.3
+2021-08-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2257.8
+2021-08-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,222.4
+2021-08-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,126.4
+2021-08-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,338
+2021-08-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,137.2
+2021-08-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,190.8
+2021-08-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,300.9
+2021-08-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,100
+2021-09-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,19251.1
+2021-09-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1469
+2021-09-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1758.1
+2021-09-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2916.3
+2021-09-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,988.4
+2021-09-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1719.5
+2021-09-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2541.5
+2021-09-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1128
+2021-09-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7553.1
+2021-09-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,547.1
+2021-09-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,767.6
+2021-09-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1123.7
+2021-09-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,375
+2021-09-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,772.1
+2021-09-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,910.2
+2021-09-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,435.5
+2021-09-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2293.8
+2021-09-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,225.1
+2021-09-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,123.4
+2021-09-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,353.9
+2021-09-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,131.5
+2021-09-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,191
+2021-09-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,305.2
+2021-09-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,106.1
+2021-10-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,19288.1
+2021-10-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1465.6
+2021-10-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1766.9
+2021-10-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2973.1
+2021-10-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1002.5
+2021-10-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1715.3
+2021-10-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2553.7
+2021-10-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1107.1
+2021-10-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7596.9
+2021-10-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,546.7
+2021-10-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,782.4
+2021-10-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1154.2
+2021-10-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,374
+2021-10-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,767.2
+2021-10-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,909.8
+2021-10-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,419.5
+2021-10-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2274.3
+2021-10-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,220.2
+2021-10-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,123.7
+2021-10-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,352.9
+2021-10-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,130
+2021-10-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,192.3
+2021-10-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,309.8
+2021-10-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,107.5
+2021-11-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,19437.3
+2021-11-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1469.4
+2021-11-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1788.8
+2021-11-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2995.3
+2021-11-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1013.9
+2021-11-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1750
+2021-11-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2579.3
+2021-11-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1116.6
+2021-11-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7662.2
+2021-11-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,560
+2021-11-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,783.4
+2021-11-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1169.7
+2021-11-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,380.7
+2021-11-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,781.5
+2021-11-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,927
+2021-11-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,429.9
+2021-11-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2289.3
+2021-11-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,228.3
+2021-11-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,123.2
+2021-11-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,355.5
+2021-11-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,131.6
+2021-11-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,195.3
+2021-11-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,309.3
+2021-11-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,107
+2021-12-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,19508.8
+2021-12-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1479.6
+2021-12-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1793.9
+2021-12-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,3015.5
+2021-12-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1013.9
+2021-12-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1745.8
+2021-12-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2588.4
+2021-12-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1116.2
+2021-12-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7716.4
+2021-12-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,552.1
+2021-12-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,800.7
+2021-12-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1184.1
+2021-12-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,384.8
+2021-12-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,777.8
+2021-12-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,928.9
+2021-12-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,430.9
+2021-12-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2313.9
+2021-12-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,240.4
+2021-12-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,119
+2021-12-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,361
+2021-12-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,129.7
+2021-12-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,198.5
+2021-12-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,314.8
+2021-12-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,107.6
+2022-01-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,19305.4
+2022-01-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1496.2
+2022-01-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1788.5
+2022-01-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2975.7
+2022-01-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1015.1
+2022-01-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1735.4
+2022-01-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2595.4
+2022-01-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1111.2
+2022-01-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7552.3
+2022-01-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,569.4
+2022-01-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,776.5
+2022-01-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1158.7
+2022-01-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,388.6
+2022-01-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,776.8
+2022-01-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,928.6
+2022-01-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,431.3
+2022-01-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2309.3
+2022-01-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,232.6
+2022-01-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,129.8
+2022-01-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,359.3
+2022-01-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,130.4
+2022-01-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,194.3
+2022-01-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,316.9
+2022-01-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,105
+2022-02-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,19629
+2022-02-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1527.6
+2022-02-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1796.8
+2022-02-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,3008.9
+2022-02-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1017.5
+2022-02-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1780.1
+2022-02-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2613.5
+2022-02-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1097.3
+2022-02-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7737.9
+2022-02-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,582.1
+2022-02-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,784.4
+2022-02-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1167.3
+2022-02-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,395.7
+2022-02-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,790.7
+2022-02-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,941.9
+2022-02-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,425.8
+2022-02-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2331.8
+2022-02-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,236.9
+2022-02-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,129.2
+2022-02-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,356.9
+2022-02-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,126.3
+2022-02-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,199.8
+2022-02-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,313.8
+2022-02-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,102.2
+2022-03-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,19647.8
+2022-03-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1536.9
+2022-03-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1798.1
+2022-03-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,3029.6
+2022-03-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,988.7
+2022-03-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1780.7
+2022-03-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2612
+2022-03-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1114.4
+2022-03-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7753.1
+2022-03-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,586.4
+2022-03-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,790.2
+2022-03-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1170.4
+2022-03-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,379.2
+2022-03-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,806.4
+2022-03-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,939.4
+2022-03-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,431.1
+2022-03-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2329
+2022-03-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,233.2
+2022-03-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,131.5
+2022-03-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,369.3
+2022-03-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,119.2
+2022-03-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,197.9
+2022-03-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,312.8
+2022-03-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,106.3
+2022-04-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,19709.7
+2022-04-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1538.1
+2022-04-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1801.2
+2022-04-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,3027.9
+2022-04-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,987.4
+2022-04-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1802.9
+2022-04-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2606.9
+2022-04-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1128.6
+2022-04-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7784.2
+2022-04-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,591.5
+2022-04-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,793.5
+2022-04-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1163.4
+2022-04-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,378.2
+2022-04-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,809.8
+2022-04-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,940.5
+2022-04-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,437.2
+2022-04-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2342.3
+2022-04-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,230.5
+2022-04-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,128.3
+2022-04-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,376.8
+2022-04-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,119.9
+2022-04-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,198.8
+2022-04-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,318.1
+2022-04-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,107.5
+2022-05-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,19763.4
+2022-05-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1549.4
+2022-05-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1779.4
+2022-05-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,3042.4
+2022-05-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,981.7
+2022-05-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1813
+2022-05-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2616.8
+2022-05-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1128.9
+2022-05-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7791
+2022-05-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,581
+2022-05-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,790
+2022-05-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1172.5
+2022-05-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,379.2
+2022-05-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,807.3
+2022-05-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,935.3
+2022-05-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,438.3
+2022-05-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2359.3
+2022-05-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,232.4
+2022-05-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,128.2
+2022-05-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,378.1
+2022-05-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,130.2
+2022-05-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,206.9
+2022-05-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,307.2
+2022-05-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,107.2
+2022-06-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,19750.8
+2022-06-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1561.6
+2022-06-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1789.9
+2022-06-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,3000.5
+2022-06-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,986.3
+2022-06-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1835.2
+2022-06-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2604.2
+2022-06-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1135.3
+2022-06-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7773.1
+2022-06-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,588.2
+2022-06-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,792.4
+2022-06-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1168.6
+2022-06-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,375.6
+2022-06-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,803.3
+2022-06-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,923.2
+2022-06-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,440.9
+2022-06-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2370
+2022-06-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,234.6
+2022-06-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,130.1
+2022-06-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,362.8
+2022-06-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,132.4
+2022-06-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,215
+2022-06-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,310.5
+2022-06-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,109.1
+2022-07-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,19787.5
+2022-07-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1566.1
+2022-07-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1800.6
+2022-07-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,3001.2
+2022-07-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1005.4
+2022-07-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1835.2
+2022-07-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2595.7
+2022-07-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1144.2
+2022-07-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7788.1
+2022-07-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,593.9
+2022-07-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,804.5
+2022-07-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1160.3
+2022-07-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,383
+2022-07-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,807
+2022-07-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,920.8
+2022-07-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,450.3
+2022-07-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2366.7
+2022-07-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,232.1
+2022-07-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,128
+2022-07-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,368.2
+2022-07-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,135.6
+2022-07-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,217
+2022-07-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,313.3
+2022-07-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,108.7
+2022-08-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,19781.2
+2022-08-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1559.8
+2022-08-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1804.1
+2022-08-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2988.2
+2022-08-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,993.4
+2022-08-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1833.8
+2022-08-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2609.2
+2022-08-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1162.6
+2022-08-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7772.8
+2022-08-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,590.5
+2022-08-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,803.4
+2022-08-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1148.3
+2022-08-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,380.7
+2022-08-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,806.2
+2022-08-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,929.8
+2022-08-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,456.6
+2022-08-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2367.1
+2022-08-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,229.6
+2022-08-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,133.6
+2022-08-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,364.2
+2022-08-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,133.7
+2022-08-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,220.8
+2022-08-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,305.1
+2022-08-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,110.5
+2022-09-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,19796.1
+2022-09-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1559.9
+2022-09-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1793.1
+2022-09-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2977.3
+2022-09-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,977.4
+2022-09-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1837.6
+2022-09-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2633.7
+2022-09-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1153.6
+2022-09-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7751.2
+2022-09-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,590.6
+2022-09-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,802.4
+2022-09-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1142.9
+2022-09-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,373.9
+2022-09-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,795
+2022-09-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,932.9
+2022-09-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,449.2
+2022-09-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2374.7
+2022-09-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,232.6
+2022-09-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,137.8
+2022-09-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,361.9
+2022-09-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,131.2
+2022-09-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,228.1
+2022-09-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,310.8
+2022-09-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,108.4
+2022-10-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,19882.8
+2022-10-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1579
+2022-10-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1810.6
+2022-10-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2954.6
+2022-10-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,972
+2022-10-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1856
+2022-10-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2644.5
+2022-10-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1171.5
+2022-10-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7804.3
+2022-10-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,587.2
+2022-10-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,814.5
+2022-10-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1129.1
+2022-10-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,375.4
+2022-10-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,808.5
+2022-10-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,942.1
+2022-10-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,456.9
+2022-10-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2375
+2022-10-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,245.5
+2022-10-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,133.8
+2022-10-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,359.3
+2022-10-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,132
+2022-10-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,231.9
+2022-10-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,307.9
+2022-10-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,112.4
+2022-11-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,19923.8
+2022-11-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1571.8
+2022-11-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1806
+2022-11-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2948.5
+2022-11-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,977.1
+2022-11-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1852.1
+2022-11-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2653.2
+2022-11-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1176.2
+2022-11-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7819.5
+2022-11-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,591.8
+2022-11-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,813.1
+2022-11-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1125
+2022-11-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,376
+2022-11-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,806.9
+2022-11-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,952.3
+2022-11-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,460.9
+2022-11-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2382
+2022-11-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,224.6
+2022-11-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,136.9
+2022-11-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,360.3
+2022-11-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,131.6
+2022-11-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,236.3
+2022-11-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,315.8
+2022-11-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,111.7
+2022-12-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,19998.5
+2022-12-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1598.2
+2022-12-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1812.9
+2022-12-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2925.2
+2022-12-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,999
+2022-12-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1862.1
+2022-12-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2625.9
+2022-12-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1184.5
+2022-12-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7864
+2022-12-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,604.8
+2022-12-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,808.1
+2022-12-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1114.4
+2022-12-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,384.1
+2022-12-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,817.4
+2022-12-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,946.8
+2022-12-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,461.3
+2022-12-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2393.1
+2022-12-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,230.3
+2022-12-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,140.9
+2022-12-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,353.8
+2022-12-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,141.5
+2022-12-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,238.3
+2022-12-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,311
+2022-12-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,113.2
+2023-01-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20097.5
+2023-01-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1607.9
+2023-01-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1814.6
+2023-01-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2969.4
+2023-01-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,978.4
+2023-01-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1867.5
+2023-01-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2662.9
+2023-01-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1175.6
+2023-01-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7900.4
+2023-01-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,602
+2023-01-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,815.9
+2023-01-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1129.4
+2023-01-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,381.5
+2023-01-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,815.5
+2023-01-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,969.9
+2023-01-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,456.2
+2023-01-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2407.6
+2023-01-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,235.9
+2023-01-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,142.7
+2023-01-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,361.9
+2023-01-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,126.3
+2023-01-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,247.8
+2023-01-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,312.3
+2023-01-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,115.4
+2023-02-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20143.3
+2023-02-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1601.2
+2023-02-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1828.6
+2023-02-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2977.3
+2023-02-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,984.5
+2023-02-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1865.3
+2023-02-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2677.1
+2023-02-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1181
+2023-02-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7932.1
+2023-02-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,601.9
+2023-02-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,816
+2023-02-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1151.1
+2023-02-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,373.3
+2023-02-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,824.9
+2023-02-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,971.3
+2023-02-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,462.2
+2023-02-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2408.1
+2023-02-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,226.8
+2023-02-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,148.4
+2023-02-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,352.7
+2023-02-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,137.4
+2023-02-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,244.2
+2023-02-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,318.8
+2023-02-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,114.4
+2023-03-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20214.7
+2023-03-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1596
+2023-03-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1822.3
+2023-03-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2981.5
+2023-03-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1014.8
+2023-03-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1880.6
+2023-03-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2666.2
+2023-03-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1182.6
+2023-03-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7961.7
+2023-03-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,606.6
+2023-03-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,804.8
+2023-03-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1145.3
+2023-03-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,387.1
+2023-03-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,822.1
+2023-03-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,975.7
+2023-03-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,462.7
+2023-03-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2424.9
+2023-03-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,226.2
+2023-03-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,145.6
+2023-03-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,360.7
+2023-03-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,144.9
+2023-03-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,249
+2023-03-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,317.4
+2023-03-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,109.2
+2023-04-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20242.1
+2023-04-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1604
+2023-04-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1825.9
+2023-04-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,3003.5
+2023-04-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1028.1
+2023-04-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1867
+2023-04-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2667.9
+2023-04-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1181.4
+2023-04-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7992.2
+2023-04-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,610.4
+2023-04-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,812.1
+2023-04-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1152.1
+2023-04-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,406.5
+2023-04-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,816.6
+2023-04-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,979.2
+2023-04-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,463.5
+2023-04-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2424.4
+2023-04-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,231.9
+2023-04-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,146.1
+2023-04-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,361.8
+2023-04-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,145.1
+2023-04-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,250.6
+2023-04-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,316.6
+2023-04-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,109.2
+2023-05-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20253.9
+2023-05-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1614.7
+2023-05-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1852.4
+2023-05-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2973.1
+2023-05-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1028.4
+2023-05-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1867.3
+2023-05-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2663.3
+2023-05-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1185.5
+2023-05-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,7981.3
+2023-05-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,614.6
+2023-05-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,836.6
+2023-05-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1127
+2023-05-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,395
+2023-05-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,813
+2023-05-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,969.8
+2023-05-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,464.3
+2023-05-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2435.6
+2023-05-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,244.6
+2023-05-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,144.1
+2023-05-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,364.3
+2023-05-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,137.7
+2023-05-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,244.2
+2023-05-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,317.2
+2023-05-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,108.8
+2023-06-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20325.1
+2023-06-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1612.2
+2023-06-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1857.4
+2023-06-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,3007
+2023-06-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1042.2
+2023-06-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1871.7
+2023-06-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2686.9
+2023-06-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1192
+2023-06-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8029.9
+2023-06-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,612.4
+2023-06-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,836
+2023-06-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1142.3
+2023-06-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,407.2
+2023-06-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,820.3
+2023-06-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,977.5
+2023-06-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,468.5
+2023-06-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2438.5
+2023-06-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,246.4
+2023-06-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,142.8
+2023-06-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,375.3
+2023-06-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,140.3
+2023-06-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,242.2
+2023-06-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,319.1
+2023-06-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,112.7
+2023-07-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20356.9
+2023-07-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1568.9
+2023-07-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1864.9
+2023-07-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,3011.6
+2023-07-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1026.7
+2023-07-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1869.3
+2023-07-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2715.6
+2023-07-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1180.2
+2023-07-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8037.7
+2023-07-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,606.9
+2023-07-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,840.9
+2023-07-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1147.2
+2023-07-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,401.1
+2023-07-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,821.7
+2023-07-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,982.4
+2023-07-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,457.4
+2023-07-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2454.8
+2023-07-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,242.8
+2023-07-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,148.5
+2023-07-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,361.1
+2023-07-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,138.3
+2023-07-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,238.9
+2023-07-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,325.9
+2023-07-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,113.5
+2023-08-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20423.7
+2023-08-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1596.4
+2023-08-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1848.8
+2023-08-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,3017.2
+2023-08-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1042.7
+2023-08-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1919
+2023-08-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2714.8
+2023-08-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1176.8
+2023-08-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8052.4
+2023-08-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,610.3
+2023-08-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,836.6
+2023-08-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1158.1
+2023-08-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,399.5
+2023-08-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,847
+2023-08-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,981.6
+2023-08-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,458
+2023-08-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2465.1
+2023-08-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,248.4
+2023-08-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,150.8
+2023-08-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,366.4
+2023-08-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,139.2
+2023-08-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,241.8
+2023-08-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,329.1
+2023-08-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,109.9
+2023-09-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20473.1
+2023-09-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1587
+2023-09-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1854.3
+2023-09-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,3006.3
+2023-09-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1063.1
+2023-09-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1921.4
+2023-09-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2720.3
+2023-09-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1190.7
+2023-09-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8067.1
+2023-09-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,604
+2023-09-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,836.3
+2023-09-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1146
+2023-09-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,412
+2023-09-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,856.3
+2023-09-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,996.2
+2023-09-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,467.1
+2023-09-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2452.4
+2023-09-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,236.1
+2023-09-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,150.3
+2023-09-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,359.4
+2023-09-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,146.4
+2023-09-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,232.8
+2023-09-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,325.4
+2023-09-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,106.5
+2023-10-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20501.8
+2023-10-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1606.5
+2023-10-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1833.4
+2023-10-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2990.8
+2023-10-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1069.3
+2023-10-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1924.9
+2023-10-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2733.9
+2023-10-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1197
+2023-10-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8055.4
+2023-10-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,603.3
+2023-10-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,834.3
+2023-10-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1126
+2023-10-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,418.6
+2023-10-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,854.3
+2023-10-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,1006.2
+2023-10-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,465.8
+2023-10-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2475
+2023-10-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,240.9
+2023-10-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,151
+2023-10-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,365.8
+2023-10-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,147.3
+2023-10-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,228.9
+2023-10-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,320.5
+2023-10-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,110.9
+2023-11-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20522.2
+2023-11-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1616.3
+2023-11-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1861
+2023-11-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2970.5
+2023-11-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1080.9
+2023-11-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1926.3
+2023-11-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2737.9
+2023-11-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1198.3
+2023-11-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8063.9
+2023-11-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,604.6
+2023-11-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,839.4
+2023-11-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1120.4
+2023-11-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,422.5
+2023-11-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,865.6
+2023-11-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,990.2
+2023-11-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,460.2
+2023-11-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2479.5
+2023-11-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,251.4
+2023-11-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,149.7
+2023-11-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,357.3
+2023-11-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,145.7
+2023-11-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,231.2
+2023-11-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,323.5
+2023-11-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,116.5
+2023-12-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20530.6
+2023-12-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1604.8
+2023-12-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1849.9
+2023-12-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2963.7
+2023-12-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1073.6
+2023-12-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1962
+2023-12-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2748.2
+2023-12-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1204
+2023-12-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8038.2
+2023-12-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,590
+2023-12-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,835.2
+2023-12-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1119.2
+2023-12-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,419.9
+2023-12-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,881.6
+2023-12-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,985.2
+2023-12-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,463
+2023-12-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2480.9
+2023-12-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,247.4
+2023-12-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,144.1
+2023-12-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,358.4
+2023-12-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,141
+2023-12-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,238.6
+2023-12-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,320.7
+2023-12-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,115.3
+2024-01-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20552.1
+2024-01-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1585.8
+2024-01-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1841.6
+2024-01-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2983.1
+2024-01-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1085.6
+2024-01-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1947.7
+2024-01-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2743.5
+2024-01-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1218.9
+2024-01-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8051
+2024-01-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,589.7
+2024-01-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,832.3
+2024-01-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1137.9
+2024-01-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,415.2
+2024-01-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,878.5
+2024-01-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,978.4
+2024-01-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,465.8
+2024-01-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2488.1
+2024-01-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,239.8
+2024-01-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,143.9
+2024-01-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,354.9
+2024-01-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,147.5
+2024-01-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,233.1
+2024-01-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,322.8
+2024-01-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,118.3
+2024-02-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20593.8
+2024-02-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1601.5
+2024-02-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1830.7
+2024-02-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2971.1
+2024-02-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1101.8
+2024-02-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1969.8
+2024-02-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2743.5
+2024-02-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1224.9
+2024-02-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8054.6
+2024-02-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,586.5
+2024-02-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,828.8
+2024-02-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1127.2
+2024-02-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,425.2
+2024-02-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,886.4
+2024-02-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,976.9
+2024-02-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,469.5
+2024-02-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2503.4
+2024-02-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,247.7
+2024-02-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,146.5
+2024-02-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,363.2
+2024-02-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,148.3
+2024-02-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,237.2
+2024-02-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,314.9
+2024-02-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,120.3
+2024-03-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20620.8
+2024-03-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1620.5
+2024-03-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1844
+2024-03-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2948.5
+2024-03-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1094.9
+2024-03-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1952.7
+2024-03-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2784.7
+2024-03-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1224.6
+2024-03-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8092.5
+2024-03-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,603.6
+2024-03-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,836.6
+2024-03-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1122.6
+2024-03-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,433.6
+2024-03-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,882.8
+2024-03-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,994
+2024-03-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,467.6
+2024-03-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2507.2
+2024-03-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,247.2
+2024-03-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,152.5
+2024-03-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,348.3
+2024-03-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,144.8
+2024-03-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,234.4
+2024-03-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,326.2
+2024-03-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,122.1
+2024-04-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20674.9
+2024-04-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1609.1
+2024-04-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1855.4
+2024-04-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2950.7
+2024-04-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1094.2
+2024-04-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1967.8
+2024-04-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2800.1
+2024-04-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1222.6
+2024-04-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8114.1
+2024-04-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,581.4
+2024-04-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,849.7
+2024-04-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1133.6
+2024-04-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,435.3
+2024-04-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,889.1
+2024-04-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,999.5
+2024-04-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,470.4
+2024-04-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2512.6
+2024-04-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,248.8
+2024-04-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,153.4
+2024-04-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,343.3
+2024-04-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,143.8
+2024-04-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,238.8
+2024-04-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,324.4
+2024-04-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,121.9
+2024-05-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20707.2
+2024-05-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1588.1
+2024-05-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1859.1
+2024-05-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2939.6
+2024-05-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1087
+2024-05-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1969.8
+2024-05-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2820.8
+2024-05-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1226.5
+2024-05-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8152.5
+2024-05-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,580.5
+2024-05-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,835.8
+2024-05-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1137.3
+2024-05-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,424.6
+2024-05-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,895.6
+2024-05-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,1019.2
+2024-05-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,471.4
+2024-05-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2500.7
+2024-05-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,235.7
+2024-05-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,157.9
+2024-05-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,341.1
+2024-05-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,147.7
+2024-05-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,237.4
+2024-05-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,319.3
+2024-05-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,125.5
+2024-06-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20708.1
+2024-06-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1585.2
+2024-06-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1860.7
+2024-06-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2924.4
+2024-06-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1078.3
+2024-06-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1961.2
+2024-06-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2820.4
+2024-06-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1219.7
+2024-06-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8155.4
+2024-06-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,570.5
+2024-06-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,843.3
+2024-06-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1123.1
+2024-06-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,417.7
+2024-06-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,905.9
+2024-06-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,1018.6
+2024-06-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,462.1
+2024-06-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2511.3
+2024-06-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,237.1
+2024-06-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,156.6
+2024-06-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,338.8
+2024-06-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,144.8
+2024-06-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,235.9
+2024-06-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,322.1
+2024-06-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,123.9
+2024-07-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20725.1
+2024-07-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1600.7
+2024-07-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1847.9
+2024-07-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2895.1
+2024-07-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1084.6
+2024-07-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1978.5
+2024-07-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2831.1
+2024-07-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1238.5
+2024-07-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8175.1
+2024-07-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,566.6
+2024-07-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,832.1
+2024-07-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1116
+2024-07-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,425.9
+2024-07-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,917.4
+2024-07-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,1015.8
+2024-07-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,474.5
+2024-07-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2516.8
+2024-07-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,243.5
+2024-07-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,152.2
+2024-07-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,347.4
+2024-07-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,140.2
+2024-07-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,232.5
+2024-07-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,329
+2024-07-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,120.9
+2024-08-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20760.4
+2024-08-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1600.3
+2024-08-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1864.2
+2024-08-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2912.4
+2024-08-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1089.4
+2024-08-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1970.2
+2024-08-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2850.2
+2024-08-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1232.2
+2024-08-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8170.3
+2024-08-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,568.8
+2024-08-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,834.2
+2024-08-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1106.5
+2024-08-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,425.3
+2024-08-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,903.1
+2024-08-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,1024.1
+2024-08-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,472.4
+2024-08-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2522.5
+2024-08-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,248.4
+2024-08-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,155.7
+2024-08-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,361.2
+2024-08-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,140.4
+2024-08-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,236.6
+2024-08-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,321.5
+2024-08-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,124.6
+2024-09-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20796
+2024-09-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1613.1
+2024-09-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1851.3
+2024-09-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2931.4
+2024-09-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1093.2
+2024-09-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1984.4
+2024-09-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2848
+2024-09-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1234.3
+2024-09-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8203.1
+2024-09-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,574.1
+2024-09-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,825.4
+2024-09-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1120.9
+2024-09-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,425
+2024-09-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,910
+2024-09-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,1019.3
+2024-09-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,481.4
+2024-09-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2517
+2024-09-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,246.4
+2024-09-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,151.3
+2024-09-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,362
+2024-09-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,142.9
+2024-09-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,242.2
+2024-09-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,333
+2024-09-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,124.6
+2024-10-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20804.9
+2024-10-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1622.9
+2024-10-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1855.5
+2024-10-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2920.2
+2024-10-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1077.5
+2024-10-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1993
+2024-10-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2854.1
+2024-10-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1227.8
+2024-10-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8180.2
+2024-10-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,579.3
+2024-10-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,820.7
+2024-10-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1124.8
+2024-10-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,412.5
+2024-10-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,908.8
+2024-10-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,1019.2
+2024-10-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,476.3
+2024-10-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2522.4
+2024-10-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,253.2
+2024-10-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,155.9
+2024-10-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,350.3
+2024-10-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,141.4
+2024-10-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,244.7
+2024-10-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,331.8
+2024-10-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,117.4
+2024-11-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20842
+2024-11-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1631.4
+2024-11-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1833.9
+2024-11-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2957.5
+2024-11-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1062.3
+2024-11-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,2007.7
+2024-11-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2857.8
+2024-11-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1232.5
+2024-11-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8172.9
+2024-11-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,574.8
+2024-11-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,804.9
+2024-11-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1137.7
+2024-11-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,405.4
+2024-11-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,912.6
+2024-11-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,1016.8
+2024-11-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,477.1
+2024-11-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2538.6
+2024-11-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,252.4
+2024-11-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,156.2
+2024-11-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,361.2
+2024-11-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,143.8
+2024-11-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,245.6
+2024-11-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,333.8
+2024-11-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,122.1
+2024-12-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20934.7
+2024-12-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1634.2
+2024-12-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1850.3
+2024-12-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2953.7
+2024-12-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1080.5
+2024-12-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1999.3
+2024-12-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2866.6
+2024-12-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1230.2
+2024-12-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8210
+2024-12-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,580.9
+2024-12-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,821.3
+2024-12-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1129.6
+2024-12-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,409.3
+2024-12-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,907.4
+2024-12-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,1004.8
+2024-12-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,478.9
+2024-12-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2568.9
+2024-12-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,260.1
+2024-12-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,155.8
+2024-12-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,364.5
+2024-12-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,147.8
+2024-12-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,236.2
+2024-12-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,341.6
+2024-12-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,123.9
+2025-01-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20986.9
+2025-01-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1647.2
+2025-01-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1874.6
+2025-01-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2956.1
+2025-01-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1089.3
+2025-01-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,2014.3
+2025-01-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2874
+2025-01-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1232.7
+2025-01-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8234.2
+2025-01-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,583.1
+2025-01-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,828.7
+2025-01-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1123.8
+2025-01-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,414.1
+2025-01-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,913.6
+2025-01-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,1021.6
+2025-01-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,476.5
+2025-01-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2564.6
+2025-01-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,261
+2025-01-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,155.2
+2025-01-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,362.4
+2025-01-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,149.3
+2025-01-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,243.1
+2025-01-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,338.7
+2025-01-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,123.7
+2025-02-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20985.5
+2025-02-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1642.7
+2025-02-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1866.7
+2025-02-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,3010.7
+2025-02-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1069.6
+2025-02-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1985.7
+2025-02-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2874.1
+2025-02-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1235.8
+2025-02-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8245.7
+2025-02-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,584.1
+2025-02-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,835.5
+2025-02-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1147.6
+2025-02-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,405.8
+2025-02-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,893.9
+2025-02-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,1024.4
+2025-02-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,474.8
+2025-02-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2564.2
+2025-02-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,267.3
+2025-02-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,148.9
+2025-02-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,367.6
+2025-02-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,149
+2025-02-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,245.7
+2025-02-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,333.3
+2025-02-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,126
+2025-03-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20964.3
+2025-03-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1640.9
+2025-03-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1861.4
+2025-03-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2974.6
+2025-03-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1078.8
+2025-03-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1998.4
+2025-03-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2877.1
+2025-03-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1242.6
+2025-03-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8221.6
+2025-03-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,578.8
+2025-03-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,836.7
+2025-03-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1145.1
+2025-03-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,403.2
+2025-03-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,900.2
+2025-03-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,1017.9
+2025-03-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,479
+2025-03-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2554.6
+2025-03-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,271.6
+2025-03-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,140.3
+2025-03-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,361.3
+2025-03-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,152.5
+2025-03-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,244.3
+2025-03-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,327.7
+2025-03-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,128.1
+2025-04-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20966.7
+2025-04-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1637.9
+2025-04-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1835.7
+2025-04-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2947.6
+2025-04-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1084.2
+2025-04-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,2002.4
+2025-04-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2870
+2025-04-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1278.8
+2025-04-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8193.6
+2025-04-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,576.1
+2025-04-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,811.1
+2025-04-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1131.2
+2025-04-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,400.7
+2025-04-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,915.4
+2025-04-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,1013.2
+2025-04-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,484.2
+2025-04-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2567.5
+2025-04-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,271.5
+2025-04-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,144.8
+2025-04-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,358.5
+2025-04-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,152.1
+2025-04-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,238.3
+2025-04-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,330.5
+2025-04-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,132.9
+2025-05-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20974.4
+2025-05-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1631.9
+2025-05-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1825.1
+2025-05-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2991.3
+2025-05-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1071.9
+2025-05-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,2010.1
+2025-05-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2879
+2025-05-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1245.7
+2025-05-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8198.1
+2025-05-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,569.2
+2025-05-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,809.4
+2025-05-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1159.2
+2025-05-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,402.3
+2025-05-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,908.4
+2025-05-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,1015
+2025-05-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,469.4
+2025-05-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2566.1
+2025-05-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,270.7
+2025-05-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,145.9
+2025-05-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,362.5
+2025-05-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,146.9
+2025-05-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,242
+2025-05-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,326.8
+2025-05-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,128.1
+2025-06-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,21040.7
+2025-06-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1635.9
+2025-06-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1833.5
+2025-06-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,3015.6
+2025-06-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1070.7
+2025-06-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,2019.8
+2025-06-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2895.1
+2025-06-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1245.9
+2025-06-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8208.3
+2025-06-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,581.7
+2025-06-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,805.3
+2025-06-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1165.5
+2025-06-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,405.2
+2025-06-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,916.3
+2025-06-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,1018.2
+2025-06-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,469.8
+2025-06-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2598.8
+2025-06-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,263.3
+2025-06-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,152.6
+2025-06-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,365.6
+2025-06-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,152.4
+2025-06-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,243.2
+2025-06-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,333.5
+2025-06-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,126.6
+2025-07-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,21018.3
+2025-07-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1621
+2025-07-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1839.5
+2025-07-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,3014.9
+2025-07-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1093.3
+2025-07-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,2022.2
+2025-07-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2883.5
+2025-07-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1244.6
+2025-07-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8216.3
+2025-07-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,581.1
+2025-07-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,811.4
+2025-07-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1155.1
+2025-07-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,421
+2025-07-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,915.5
+2025-07-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,1021.6
+2025-07-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,471
+2025-07-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2579
+2025-07-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,247.5
+2025-07-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,163.9
+2025-07-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,362.9
+2025-07-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,159.2
+2025-07-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,248
+2025-07-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,325.4
+2025-07-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,131.4
+2025-08-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,20956.6
+2025-08-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1633.8
+2025-08-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1825.1
+2025-08-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,3009.3
+2025-08-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1073
+2025-08-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,2000.8
+2025-08-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2886.9
+2025-08-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1245.4
+2025-08-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8190.3
+2025-08-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,579.4
+2025-08-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,815.9
+2025-08-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1163.5
+2025-08-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,418.5
+2025-08-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,904
+2025-08-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,1020.8
+2025-08-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,466.8
+2025-08-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2568.7
+2025-08-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,248.5
+2025-08-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,138.7
+2025-08-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,346
+2025-08-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,156.3
+2025-08-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,244.6
+2025-08-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,343.1
+2025-08-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,134.5
+2025-09-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,21009.9
+2025-09-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1626.8
+2025-09-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1847.2
+2025-09-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2991.6
+2025-09-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1066.4
+2025-09-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,2007.6
+2025-09-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2899.8
+2025-09-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1247.9
+2025-09-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8200.2
+2025-09-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,573.4
+2025-09-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,825
+2025-09-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1151.4
+2025-09-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,419.2
+2025-09-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,911
+2025-09-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,1021.2
+2025-09-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,460.9
+2025-09-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2608.5
+2025-09-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,255.7
+2025-09-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,147.4
+2025-09-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,353.8
+2025-09-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,148.9
+2025-09-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,249.5
+2025-09-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,347.3
+2025-09-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,140.2
+2025-10-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,21083.6
+2025-10-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1615.4
+2025-10-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1854.7
+2025-10-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,3029
+2025-10-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1094.3
+2025-10-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,2008.4
+2025-10-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2893.7
+2025-10-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1254.9
+2025-10-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8252.5
+2025-10-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,571
+2025-10-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,827.9
+2025-10-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1165.8
+2025-10-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,435
+2025-10-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,918.2
+2025-10-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,1013.4
+2025-10-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,465.7
+2025-10-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2618.6
+2025-10-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,254.1
+2025-10-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,149.6
+2025-10-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,365.1
+2025-10-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,151.3
+2025-10-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,251.8
+2025-10-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,340.7
+2025-10-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,143.1
+2025-11-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,21135.9
+2025-11-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1621.7
+2025-11-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1847.8
+2025-11-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2997.2
+2025-11-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1097.2
+2025-11-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,2012.2
+2025-11-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2938.6
+2025-11-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1248.9
+2025-11-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8256.4
+2025-11-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,572.8
+2025-11-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,824.2
+2025-11-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1146.9
+2025-11-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,443.4
+2025-11-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,916.2
+2025-11-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,1031.3
+2025-11-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,467.3
+2025-11-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2646.6
+2025-11-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,253.3
+2025-11-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,151.1
+2025-11-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,362.8
+2025-11-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,150.4
+2025-11-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,251.9
+2025-11-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,354.5
+2025-11-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,135.7
+2025-12-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,21146
+2025-12-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1631
+2025-12-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1851.6
+2025-12-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2992
+2025-12-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1094.4
+2025-12-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1998
+2025-12-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2957.9
+2025-12-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1255
+2025-12-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8274.5
+2025-12-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,572.4
+2025-12-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,831
+2025-12-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1149.6
+2025-12-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,444.7
+2025-12-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,914.4
+2025-12-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,1040
+2025-12-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,469.1
+2025-12-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2630.7
+2025-12-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,249
+2025-12-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,153
+2025-12-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,358.8
+2025-12-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,148.9
+2025-12-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,250.2
+2025-12-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,367.5
+2025-12-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,137.2
+2026-01-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,21121.2
+2026-01-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1639.9
+2026-01-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1824.1
+2026-01-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2995.2
+2026-01-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1088
+2026-01-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1986.8
+2026-01-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2966.3
+2026-01-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1245
+2026-01-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8208
+2026-01-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,572.3
+2026-01-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,801.7
+2026-01-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1149.1
+2026-01-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,440
+2026-01-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,897.9
+2026-01-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,1029.7
+2026-01-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,467
+2026-01-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2651
+2026-01-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,258.2
+2026-01-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,155.7
+2026-01-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,360.6
+2026-01-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,146.5
+2026-01-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,246.1
+2026-01-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,373
+2026-01-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,139.8
+2026-02-01 00:00:00,Canada,"Total employed, all industries",Seasonally adjusted,21037.3
+2026-02-01 00:00:00,Canada,Construction [23],Seasonally adjusted,1628.1
+2026-02-01 00:00:00,Canada,Manufacturing [31-33],Seasonally adjusted,1814.9
+2026-02-01 00:00:00,Canada,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,2977.3
+2026-02-01 00:00:00,Canada,Transportation and warehousing [48-49],Seasonally adjusted,1098.3
+2026-02-01 00:00:00,Canada,"Professional, scientific and technical services [54]",Seasonally adjusted,1986.7
+2026-02-01 00:00:00,Canada,Health care and social assistance [62],Seasonally adjusted,2966.1
+2026-02-01 00:00:00,Canada,Public administration [91],Seasonally adjusted,1253.1
+2026-02-01 00:00:00,Ontario,"Total employed, all industries",Seasonally adjusted,8211.3
+2026-02-01 00:00:00,Ontario,Construction [23],Seasonally adjusted,573.9
+2026-02-01 00:00:00,Ontario,Manufacturing [31-33],Seasonally adjusted,794.2
+2026-02-01 00:00:00,Ontario,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,1143.8
+2026-02-01 00:00:00,Ontario,Transportation and warehousing [48-49],Seasonally adjusted,446.9
+2026-02-01 00:00:00,Ontario,"Professional, scientific and technical services [54]",Seasonally adjusted,895.8
+2026-02-01 00:00:00,Ontario,Health care and social assistance [62],Seasonally adjusted,1030.2
+2026-02-01 00:00:00,Ontario,Public administration [91],Seasonally adjusted,474
+2026-02-01 00:00:00,Alberta,"Total employed, all industries",Seasonally adjusted,2649.2
+2026-02-01 00:00:00,Alberta,Construction [23],Seasonally adjusted,255.5
+2026-02-01 00:00:00,Alberta,Manufacturing [31-33],Seasonally adjusted,153.5
+2026-02-01 00:00:00,Alberta,"Wholesale and retail trade [41, 44-45]",Seasonally adjusted,354.3
+2026-02-01 00:00:00,Alberta,Transportation and warehousing [48-49],Seasonally adjusted,149.7
+2026-02-01 00:00:00,Alberta,"Professional, scientific and technical services [54]",Seasonally adjusted,240.4
+2026-02-01 00:00:00,Alberta,Health care and social assistance [62],Seasonally adjusted,385.5
+2026-02-01 00:00:00,Alberta,Public administration [91],Seasonally adjusted,138.3

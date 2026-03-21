@@ -97,11 +97,28 @@ async function fetchInsight(params, outputId, btnId) {
 
         window._insightFull[outputId] = rest
 
-        output.innerHTML = `
-            <p class="insights-text">${summary}</p>
-            ${implication ? `<p class="insights-implication">→ ${implication}</p>` : ''}
-            ${rest ? `<button class="read-more-btn" onclick="expandInsight('${outputId}')">Read full analysis ↓</button>` : ''}
-        `
+        // Fix 8: build DOM nodes with textContent — never inject AI text via innerHTML
+        output.innerHTML = ''
+
+        const summaryEl = document.createElement('p')
+        summaryEl.className = 'insights-text'
+        summaryEl.textContent = summary
+        output.appendChild(summaryEl)
+
+        if (implication) {
+            const implEl = document.createElement('p')
+            implEl.className = 'insights-implication'
+            implEl.textContent = '\u2192 ' + implication
+            output.appendChild(implEl)
+        }
+
+        if (rest) {
+            const readMoreBtn = document.createElement('button')
+            readMoreBtn.className = 'read-more-btn'
+            readMoreBtn.textContent = 'Read full analysis \u2193'
+            readMoreBtn.addEventListener('click', () => expandInsight(outputId))
+            output.appendChild(readMoreBtn)
+        }
     } catch (err) {
         output.innerHTML = '<p class="insights-error">Error generating analysis. Please try again.</p>'
     }

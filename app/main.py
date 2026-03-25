@@ -122,7 +122,7 @@ def run_query(query, error_detail: str = "Database query failed."):
 
 @app.get("/")
 async def dashboard(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="index.html")
 
 
 @app.get("/health")

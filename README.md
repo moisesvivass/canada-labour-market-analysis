@@ -11,17 +11,17 @@
 |---|---|
 | 📊 Dashboard | [web-production-6f4de.up.railway.app](https://web-production-6f4de.up.railway.app) |
 | 🤖 AI Insights | Powered by Claude Haiku — click "Analyze" on any chart |
-| 📅 Data updated through | February 2026 — Statistics Canada |
+| 📅 Data updated | Automatically every 1st of the month — Statistics Canada |
 
 **The problem:** Canada's labour market data is publicly available but scattered across Statistics Canada tables, making it hard to quickly understand employment trends by province or industry.
 
 **What this solves:** An end-to-end pipeline that ingests official Statistics Canada data, loads it into PostgreSQL, and surfaces the answers through an interactive dashboard with AI-generated insights per chart.
 
-End-to-end data analysis of Canada's labour market using official Statistics Canada data, built during the country's worst job crisis since the pandemic. Covers unemployment trends, employment by industry, and provincial comparisons across Canada, Ontario, and Alberta from January 2020 to 2026.
+End-to-end data analysis of Canada's labour market using official Statistics Canada data, built during the country's worst job crisis since the pandemic. Covers unemployment trends, employment by industry, and provincial comparisons across 11 Canadian provinces from January 2020 to 2026.
 
 ## 📊 What This Project Does
 
-- **ETL Pipeline:** Extracts raw CSV data from Statistics Canada (tables 14100287 and 14100355), transforms and filters it with Pandas, and loads it into PostgreSQL
+- **ETL Pipeline:** Extracts raw CSV data from Statistics Canada (tables 14100287 and 14100355), transforms and filters it with Pandas, and loads it into PostgreSQL. Automatic monthly scheduler via APScheduler — fetches live data from the StatCan API on the 1st of every month
 - **SQL Analytics:** Pre-built queries analyzing unemployment trends, industry-level employment shifts, and provincial comparisons
 - **Interactive Dashboard:** FastAPI + Chart.js dashboard with filters, multi-province selection, and dynamic visualizations
 - **AI Insights:** Claude AI generates contextual analysis per chart, with expandable "read more" summaries
@@ -34,7 +34,7 @@ End-to-end data analysis of Canada's labour market using official Statistics Can
 | `14100287` | Monthly unemployment rate by province, gender, and age group |
 | `14100355` | Monthly employment by industry (NAICS classification) |
 
-Data is seasonally adjusted, filtered for ages 15+, and covers Canada, Ontario, and Alberta from January 2020 onward.
+Data is seasonally adjusted, filtered for ages 15+, and covers 11 Canadian provinces from January 2020 onward.
 
 ## 🛠️ Tech Stack
 
@@ -55,6 +55,7 @@ Data is seasonally adjusted, filtered for ages 15+, and covers Canada, Ontario, 
 canada-labour-market-analysis/
 ├── src/
 │   ├── etl.py                 # Extract, transform, load pipeline
+│   ├── statcan_fetcher.py     # Live StatCan API fetcher + scheduler
 │   └── queries.sql            # SQL analytics queries
 ├── app/
 │   ├── main.py                # FastAPI app + dashboard endpoints
@@ -81,6 +82,7 @@ Create a `.env` file:
 ```env
 DATABASE_URL=postgresql://postgres@localhost:5432/labour_market
 ANTHROPIC_API_KEY=sk-ant-your-key-here
+REFRESH_SECRET=change-me-to-a-strong-random-string
 ```
 
 Run the ETL to load data into PostgreSQL:
@@ -93,6 +95,15 @@ Start the dashboard:
 
 ```bash
 uvicorn app.main:app --reload
+```
+
+## 🔄 Manual Data Refresh
+
+To trigger an immediate data refresh from the StatCan API:
+
+```bash
+curl -X POST https://web-production-6f4de.up.railway.app/api/admin/refresh \
+  -H "x-refresh-secret: YOUR_REFRESH_SECRET"
 ```
 
 ## 🔍 Industries Tracked

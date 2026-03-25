@@ -12,8 +12,7 @@ logger = logging.getLogger(__name__)
 ALL_PROVINCES = [
     'Canada', 'Ontario', 'Quebec', 'British Columbia', 'Alberta',
     'Manitoba', 'Saskatchewan', 'Nova Scotia', 'New Brunswick',
-    'Newfoundland and Labrador', 'Prince Edward Island',
-    'Northwest Territories', 'Nunavut', 'Yukon'
+    'Newfoundland and Labrador', 'Prince Edward Island'
 ]
 START_DATE = '2020-01'
 STATCAN_DOWNLOAD_URL = "https://www150.statcan.gc.ca/t1/tbl1/en/dtbl/downloadCSV/{table_id}"

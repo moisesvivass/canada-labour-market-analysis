@@ -53,8 +53,7 @@ anthropic_client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 VALID_GEOS = {
     "Canada", "Ontario", "Quebec", "British Columbia", "Alberta",
     "Manitoba", "Saskatchewan", "Nova Scotia", "New Brunswick",
-    "Newfoundland and Labrador", "Prince Edward Island",
-    "Northwest Territories", "Nunavut", "Yukon"
+    "Newfoundland and Labrador", "Prince Edward Island"
 }
 # Pre-sorted once; used in validate_geo error messages.
 _VALID_GEOS_LIST = ', '.join(sorted(VALID_GEOS))

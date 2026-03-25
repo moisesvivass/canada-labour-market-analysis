@@ -4,7 +4,7 @@ import pandas as pd
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
 
-from statcan_fetcher import ALL_PROVINCES, START_DATE
+from src.statcan_fetcher import ALL_PROVINCES, START_DATE
 
 load_dotenv()
 

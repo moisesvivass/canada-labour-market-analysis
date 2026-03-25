@@ -25,9 +25,6 @@ const PROVINCE_COLORS = {
     'New Brunswick': '#fb7185',
     'Newfoundland and Labrador': '#34d399',
     'Prince Edward Island': '#fbbf24',
-    'Northwest Territories': '#60a5fa',
-    'Nunavut': '#f472b6',
-    'Yukon': '#4ade80'
 }
 
 const baseOptions = {

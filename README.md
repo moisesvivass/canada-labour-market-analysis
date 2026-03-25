@@ -25,7 +25,6 @@ End-to-end data analysis of Canada's labour market using official Statistics Can
 - **SQL Analytics:** Pre-built queries analyzing unemployment trends, industry-level employment shifts, and provincial comparisons
 - **Interactive Dashboard:** FastAPI + Chart.js dashboard with filters, multi-province selection, and dynamic visualizations
 - **AI Insights:** Claude AI generates contextual analysis per chart, with expandable "read more" summaries
-- **Jupyter Notebooks:** Exploratory data analysis and visualization
 
 ## 🗂️ Data Sources
 
@@ -46,7 +45,6 @@ Data is seasonally adjusted, filtered for ages 15+, and covers 11 Canadian provi
 | API / Dashboard | FastAPI + Jinja2 |
 | Charts | Chart.js |
 | AI Insights | Anthropic Claude |
-| Notebooks | Jupyter |
 | Config | python-dotenv |
 
 ## 📁 Project Structure
@@ -54,15 +52,18 @@ Data is seasonally adjusted, filtered for ages 15+, and covers 11 Canadian provi
 ```
 canada-labour-market-analysis/
 ├── src/
-│   ├── etl.py                 # Extract, transform, load pipeline
-│   ├── statcan_fetcher.py     # Live StatCan API fetcher + scheduler
-│   └── queries.sql            # SQL analytics queries
+│   ├── etl.py                  # Manual ETL pipeline
+│   ├── statcan_fetcher.py      # Live StatCan API fetcher + scheduler
+│   └── queries.sql             # SQL analytics queries
 ├── app/
-│   ├── main.py                # FastAPI app + dashboard endpoints
-│   ├── static/                # CSS and JS assets
-│   └── templates/             # Jinja2 HTML templates
-├── notebooks/                 # Jupyter EDA notebooks
-├── .env.example               # Environment variable template
+│   ├── main.py                 # FastAPI app + all endpoints
+│   ├── static/                 # CSS and JS assets
+│   └── templates/              # Jinja2 HTML templates
+├── data/
+│   └── raw/                    # Original StatCan CSV files
+├── .env.example
+├── Procfile
+├── railway.json
 └── requirements.txt
 ```
 

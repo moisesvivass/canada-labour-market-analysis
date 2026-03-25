@@ -15,32 +15,26 @@
     <header>
         <div class="header-top">
             <div class="tag">STATISTICS CANADA · LFS 2020–2026</div>
-            <div class="tag">UPDATED · MARCH 2026</div>
+            <div class="tag" id="updatedTag">UPDATED · —</div>
         </div>
         <h1>From Boom to Crisis:<br>Canada's Labour Market<br>2020–2026</h1>
         <p class="subtitle">From pandemic boom to the worst job loss since 2022 — a data-driven analysis of Canada's employment landscape and what it means for workers in transition.</p>
 
         <div class="stat-cards">
-            <div class="stat-card" data-geo="Canada">
-                <div class="stat-country">🇨🇦 Canada</div>
-                <div class="stat-value neutral-val">6.7<span class="stat-unit">%</span></div>
-                <div class="stat-label">Unemployment · Feb 2026</div>
-                <div class="stat-delta negative">▲ +0.2 pts from Jan</div>
+            <div class="stat-card" id="cardCanada" data-geo="Canada">
+                <div class="stat-country">Canada</div>
+                <div class="stat-value neutral-val" id="cardCanadaRate">—<span class="stat-unit">%</span></div>
+                <div class="stat-label" id="cardCanadaLabel">Unemployment · —</div>
+                <div class="stat-delta negative">National average</div>
             </div>
-            <div class="stat-card" data-geo="Ontario">
-                <div class="stat-country">🏙️ Ontario</div>
-                <div class="stat-value warning-val">7.6<span class="stat-unit">%</span></div>
-                <div class="stat-label">Unemployment · Feb 2026</div>
-                <div class="stat-delta negative">▲ Worst province</div>
-            </div>
-            <div class="stat-card" data-geo="Alberta">
-                <div class="stat-country">🛢️ Alberta</div>
-                <div class="stat-value positive-val">6.3<span class="stat-unit">%</span></div>
-                <div class="stat-label">Unemployment · Feb 2026</div>
-                <div class="stat-delta positive-delta">▼ Best performer</div>
+            <div class="stat-card" id="cardWorst" data-geo="">
+                <div class="stat-country" id="cardWorstName">—</div>
+                <div class="stat-value warning-val" id="cardWorstRate">—<span class="stat-unit">%</span></div>
+                <div class="stat-label" id="cardWorstLabel">Unemployment · —</div>
+                <div class="stat-delta negative">▲ Highest unemployment</div>
             </div>
             <div class="stat-card no-filter">
-                <div class="stat-country">📉 February 2026</div>
+                <div class="stat-country" id="cardJobsMonth">📉 —</div>
                 <div class="stat-value danger-val">-84<span class="stat-unit">K</span></div>
                 <div class="stat-label">Jobs Lost · One Month</div>
                 <div class="stat-delta negative">Worst since Jan 2022</div>
@@ -53,7 +47,6 @@
         <section class="chart-section">
             <div class="section-header">
                 <div>
-                    <div class="section-tag">CHART 01</div>
                     <h2>Unemployment Rate Trend (2020–2026)</h2>
                     <p class="chart-desc">Canada vs Ontario vs Alberta — Pandemic crash, recovery, and the 2026 slowdown</p>
                 </div>
@@ -87,15 +80,21 @@
                 <div class="control-group">
                     <label>PROVINCES</label>
                     <div class="checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" class="province-checkbox" value="Canada" checked> Canada
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" class="province-checkbox" value="Ontario" checked> Ontario
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" class="province-checkbox" value="Alberta" checked> Alberta
-                        </label>
+                        <label class="checkbox-label select-all-label"><input type="checkbox" id="selectAllProvinces"> All</label>
+                        <label class="checkbox-label"><input type="checkbox" class="province-checkbox" value="Canada" checked> Canada</label>
+                        <label class="checkbox-label"><input type="checkbox" class="province-checkbox" value="Ontario" checked> Ontario</label>
+                        <label class="checkbox-label"><input type="checkbox" class="province-checkbox" value="Quebec"> Quebec</label>
+                        <label class="checkbox-label"><input type="checkbox" class="province-checkbox" value="British Columbia"> British Columbia</label>
+                        <label class="checkbox-label"><input type="checkbox" class="province-checkbox" value="Alberta" checked> Alberta</label>
+                        <label class="checkbox-label"><input type="checkbox" class="province-checkbox" value="Manitoba"> Manitoba</label>
+                        <label class="checkbox-label"><input type="checkbox" class="province-checkbox" value="Saskatchewan"> Saskatchewan</label>
+                        <label class="checkbox-label"><input type="checkbox" class="province-checkbox" value="Nova Scotia"> Nova Scotia</label>
+                        <label class="checkbox-label"><input type="checkbox" class="province-checkbox" value="New Brunswick"> New Brunswick</label>
+                        <label class="checkbox-label"><input type="checkbox" class="province-checkbox" value="Newfoundland and Labrador"> Newfoundland and Labrador</label>
+                        <label class="checkbox-label"><input type="checkbox" class="province-checkbox" value="Prince Edward Island"> Prince Edward Island</label>
+                        <label class="checkbox-label"><input type="checkbox" class="province-checkbox" value="Northwest Territories"> Northwest Territories</label>
+                        <label class="checkbox-label"><input type="checkbox" class="province-checkbox" value="Nunavut"> Nunavut</label>
+                        <label class="checkbox-label"><input type="checkbox" class="province-checkbox" value="Yukon"> Yukon</label>
                     </div>
                 </div>
                 <button class="apply-btn" onclick="applyUnemploymentFilter()">Apply</button>
@@ -110,7 +109,6 @@
         <section class="chart-section">
             <div class="section-header">
                 <div>
-                    <div class="section-tag">CHART 02</div>
                     <h2>Year-over-Year Comparison</h2>
                     <p class="chart-desc">Compare unemployment rates between any two years, month by month</p>
                 </div>
@@ -146,7 +144,18 @@
                     <select id="compareGeo">
                         <option value="Canada">Canada</option>
                         <option value="Ontario">Ontario</option>
+                        <option value="Quebec">Quebec</option>
+                        <option value="British Columbia">British Columbia</option>
                         <option value="Alberta">Alberta</option>
+                        <option value="Manitoba">Manitoba</option>
+                        <option value="Saskatchewan">Saskatchewan</option>
+                        <option value="Nova Scotia">Nova Scotia</option>
+                        <option value="New Brunswick">New Brunswick</option>
+                        <option value="Newfoundland and Labrador">Newfoundland and Labrador</option>
+                        <option value="Prince Edward Island">Prince Edward Island</option>
+                        <option value="Northwest Territories">Northwest Territories</option>
+                        <option value="Nunavut">Nunavut</option>
+                        <option value="Yukon">Yukon</option>
                     </select>
                 </div>
                 <button class="apply-btn" onclick="applyCompareFilter()">Apply</button>
@@ -162,9 +171,8 @@
             <section class="chart-section">
                 <div class="section-header">
                     <div>
-                        <div class="section-tag">CHART 03</div>
-                        <h2>The Ontario Gap</h2>
-                        <p class="chart-desc">Ontario vs national average — gap is widening</p>
+                        <h2>Provincial Gap</h2>
+                        <p class="chart-desc">Compare unemployment rates between any two provinces</p>
                     </div>
                     <button class="analyze-btn" id="btnGap" onclick="analyzeGap()">✦ Analyze</button>
                 </div>
@@ -193,10 +201,48 @@
                             <option value="2026" selected>2026</option>
                         </select>
                     </div>
+                    <div class="control-group">
+                        <label>PROVINCE A</label>
+                        <select id="gapGeoA">
+                            <option value="Canada">Canada</option>
+                            <option value="Ontario" selected>Ontario</option>
+                            <option value="Quebec">Quebec</option>
+                            <option value="British Columbia">British Columbia</option>
+                            <option value="Alberta">Alberta</option>
+                            <option value="Manitoba">Manitoba</option>
+                            <option value="Saskatchewan">Saskatchewan</option>
+                            <option value="Nova Scotia">Nova Scotia</option>
+                            <option value="New Brunswick">New Brunswick</option>
+                            <option value="Newfoundland and Labrador">Newfoundland and Labrador</option>
+                            <option value="Prince Edward Island">Prince Edward Island</option>
+                            <option value="Northwest Territories">Northwest Territories</option>
+                            <option value="Nunavut">Nunavut</option>
+                            <option value="Yukon">Yukon</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label>VS</label>
+                        <select id="gapGeoB">
+                            <option value="Canada" selected>Canada</option>
+                            <option value="Ontario">Ontario</option>
+                            <option value="Quebec">Quebec</option>
+                            <option value="British Columbia">British Columbia</option>
+                            <option value="Alberta">Alberta</option>
+                            <option value="Manitoba">Manitoba</option>
+                            <option value="Saskatchewan">Saskatchewan</option>
+                            <option value="Nova Scotia">Nova Scotia</option>
+                            <option value="New Brunswick">New Brunswick</option>
+                            <option value="Newfoundland and Labrador">Newfoundland and Labrador</option>
+                            <option value="Prince Edward Island">Prince Edward Island</option>
+                            <option value="Northwest Territories">Northwest Territories</option>
+                            <option value="Nunavut">Nunavut</option>
+                            <option value="Yukon">Yukon</option>
+                        </select>
+                    </div>
                     <button class="apply-btn" onclick="applyGapFilter()">Apply</button>
                 </div>
                 <div class="chart-container">
-                    <canvas id="ontarioGapChart"></canvas>
+                    <canvas id="provincesGapChart"></canvas>
                 </div>
                 <div id="insightGap" class="insight-output" style="display:none"></div>
             </section>
@@ -204,7 +250,6 @@
             <section class="chart-section">
                 <div class="section-header">
                     <div>
-                        <div class="section-tag">CHART 04</div>
                         <h2>Industry Winners & Losers</h2>
                         <p class="chart-desc">Employment change by sector</p>
                     </div>
@@ -240,7 +285,18 @@
                         <select id="industryGeo">
                             <option value="Canada">Canada</option>
                             <option value="Ontario">Ontario</option>
+                            <option value="Quebec">Quebec</option>
+                            <option value="British Columbia">British Columbia</option>
                             <option value="Alberta">Alberta</option>
+                            <option value="Manitoba">Manitoba</option>
+                            <option value="Saskatchewan">Saskatchewan</option>
+                            <option value="Nova Scotia">Nova Scotia</option>
+                            <option value="New Brunswick">New Brunswick</option>
+                            <option value="Newfoundland and Labrador">Newfoundland and Labrador</option>
+                            <option value="Prince Edward Island">Prince Edward Island</option>
+                            <option value="Northwest Territories">Northwest Territories</option>
+                            <option value="Nunavut">Nunavut</option>
+                            <option value="Yukon">Yukon</option>
                         </select>
                     </div>
                     <button class="apply-btn" onclick="applyIndustryFilter()">Apply</button>
@@ -255,11 +311,10 @@
         <footer class="dashboard-footer">
             <div class="footer-left">
                 <p>Data: Statistics Canada — Labour Force Survey</p>
-                <p>Tables 14-10-0287-01 · 14-10-0355-01 · Updated March 2026</p>
+                <p>Updated <span id="footerMonth">—</span></p>
             </div>
             <div class="footer-right">
                 <p>Built by <a href="https://github.com/moisesvivass" target="_blank">Moises Vivas</a></p>
-                <p>Python · PostgreSQL · FastAPI · Chart.js · Claude AI</p>
             </div>
         </footer>
     </main>

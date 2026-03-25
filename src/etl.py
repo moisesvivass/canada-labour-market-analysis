@@ -1,17 +1,15 @@
-import pandas as pd
-from sqlalchemy import create_engine
-from dotenv import load_dotenv
 import os
+
+import pandas as pd
+from dotenv import load_dotenv
+from sqlalchemy import create_engine
+
+from statcan_fetcher import ALL_PROVINCES, START_DATE
 
 load_dotenv()
 
-# Database connection
 DATABASE_URL = os.getenv('DATABASE_URL')
 engine = create_engine(DATABASE_URL)
-
-# --- CONSTANTS ---
-PROVINCES = ['Canada', 'Ontario', 'Alberta']
-START_DATE = '2020-01'
 
 def extract_monthly_unemployment():
     """Extract unemployment rate data from StatsCan table 14100287"""
@@ -29,7 +27,7 @@ def transform_monthly_unemployment(df):
     print("Transforming unemployment data...")
 
     df_filtered = df[
-        (df['GEO'].isin(PROVINCES)) &
+        (df['GEO'].isin(ALL_PROVINCES)) &
         (df['Labour force characteristics'] == 'Unemployment rate') &
         (df['Statistics'] == 'Estimate') &
         (df['Data type'] == 'Seasonally adjusted') &
@@ -81,7 +79,7 @@ def transform_monthly_industry(df):
     ]
 
     df_filtered = df[
-        (df['GEO'].isin(PROVINCES)) &
+        (df['GEO'].isin(ALL_PROVINCES)) &
         (df['North American Industry Classification System (NAICS)'].isin(TARGET_INDUSTRIES)) &
         (df['Statistics'] == 'Estimate') &
         (df['Data type'] == 'Seasonally adjusted') &

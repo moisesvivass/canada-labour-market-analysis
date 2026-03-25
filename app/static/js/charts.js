@@ -13,6 +13,23 @@ const COLORS = {
     text: '#8892a4'
 }
 
+const PROVINCE_COLORS = {
+    'Canada': '#4f8ef7',
+    'Ontario': '#f59e0b',
+    'Alberta': '#10b981',
+    'Quebec': '#e879f9',
+    'British Columbia': '#06b6d4',
+    'Manitoba': '#f97316',
+    'Saskatchewan': '#84cc16',
+    'Nova Scotia': '#a78bfa',
+    'New Brunswick': '#fb7185',
+    'Newfoundland and Labrador': '#34d399',
+    'Prince Edward Island': '#fbbf24',
+    'Northwest Territories': '#60a5fa',
+    'Nunavut': '#f472b6',
+    'Yukon': '#4ade80'
+}
+
 const baseOptions = {
     responsive: true,
     maintainAspectRatio: false,
@@ -63,7 +80,7 @@ const baseOptions = {
     }
 }
 
-let unemploymentChart, compareChart, ontarioGapChart, industryChart
+let unemploymentChart, compareChart, provincesGapChart, industryChart
 window._insightParams = {}
 window._insightFull = {}
 
@@ -156,7 +173,7 @@ async function loadUnemploymentChart(yearFrom = 2020, yearTo = 2026, provinces =
     const data = await res.json()
 
     const datasets = []
-    const colorMap = { Canada: COLORS.canada, Ontario: COLORS.ontario, Alberta: COLORS.alberta }
+    const colorMap = PROVINCE_COLORS
 
     provinces.forEach(geo => {
         if (data[geo]?.length) {
@@ -198,6 +215,12 @@ async function loadUnemploymentChart(yearFrom = 2020, yearTo = 2026, provinces =
         }
     }
 
+    datasets.sort((a, b) => {
+        const lastA = a.data.length ? a.data[a.data.length - 1] ?? 0 : 0
+        const lastB = b.data.length ? b.data[b.data.length - 1] ?? 0 : 0
+        return lastB - lastA
+    })
+
     if (unemploymentChart) unemploymentChart.destroy()
 
     unemploymentChart = new Chart(document.getElementById('unemploymentChart'), {
@@ -205,7 +228,14 @@ async function loadUnemploymentChart(yearFrom = 2020, yearTo = 2026, provinces =
         data: { labels: data.labels, datasets },
         options: {
             ...baseOptions,
-            plugins: { ...baseOptions.plugins, annotation: { annotations } }
+            plugins: {
+                ...baseOptions.plugins,
+                annotation: { annotations },
+                tooltip: {
+                    ...baseOptions.plugins.tooltip,
+                    itemSort: (a, b) => (b.parsed.y ?? -Infinity) - (a.parsed.y ?? -Infinity)
+                }
+            }
         }
     })
 }
@@ -300,40 +330,43 @@ function analyzeCompare() {
 }
 
 // ============================================
-// CHART 3 — Ontario Gap
+// CHART 3 — Provincial Gap
 // ============================================
-async function loadOntarioGapChart(yearFrom = 2022, yearTo = 2026) {
-    const res = await fetch(`/api/ontario-gap?year_from=${yearFrom}&year_to=${yearTo}`)
+async function loadProvincesGapChart(yearFrom = 2022, yearTo = 2026, geoA = 'Ontario', geoB = 'Canada') {
+    const res = await fetch(`/api/provinces-gap?year_from=${yearFrom}&year_to=${yearTo}&geo_a=${encodeURIComponent(geoA)}&geo_b=${encodeURIComponent(geoB)}`)
     const data = await res.json()
 
-    if (ontarioGapChart) ontarioGapChart.destroy()
+    const colorA = PROVINCE_COLORS[geoA] || COLORS.ontario
+    const colorB = PROVINCE_COLORS[geoB] || COLORS.canada
 
-    ontarioGapChart = new Chart(document.getElementById('ontarioGapChart'), {
+    if (provincesGapChart) provincesGapChart.destroy()
+
+    provincesGapChart = new Chart(document.getElementById('provincesGapChart'), {
         type: 'line',
         data: {
             labels: data.labels,
             datasets: [
                 {
-                    label: 'Canada',
-                    data: data.canada,
-                    borderColor: COLORS.canada,
+                    label: geoB,
+                    data: data.geo_b,
+                    borderColor: colorB,
                     borderWidth: 2,
                     pointRadius: 0,
                     pointHoverRadius: 5,
-                    pointHoverBackgroundColor: COLORS.canada,
+                    pointHoverBackgroundColor: colorB,
                     fill: false,
                     tension: 0.3
                 },
                 {
-                    label: 'Ontario',
-                    data: data.ontario,
-                    borderColor: COLORS.ontario,
+                    label: geoA,
+                    data: data.geo_a,
+                    borderColor: colorA,
                     borderWidth: 2,
                     pointRadius: 0,
                     pointHoverRadius: 5,
-                    pointHoverBackgroundColor: COLORS.ontario,
+                    pointHoverBackgroundColor: colorA,
                     fill: '+1',
-                    backgroundColor: COLORS.ontario + '10',
+                    backgroundColor: colorA + '10',
                     tension: 0.3
                 }
             ]
@@ -345,14 +378,18 @@ async function loadOntarioGapChart(yearFrom = 2022, yearTo = 2026) {
 function applyGapFilter() {
     const yearFrom = document.getElementById('gapYearFrom').value
     const yearTo = document.getElementById('gapYearTo').value
-    loadOntarioGapChart(yearFrom, yearTo)
+    const geoA = document.getElementById('gapGeoA').value
+    const geoB = document.getElementById('gapGeoB').value
+    loadProvincesGapChart(yearFrom, yearTo, geoA, geoB)
 }
 
 function analyzeGap() {
     const yearFrom = document.getElementById('gapYearFrom').value
     const yearTo = document.getElementById('gapYearTo').value
+    const geoA = document.getElementById('gapGeoA').value
+    const geoB = document.getElementById('gapGeoB').value
     fetchInsight(
-        { chart: 'gap', year_from: yearFrom, year_to: yearTo },
+        { chart: 'gap', geo: geoA, extra: geoB, year_from: yearFrom, year_to: yearTo },
         'insightGap',
         'btnGap'
     )
@@ -386,6 +423,7 @@ async function loadIndustryChart(yearFrom = 2023, yearTo = 2026, geo = 'Canada')
         options: {
             ...baseOptions,
             indexAxis: 'y',
+            interaction: { mode: 'nearest', intersect: true, axis: 'y' },
             plugins: {
                 ...baseOptions.plugins,
                 tooltip: {
@@ -439,28 +477,88 @@ function analyzeIndustry() {
 }
 
 // ============================================
+// SELECT ALL PROVINCES
+// ============================================
+function initSelectAll() {
+    const selectAll = document.getElementById('selectAllProvinces')
+    const checkboxes = () => document.querySelectorAll('.province-checkbox')
+
+    function syncSelectAll() {
+        const all = checkboxes()
+        const checkedCount = Array.from(all).filter(cb => cb.checked).length
+        selectAll.checked = checkedCount === all.length
+        selectAll.indeterminate = checkedCount > 0 && checkedCount < all.length
+    }
+
+    selectAll.addEventListener('change', () => {
+        checkboxes().forEach(cb => { cb.checked = selectAll.checked })
+    })
+
+    document.querySelector('.checkbox-group').addEventListener('change', e => {
+        if (e.target.classList.contains('province-checkbox')) syncSelectAll()
+    })
+
+    syncSelectAll()
+}
+
+// ============================================
 // STAT CARDS
 // ============================================
-document.querySelectorAll('.stat-card[data-geo]').forEach(card => {
-    card.addEventListener('click', () => {
-        document.querySelectorAll('.stat-card').forEach(c => c.classList.remove('active'))
-        card.classList.add('active')
-        const geo = card.dataset.geo
+function initStatCardListeners() {
+    document.querySelectorAll('.stat-card[data-geo]').forEach(card => {
+        card.addEventListener('click', () => {
+            const geo = card.dataset.geo
+            if (!geo) return
 
-        document.querySelectorAll('.province-checkbox').forEach(cb => {
-            cb.checked = cb.value === geo
+            document.querySelectorAll('.stat-card').forEach(c => c.classList.remove('active'))
+            card.classList.add('active')
+
+            document.querySelectorAll('.province-checkbox').forEach(cb => {
+                cb.checked = cb.value === geo
+            })
+
+            const yearFrom = document.getElementById('yearFrom').value
+            const yearTo = document.getElementById('yearTo').value
+            loadUnemploymentChart(yearFrom, yearTo, [geo])
         })
-
-        const yearFrom = document.getElementById('yearFrom').value
-        const yearTo = document.getElementById('yearTo').value
-        loadUnemploymentChart(yearFrom, yearTo, [geo])
     })
-})
+}
+
+// ============================================
+// SUMMARY
+// ============================================
+async function loadSummary() {
+    try {
+        const res = await fetch('/api/summary')
+        const d = await res.json()
+
+        const month = d.most_recent_month  // e.g. "Feb 2026"
+
+        document.getElementById('updatedTag').textContent = `UPDATED · ${month.toUpperCase()}`
+
+        document.getElementById('cardCanadaRate').innerHTML = `${d.canada_rate}<span class="stat-unit">%</span>`
+        document.getElementById('cardCanadaLabel').textContent = `Unemployment · ${month}`
+
+        const worst = d.worst_province
+        document.getElementById('cardWorst').setAttribute('data-geo', worst.name)
+        document.getElementById('cardWorstName').textContent = worst.name
+        document.getElementById('cardWorstRate').innerHTML = `${worst.rate}<span class="stat-unit">%</span>`
+        document.getElementById('cardWorstLabel').textContent = `Unemployment · ${month}`
+
+        document.getElementById('cardJobsMonth').textContent = `📉 ${month}`
+        document.getElementById('footerMonth').textContent = month
+    } catch (err) {
+        console.error('Failed to load summary:', err)
+    }
+}
 
 // ============================================
 // INIT
 // ============================================
+initSelectAll()
+initStatCardListeners()
+loadSummary()
 loadUnemploymentChart()
 loadCompareChart()
-loadOntarioGapChart()
+loadProvincesGapChart()
 loadIndustryChart()

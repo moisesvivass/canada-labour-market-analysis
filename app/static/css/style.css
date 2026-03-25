@@ -97,7 +97,7 @@ h1 {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 20px 24px;
+    padding: 16px 18px;
     cursor: pointer;
     transition: all 0.2s ease;
     position: relative;
@@ -314,9 +314,17 @@ main {
 /* ============ CHECKBOXES ============ */
 .checkbox-group {
     display: flex;
-    gap: 12px;
+    flex-wrap: wrap;
+    gap: 10px 16px;
     align-items: center;
     padding: 7px 0;
+}
+
+.select-all-label {
+    color: var(--text-primary);
+    padding-right: 12px;
+    border-right: 1px solid var(--border);
+    margin-right: 4px;
 }
 
 .checkbox-label {

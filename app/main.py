@@ -1,16 +1,29 @@
-from fastapi import FastAPI, Request, Query, HTTPException
-from fastapi.templating import Jinja2Templates
-from fastapi.staticfiles import StaticFiles
-from sqlalchemy import create_engine, text
-from dotenv import load_dotenv
-from typing import Optional
-from slowapi import Limiter, _rate_limit_exceeded_handler
-from slowapi.util import get_remote_address
-from slowapi.errors import RateLimitExceeded
-import anthropic
+# stdlib
+import asyncio
+import logging
 import os
+from contextlib import asynccontextmanager
+from typing import Optional
+
+# third-party
+import anthropic
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from apscheduler.triggers.cron import CronTrigger
+from dotenv import load_dotenv
+from fastapi import FastAPI, Header, HTTPException, Query, Request
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
+from slowapi.util import get_remote_address
+from sqlalchemy import create_engine, text
+
+# local
+from src.statcan_fetcher import fetch_and_load_all
 
 load_dotenv()
+
+logger = logging.getLogger(__name__)
 
 DATABASE_URL = os.getenv('DATABASE_URL')
 if not DATABASE_URL:
@@ -20,24 +33,66 @@ if not DATABASE_URL:
     )
 engine = create_engine(DATABASE_URL)
 
-limiter = Limiter(key_func=get_remote_address)
-anthropic_client = anthropic.Anthropic()
+ANTHROPIC_API_KEY = os.getenv('ANTHROPIC_API_KEY')
+if not ANTHROPIC_API_KEY:
+    raise RuntimeError(
+        "ANTHROPIC_API_KEY environment variable is not set. "
+        "Add it to .env (local) or Railway environment variables (production)."
+    )
 
-app = FastAPI(title="Canada Labour Market Dashboard")
+REFRESH_SECRET = os.getenv('REFRESH_SECRET')
+if not REFRESH_SECRET:
+    raise RuntimeError(
+        "REFRESH_SECRET environment variable is not set. "
+        "Add it to .env (local) or Railway environment variables (production)."
+    )
+
+limiter = Limiter(key_func=get_remote_address)
+anthropic_client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+
+VALID_GEOS = {
+    "Canada", "Ontario", "Quebec", "British Columbia", "Alberta",
+    "Manitoba", "Saskatchewan", "Nova Scotia", "New Brunswick",
+    "Newfoundland and Labrador", "Prince Edward Island",
+    "Northwest Territories", "Nunavut", "Yukon"
+}
+# Pre-sorted once; used in validate_geo error messages.
+_VALID_GEOS_LIST = ', '.join(sorted(VALID_GEOS))
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Start the in-process scheduler. The job runs on day 1 of each month at
+    # 06:00 UTC and is dispatched to a thread pool (fetch_and_load_all is sync).
+    # replace_existing=True prevents duplicate job registration on hot-reload.
+    scheduler = AsyncIOScheduler()
+    scheduler.add_job(
+        fetch_and_load_all,
+        CronTrigger(day=1, hour=6, minute=0),
+        args=[engine],
+        id="monthly_statcan_fetch",
+        replace_existing=True
+    )
+    scheduler.start()
+    logger.info("Scheduler started — StatCan refresh runs on the 1st of each month at 06:00 UTC.")
+    yield
+    # wait=True (default) blocks until any running job finishes before exiting.
+    scheduler.shutdown()
+
+
+app = FastAPI(title="Canada Labour Market Dashboard", lifespan=lifespan)
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 templates = Jinja2Templates(directory="app/templates")
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
-VALID_GEOS = {"Canada", "Ontario", "Alberta"}
-
 
 def validate_geo(geo: str) -> None:
     if geo not in VALID_GEOS:
         raise HTTPException(
             status_code=400,
-            detail=f"Invalid geography '{geo}'. Allowed values: Canada, Ontario, Alberta."
+            detail=f"Invalid geography '{geo}'. Valid options: {_VALID_GEOS_LIST}."
         )
 
 
@@ -70,18 +125,23 @@ async def dashboard(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
+@app.get("/health")
+async def health():
+    return {"status": "ok"}
+
+
 @app.get("/api/unemployment")
+@limiter.limit("30/minute")
 async def get_unemployment(
+    request: Request,
     geo: Optional[str] = Query(None),
     year_from: Optional[int] = Query(None),
     year_to: Optional[int] = Query(None)
 ):
+    conditions = ["1=1"]
+    params = {}
     if geo and geo != "all":
         validate_geo(geo)
-
-    conditions = ["1=1"]
-    params: dict = {}
-    if geo and geo != "all":
         conditions.append("geography = :geo")
         params["geo"] = geo
     if year_from:
@@ -104,22 +164,25 @@ async def get_unemployment(
 
     rows = run_query(query, "Database error fetching unemployment data.")
 
-    data = {"Canada": [], "Ontario": [], "Alberta": [], "labels": []}
-    labels_set: list = []
-
+    data = {}
+    labels_set = []
     for row in rows:
         month = row[1]
         if month not in labels_set:
             labels_set.append(month)
-        if row[0] in data:
-            data[row[0]].append(float(row[2]))
+        province = row[0]
+        if province not in data:
+            data[province] = []
+        data[province].append(float(row[2]))
 
     data["labels"] = labels_set
     return data
 
 
 @app.get("/api/industries")
+@limiter.limit("30/minute")
 async def get_industries(
+    request: Request,
     geo: Optional[str] = Query(default="Canada"),
     year_from: Optional[int] = Query(default=2023),
     year_to: Optional[int] = Query(default=2026)
@@ -165,39 +228,50 @@ async def get_industries(
     }
 
 
-@app.get("/api/ontario-gap")
-async def get_ontario_gap(
+@app.get("/api/provinces-gap")
+@limiter.limit("30/minute")
+async def get_provinces_gap(
+    request: Request,
+    geo_a: str = Query(default="Ontario"),
+    geo_b: str = Query(default="Canada"),
     year_from: Optional[int] = Query(default=2022),
     year_to: Optional[int] = Query(default=2026)
 ):
+    validate_geo(geo_a)
+    validate_geo(geo_b)
+
     query = text("""
         SELECT
             TO_CHAR(ref_date, 'YYYY-MM') AS month,
-            MAX(CASE WHEN geography = 'Canada' THEN value END) AS canada_rate,
-            MAX(CASE WHEN geography = 'Ontario' THEN value END) AS ontario_rate,
-            ROUND((MAX(CASE WHEN geography = 'Ontario' THEN value END) -
-            MAX(CASE WHEN geography = 'Canada' THEN value END))::numeric, 1) AS ontario_gap
+            MAX(CASE WHEN geography = :geo_b THEN value END) AS ref_rate,
+            MAX(CASE WHEN geography = :geo_a THEN value END) AS prov_rate
         FROM unemployment_monthly
-        WHERE EXTRACT(YEAR FROM ref_date) BETWEEN :year_from AND :year_to
+        WHERE geography IN (:geo_a, :geo_b)
+        AND EXTRACT(YEAR FROM ref_date) BETWEEN :year_from AND :year_to
         GROUP BY ref_date
         ORDER BY ref_date
-    """).bindparams(year_from=year_from, year_to=year_to)
+    """).bindparams(geo_a=geo_a, geo_b=geo_b, year_from=year_from, year_to=year_to)
 
-    rows = run_query(query, "Database error fetching Ontario gap data.")
+    rows = run_query(query, "Database error fetching provinces gap data.")
 
     if not rows:
-        return {"labels": [], "canada": [], "ontario": [], "gap": []}
+        return {"labels": [], "geo_a": [], "geo_b": [], "gap": []}
 
     return {
         "labels": [r[0] for r in rows],
-        "canada": [float(r[1]) if r[1] is not None else None for r in rows],
-        "ontario": [float(r[2]) if r[2] is not None else None for r in rows],
-        "gap": [float(r[3]) if r[3] is not None else None for r in rows]
+        "geo_a": [float(r[2]) if r[2] is not None else None for r in rows],
+        "geo_b": [float(r[1]) if r[1] is not None else None for r in rows],
+        "gap": [
+            round(float(r[2] - r[1]), 1) if r[1] is not None and r[2] is not None else None
+            for r in rows
+        ]
     }
 
 
 @app.get("/api/compare")
+@limiter.limit("30/minute")
 async def compare_periods(
+    request: Request,
     geo: Optional[str] = Query(default="Canada"),
     year_a: Optional[int] = Query(default=2023),
     year_b: Optional[int] = Query(default=2026)
@@ -206,8 +280,6 @@ async def compare_periods(
 
     query = text("""
         SELECT
-            TO_CHAR(ref_date, 'MM') AS month_num,
-            TO_CHAR(ref_date, 'Mon') AS month_name,
             EXTRACT(YEAR FROM ref_date) AS year,
             value
         FROM unemployment_monthly
@@ -218,14 +290,13 @@ async def compare_periods(
 
     rows = run_query(query, "Database error fetching comparison data.")
 
-    data = {str(year_a): [], str(year_b): [], "labels": []}
     labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    data["labels"] = labels
+    data = {str(year_a): [], str(year_b): [], "labels": labels}
 
     for row in rows:
-        year_key = str(int(row[2]))
+        year_key = str(int(row[0]))
         if year_key in data:
-            data[year_key].append(float(row[3]))
+            data[year_key].append(float(row[1]))
 
     return data
 
@@ -238,8 +309,7 @@ async def get_insights(
     geo: str = Query(default="Canada"),
     year_from: int = Query(default=2020),
     year_to: int = Query(default=2026),
-    extra: str = Query(default=""),
-    full: bool = Query(default=False)
+    extra: str = Query(default="")
 ):
     validate_geo(geo)
 
@@ -294,20 +364,28 @@ async def get_insights(
                     data_summary += f"{year_b} monthly: " + ", ".join([f"{r[0]}:{r[1]}%" for r in rows_b])
 
             elif chart == "gap":
+                # geo = primary province (via the shared `geo` parameter)
+                # extra = reference province (defaults to Canada)
+                geo_b = extra if extra else "Canada"
+                validate_geo(geo_b)
+
                 rows = conn.execute(text("""
                     SELECT TO_CHAR(ref_date, 'YYYY-MM') as month,
-                    MAX(CASE WHEN geography = 'Canada' THEN value END) as canada,
-                    MAX(CASE WHEN geography = 'Ontario' THEN value END) as ontario
+                    MAX(CASE WHEN geography = :geo_b THEN value END) as ref_rate,
+                    MAX(CASE WHEN geography = :geo_a THEN value END) as prov_rate
                     FROM unemployment_monthly
-                    WHERE EXTRACT(YEAR FROM ref_date) BETWEEN :year_from AND :year_to
+                    WHERE geography IN (:geo_a, :geo_b)
+                    AND EXTRACT(YEAR FROM ref_date) BETWEEN :year_from AND :year_to
                     GROUP BY ref_date ORDER BY ref_date
-                """).bindparams(year_from=year_from, year_to=year_to)).fetchall()
+                """).bindparams(
+                    geo_a=geo, geo_b=geo_b, year_from=year_from, year_to=year_to
+                )).fetchall()
 
                 gaps = [round(r[2] - r[1], 1) for r in rows if r[1] is not None and r[2] is not None]
                 if not gaps:
                     raise HTTPException(status_code=404, detail="No gap data found for the given parameters.")
 
-                data_summary = f"Ontario vs Canada gap — ONLY {year_from} to {year_to}:\n"
+                data_summary = f"{geo} vs {geo_b} gap — ONLY {year_from} to {year_to}:\n"
                 data_summary += f"Current gap: {gaps[-1]} pts\n"
                 data_summary += f"Max gap: {max(gaps)} pts\n"
                 data_summary += f"Average gap: {round(sum(gaps)/len(gaps), 1)} pts\n"
@@ -381,3 +459,81 @@ async def get_insights(
         raise HTTPException(status_code=502, detail="Error calling AI service. Please try again.")
 
     return {"insight": message.content[0].text}
+
+
+@app.get("/api/summary")
+@limiter.limit("30/minute")
+async def get_summary(request: Request):
+    summary_query = text("""
+        WITH latest AS (
+            SELECT MAX(ref_date) AS max_date
+            FROM unemployment_monthly
+            WHERE geography = 'Canada'
+        ),
+        canada AS (
+            SELECT u.value, TO_CHAR(l.max_date, 'Mon YYYY') AS month_label
+            FROM unemployment_monthly u
+            JOIN latest l ON u.ref_date = l.max_date
+            WHERE u.geography = 'Canada'
+        ),
+        worst AS (
+            SELECT u.geography, u.value
+            FROM unemployment_monthly u
+            JOIN latest l ON u.ref_date = l.max_date
+            WHERE u.geography != 'Canada'
+            ORDER BY u.value DESC
+            LIMIT 1
+        )
+        SELECT c.month_label, c.value, w.geography, w.value
+        FROM canada c, worst w
+    """)
+
+    # Single LAG query instead of two correlated subqueries with identical filters.
+    jobs_query = text("""
+        WITH ordered AS (
+            SELECT ref_date, value,
+                   LAG(value) OVER (ORDER BY ref_date) AS prev_value
+            FROM employment_by_industry
+            WHERE geography = 'Canada'
+            AND industry = 'Total employed, all industries'
+            AND data_type = 'Seasonally adjusted'
+        )
+        SELECT ROUND((value - prev_value)::numeric, 0)
+        FROM ordered
+        WHERE prev_value IS NOT NULL
+        ORDER BY ref_date DESC
+        LIMIT 1
+    """)
+
+    rows = run_query(summary_query, "Database error fetching summary data.")
+    if not rows:
+        raise HTTPException(status_code=404, detail="No summary data available.")
+
+    jobs_rows = run_query(jobs_query, "Database error fetching jobs data.")
+    jobs_lost = int(jobs_rows[0][0]) if jobs_rows and jobs_rows[0][0] is not None else None
+
+    row = rows[0]
+    return {
+        "most_recent_month": row[0],
+        "canada_rate": float(row[1]),
+        "worst_province": {"name": row[2], "rate": float(row[3])},
+        "jobs_lost": jobs_lost
+    }
+
+
+@app.post("/api/admin/refresh")
+@limiter.limit("5/minute")
+async def manual_refresh(
+    request: Request,
+    x_refresh_secret: Optional[str] = Header(default=None)
+):
+    if x_refresh_secret != REFRESH_SECRET:
+        raise HTTPException(status_code=403, detail="Forbidden.")
+    loop = asyncio.get_running_loop()
+    try:
+        await loop.run_in_executor(None, fetch_and_load_all, engine)
+        return {"status": "ok", "message": "Data refreshed successfully."}
+    except RuntimeError as e:
+        raise HTTPException(status_code=409, detail=str(e))
+    except Exception:
+        raise HTTPException(status_code=500, detail="Refresh failed. Check server logs.")

@@ -1,39 +1,43 @@
 # Canada Labour Market Analysis (2020–2026)
 
 [![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)](https://python.org)
-[![FastAPI](https://img.shields.io/badge/FastAPI-dashboard-green?logo=fastapi)](https://fastapi.tiangolo.com)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.115-green?logo=fastapi)](https://fastapi.tiangolo.com)
+[![React](https://img.shields.io/badge/React-18-blue?logo=react)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)](https://typescriptlang.org)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-analytics-blue?logo=postgresql)](https://postgresql.org)
-[![Claude AI](https://img.shields.io/badge/Claude-AI%20Insights-orange)](https://anthropic.com)
+[![Claude AI](https://img.shields.io/badge/Claude-Haiku-orange)](https://anthropic.com)
+
+Interactive dashboard tracking Canada's labour market trends (2020–2026). ETL pipeline from Statistics Canada, REST API with FastAPI, React + TypeScript frontend, deployed on Railway and Vercel.
 
 ## 🚀 Live
 
 | | URL |
 |---|---|
-| 📊 Dashboard | [web-production-6f4de.up.railway.app](https://web-production-6f4de.up.railway.app) |
+| 📊 Frontend | [canada-labour-market-analysis.vercel.app](https://canada-labour-market-analysis.vercel.app) |
+| 🔌 Backend API | [web-production-6f4de.up.railway.app](https://web-production-6f4de.up.railway.app) |
 | 🤖 AI Insights | Powered by Claude Haiku — click "Analyze" on any chart |
-| 📅 Data updated | Automatically every 1st of the month — Statistics Canada |
+| 📅 Data updated | Automatically every 1st of the month via Statistics Canada API |
 
 **The problem:** Canada's labour market data is publicly available but scattered across Statistics Canada tables, making it hard to quickly understand employment trends by province or industry.
 
-**What this solves:** An end-to-end pipeline that ingests official Statistics Canada data, loads it into PostgreSQL, and surfaces the answers through an interactive dashboard with AI-generated insights per chart.
-
-End-to-end data analysis of Canada's labour market using official Statistics Canada data, built during the country's worst job crisis since the pandemic. Covers unemployment trends, employment by industry, and provincial comparisons across 11 Canadian provinces from January 2020 to 2026.
+**What this solves:** An end-to-end pipeline that ingests official Statistics Canada data, loads it into PostgreSQL, and surfaces the answers through an interactive React dashboard with AI-generated insights per chart.
 
 ## 📊 What This Project Does
 
-- **ETL Pipeline:** Extracts raw CSV data from Statistics Canada (tables 14100287 and 14100355), transforms and filters it with Pandas, and loads it into PostgreSQL. Automatic monthly scheduler via APScheduler — fetches live data from the StatCan API on the 1st of every month
-- **SQL Analytics:** Pre-built queries analyzing unemployment trends, industry-level employment shifts, and provincial comparisons
-- **Interactive Dashboard:** FastAPI + Chart.js dashboard with filters, multi-province selection, and dynamic visualizations
-- **AI Insights:** Claude AI generates contextual analysis per chart, with expandable "read more" summaries
+- **ETL Pipeline:** Extracts raw CSV data from Statistics Canada (tables 14100287 and 14100355), transforms and filters it with Pandas, and loads it into PostgreSQL. Automatic monthly scheduler via APScheduler fetches live data from the StatCan API on the 1st of every month
+- **REST API:** FastAPI backend with APIRouter — 5 routers covering unemployment, industries, summary, insights, and admin endpoints
+- **React Dashboard:** React 18 + TypeScript + Vite 5 + Tailwind CSS v4 + shadcn/ui — 4 interactive charts with province/industry filters
+- **AI Insights:** Claude Haiku generates contextual analysis per chart on demand
+- **Integration Tests:** 14 tests with pytest + httpx covering all API endpoints
 
 ## 🗂️ Data Sources
 
 | Table | Description |
 |---|---|
-| `14100287` | Monthly unemployment rate by province, gender, and age group |
+| `14100287` | Monthly unemployment rate by province |
 | `14100355` | Monthly employment by industry (NAICS classification) |
 
-Data is seasonally adjusted, filtered for ages 15+, and covers 11 Canadian provinces from January 2020 onward.
+Data is seasonally adjusted and covers 11 Canadian provinces from January 2020 onward.
 
 ## 🛠️ Tech Stack
 
@@ -42,33 +46,58 @@ Data is seasonally adjusted, filtered for ages 15+, and covers 11 Canadian provi
 | Language | Python 3.12 |
 | ETL | Pandas + SQLAlchemy |
 | Database | PostgreSQL |
-| API / Dashboard | FastAPI + Jinja2 |
-| Charts | Chart.js |
-| AI Insights | Anthropic Claude |
-| Config | python-dotenv |
+| API | FastAPI 0.115 + APIRouter |
+| Scheduler | APScheduler |
+| Frontend | React 18 + TypeScript + Vite 5 |
+| Styling | Tailwind CSS v4 + shadcn/ui |
+| AI Insights | Claude Haiku (Anthropic) |
+| Tests | pytest + httpx |
+| Deploy | Railway (backend) + Vercel (frontend) |
 
 ## 📁 Project Structure
-
 ```
 canada-labour-market-analysis/
-├── src/
-│   ├── etl.py                  # Manual ETL pipeline
-│   ├── statcan_fetcher.py      # Live StatCan API fetcher + scheduler
-│   └── queries.sql             # SQL analytics queries
 ├── app/
-│   ├── main.py                 # FastAPI app + all endpoints
-│   ├── static/                 # CSS and JS assets
-│   └── templates/              # Jinja2 HTML templates
-├── data/
-│   └── raw/                    # Original StatCan CSV files
+│   ├── main.py                 # FastAPI app entry point
+│   ├── dependencies.py         # Shared DB dependencies
+│   └── routers/
+│       ├── admin.py            # Manual refresh endpoint
+│       ├── industries.py       # Employment by industry
+│       ├── insights.py         # Claude AI insights
+│       ├── summary.py          # Summary stats
+│       └── unemployment.py     # Unemployment by province
+├── frontend/
+│   └── src/
+│       ├── App.tsx
+│       ├── components/
+│       │   ├── AIInsight.tsx
+│       │   ├── Header.tsx
+│       │   └── charts/
+│       │       ├── CompareChart.tsx
+│       │       ├── IndustryChart.tsx
+│       │       ├── ProvincialGapChart.tsx
+│       │       └── UnemploymentChart.tsx
+│       ├── hooks/useApi.ts
+│       ├── lib/                # chartConfig, chartSetup, constants, utils
+│       └── types/api.ts
+├── src/
+│   └── statcan_fetcher.py      # Live StatCan API fetcher + APScheduler
+├── scripts/
+│   └── manual_etl.py           # One-time ETL for initial data load
+├── tests/
+│   ├── conftest.py
+│   └── test_api.py             # 14 integration tests
+├── data/raw/                   # Original StatCan CSV files
+├── notebooks/                  # Exploratory analysis
 ├── .env.example
+├── requirements.txt
 ├── Procfile
-├── railway.json
-└── requirements.txt
+└── railway.json
 ```
 
 ## ⚙️ Setup
 
+### Backend
 ```bash
 git clone https://github.com/moisesvivass/canada-labour-market-analysis.git
 cd canada-labour-market-analysis
@@ -78,30 +107,55 @@ venv\Scripts\activate        # Windows
 pip install -r requirements.txt
 ```
 
-Create a `.env` file:
-
+Copy `.env.example` to `.env` and fill in your values:
 ```env
-DATABASE_URL=postgresql://postgres@localhost:5432/labour_market
-ANTHROPIC_API_KEY=sk-ant-your-key-here
+# PostgreSQL connection string
+DATABASE_URL=postgresql://your_user:your_password@localhost:5432/canada_labour
+
+# Anthropic API key — required for /api/insights (AI analysis)
+# Get yours at https://console.anthropic.com/
+ANTHROPIC_API_KEY=sk-ant-...
+
+# Secret header value for /api/admin/refresh
+# Set to any strong random string. Callers must send:
+#   X-Refresh-Secret: <this value>
 REFRESH_SECRET=change-me-to-a-strong-random-string
+
+# Comma-separated list of allowed CORS origins
+# Local dev: http://localhost:5173
+# Production: https://your-app.onrender.com
+CORS_ORIGINS=http://localhost:5173
 ```
 
-Run the ETL to load data into PostgreSQL:
-
+Run the ETL to load initial data:
 ```bash
-python src/etl.py
+python scripts/manual_etl.py
 ```
 
-Start the dashboard:
-
+Start the API:
 ```bash
 uvicorn app.main:app --reload
 ```
 
+### Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The frontend expects the backend running at `http://localhost:8000`. To point it at a different URL, set `VITE_API_URL` in a `.env` file inside `frontend/`.
+
+## 🧪 Tests
+```bash
+pytest tests/ -v
+```
+
+14 integration tests covering all routers — unemployment, industries, summary, insights, and admin endpoints.
+
 ## 🔄 Manual Data Refresh
 
 To trigger an immediate data refresh from the StatCan API:
-
 ```bash
 curl -X POST https://web-production-6f4de.up.railway.app/api/admin/refresh \
   -H "x-refresh-secret: YOUR_REFRESH_SECRET"

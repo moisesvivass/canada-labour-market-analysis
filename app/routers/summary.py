@@ -50,6 +50,33 @@ async def get_summary(request: Request):
         LIMIT 1
     """)
 
+    labour_query = text("""
+        WITH latest AS (
+            SELECT MAX(ref_date) AS max_date
+            FROM labour_force_indicators
+            WHERE geography = 'Canada'
+        )
+        SELECT characteristic, value
+        FROM labour_force_indicators
+        JOIN latest ON ref_date = max_date
+        WHERE geography = 'Canada'
+        AND characteristic IN ('Employment rate', 'Participation rate')
+    """)
+
+    delta_query = text("""
+        WITH ordered AS (
+            SELECT ref_date, value,
+                   LAG(value) OVER (ORDER BY ref_date) AS prev_value
+            FROM unemployment_monthly
+            WHERE geography = 'Canada'
+        )
+        SELECT ROUND((value - prev_value)::numeric, 1)
+        FROM ordered
+        WHERE prev_value IS NOT NULL
+        ORDER BY ref_date DESC
+        LIMIT 1
+    """)
+
     rows = run_query(summary_query, "Database error fetching summary data.")
     if not rows:
         raise HTTPException(status_code=404, detail="No summary data available.")
@@ -57,10 +84,29 @@ async def get_summary(request: Request):
     jobs_rows = run_query(jobs_query, "Database error fetching jobs data.")
     jobs_lost = int(jobs_rows[0][0]) if jobs_rows and jobs_rows[0][0] is not None else None
 
+    # Graceful fallback while labour_force_indicators is being populated
+    employment_rate = None
+    participation_rate = None
+    try:
+        labour_rows = run_query(labour_query, "labour_force_indicators unavailable")
+        labour_data = {r[0]: float(r[1]) for r in labour_rows}
+        employment_rate = labour_data.get('Employment rate')
+        participation_rate = labour_data.get('Participation rate')
+    except HTTPException:
+        pass
+
+    delta_rows = run_query(delta_query, "Database error fetching monthly delta.")
+    monthly_delta = (
+        float(delta_rows[0][0]) if delta_rows and delta_rows[0][0] is not None else None
+    )
+
     row = rows[0]
     return {
         "most_recent_month": row[0],
         "canada_rate": float(row[1]),
+        "employment_rate": employment_rate,
+        "participation_rate": participation_rate,
+        "monthly_delta": monthly_delta,
         "worst_province": {"name": row[2], "rate": float(row[3])},
-        "jobs_lost": jobs_lost
+        "jobs_lost": jobs_lost,
     }

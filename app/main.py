@@ -11,7 +11,7 @@ from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
 
 from app.dependencies import engine, limiter
-from app.routers import admin, industries, insights, summary, unemployment
+from app.routers import admin, industries, insights, labour_indicators, summary, unemployment
 from src.statcan_fetcher import fetch_and_load_all
 
 logger = logging.getLogger(__name__)
@@ -65,6 +65,7 @@ async def health():
 
 app.include_router(unemployment.router)
 app.include_router(industries.router)
+app.include_router(labour_indicators.router)
 app.include_router(insights.router)
 app.include_router(summary.router)
 app.include_router(admin.router)

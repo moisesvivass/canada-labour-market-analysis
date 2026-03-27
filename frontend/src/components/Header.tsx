@@ -13,6 +13,11 @@ export function Header({ onFilterProvince }: HeaderProps) {
       ? 'N/A'
       : `${(data?.jobs_lost ?? 0) > 0 ? '+' : ''}${data?.jobs_lost}K`;
 
+  const delta = data?.monthly_delta ?? null;
+  const deltaLabel =
+    delta === null ? null : `${delta > 0 ? '▲' : '▼'} ${Math.abs(delta).toFixed(1)}`;
+  const deltaColor = delta !== null && delta > 0 ? 'text-red-400' : 'text-emerald-400';
+
   return (
     <header className="border-b border-[#1e2d45] px-6 py-8">
       <h1
@@ -31,8 +36,8 @@ export function Header({ onFilterProvince }: HeaderProps) {
         </p>
       )}
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        {/* Canada rate */}
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+        {/* Canada Unemployment */}
         <button
           type="button"
           onClick={() => onFilterProvince('Canada')}
@@ -41,24 +46,63 @@ export function Header({ onFilterProvince }: HeaderProps) {
           <p className="font-mono text-xs uppercase tracking-widest text-[#8892a4]">
             Canada Unemployment
           </p>
-          <p className="mt-1 font-heading text-3xl font-bold text-[#4f8ef7]" style={{ fontFamily: 'Syne, sans-serif' }}>
-            {loading ? '—' : error ? 'N/A' : `${data!.canada_rate}%`}
-          </p>
+          <div className="mt-1 flex items-baseline gap-2">
+            <p
+              className="font-bold text-3xl text-[#4f8ef7]"
+              style={{ fontFamily: 'Syne, sans-serif' }}
+            >
+              {loading ? '—' : error ? 'N/A' : `${data!.canada_rate}%`}
+            </p>
+            {!loading && !error && deltaLabel && (
+              <span className={`font-mono text-sm font-bold ${deltaColor}`}>
+                {deltaLabel}
+              </span>
+            )}
+          </div>
           <p className="mt-1 font-mono text-xs text-[#8892a4]">Click to filter chart</p>
         </button>
 
-        {/* Worst province */}
+        {/* Employment Rate */}
+        <div className="rounded-lg border border-[#1e2d45] bg-[#161b27] p-4">
+          <p className="font-mono text-xs uppercase tracking-widest text-[#8892a4]">
+            Employment Rate
+          </p>
+          <p
+            className="mt-1 font-bold text-3xl text-[#10b981]"
+            style={{ fontFamily: 'Syne, sans-serif' }}
+          >
+            {loading ? '—' : error ? 'N/A' : data!.employment_rate !== null ? `${data!.employment_rate}%` : '—'}
+          </p>
+          <p className="mt-1 font-mono text-xs text-[#8892a4]">Canada · latest month</p>
+        </div>
+
+        {/* Participation Rate */}
+        <div className="rounded-lg border border-[#1e2d45] bg-[#161b27] p-4">
+          <p className="font-mono text-xs uppercase tracking-widest text-[#8892a4]">
+            Participation Rate
+          </p>
+          <p
+            className="mt-1 font-bold text-3xl text-[#06b6d4]"
+            style={{ fontFamily: 'Syne, sans-serif' }}
+          >
+            {loading ? '—' : error ? 'N/A' : data!.participation_rate !== null ? `${data!.participation_rate}%` : '—'}
+          </p>
+          <p className="mt-1 font-mono text-xs text-[#8892a4]">Canada · latest month</p>
+        </div>
+
+        {/* Highest Province */}
         <button
           type="button"
-          onClick={() =>
-            data && onFilterProvince(data.worst_province.name)
-          }
+          onClick={() => data && onFilterProvince(data.worst_province.name)}
           className="rounded-lg border border-[#1e2d45] bg-[#161b27] p-4 text-left transition-colors hover:border-[#fb7185]"
         >
           <p className="font-mono text-xs uppercase tracking-widest text-[#8892a4]">
             Highest Province
           </p>
-          <p className="mt-1 font-heading text-3xl font-bold text-[#fb7185]" style={{ fontFamily: 'Syne, sans-serif' }}>
+          <p
+            className="mt-1 font-bold text-3xl text-[#fb7185]"
+            style={{ fontFamily: 'Syne, sans-serif' }}
+          >
             {loading ? '—' : error ? 'N/A' : `${data!.worst_province.rate}%`}
           </p>
           <p className="mt-1 font-mono text-xs text-[#8892a4]">
@@ -66,12 +110,15 @@ export function Header({ onFilterProvince }: HeaderProps) {
           </p>
         </button>
 
-        {/* Jobs lost — from API */}
+        {/* Jobs Change */}
         <div className="rounded-lg border border-[#1e2d45] bg-[#161b27] p-4">
           <p className="font-mono text-xs uppercase tracking-widest text-[#8892a4]">
-            Jobs Change (Latest Month)
+            Jobs Change
           </p>
-          <p className="mt-1 font-heading text-3xl font-bold text-[#f59e0b]" style={{ fontFamily: 'Syne, sans-serif' }}>
+          <p
+            className="mt-1 font-bold text-3xl text-[#f59e0b]"
+            style={{ fontFamily: 'Syne, sans-serif' }}
+          >
             {loading ? '—' : error ? 'N/A' : jobsLabel}
           </p>
           <p className="mt-1 font-mono text-xs text-[#8892a4]">Month-over-month net jobs</p>

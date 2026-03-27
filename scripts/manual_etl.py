@@ -51,6 +51,36 @@ def transform_monthly_unemployment(df):
     print(f"  Rows after filter: {len(df_filtered)}")
     return df_filtered
 
+def transform_labour_indicators(df):
+    """Filter and clean labour force indicators (employment rate, participation rate)"""
+    print("Transforming labour force indicators...")
+
+    CHARACTERISTICS = ['Employment rate', 'Participation rate', 'Unemployment rate']
+
+    df_filtered = df[
+        (df['GEO'].isin(ALL_PROVINCES)) &
+        (df['Labour force characteristics'].isin(CHARACTERISTICS)) &
+        (df['Statistics'] == 'Estimate') &
+        (df['Data type'] == 'Seasonally adjusted') &
+        (df['Gender'] == 'Total - Gender') &
+        (df['Age group'] == '15 years and over') &
+        (df['REF_DATE'] >= START_DATE)
+    ].copy()
+
+    df_filtered = df_filtered.rename(columns={
+        'REF_DATE': 'ref_date',
+        'GEO': 'geography',
+        'Labour force characteristics': 'characteristic',
+        'VALUE': 'value'
+    })
+
+    df_filtered = df_filtered[['ref_date', 'geography', 'characteristic', 'value']]
+    df_filtered['ref_date'] = pd.to_datetime(df_filtered['ref_date'])
+    df_filtered = df_filtered.dropna(subset=['value'])
+
+    print(f"  Rows after filter: {len(df_filtered)}")
+    return df_filtered
+
 def extract_monthly_industry():
     """Extract employment by industry from StatsCan table 14100355"""
     print("Loading monthly industry data...")
@@ -111,10 +141,12 @@ def load_to_postgres(df, table_name):
 def run_etl():
     print("=== STARTING ETL ===")
 
-    # Unemployment data
-    df_unemployment = extract_monthly_unemployment()
-    df_unemployment = transform_monthly_unemployment(df_unemployment)
+    # Unemployment + labour indicators (same source file)
+    df_raw = extract_monthly_unemployment()
+    df_unemployment = transform_monthly_unemployment(df_raw)
     load_to_postgres(df_unemployment, 'unemployment_monthly')
+    df_lfi = transform_labour_indicators(df_raw)
+    load_to_postgres(df_lfi, 'labour_force_indicators')
 
     # Industry data
     df_industry = extract_monthly_industry()

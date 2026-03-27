@@ -69,6 +69,34 @@ def _transform_unemployment(df: pd.DataFrame) -> pd.DataFrame:
     return df_filtered
 
 
+def _transform_labour_indicators(df: pd.DataFrame) -> pd.DataFrame:
+    df_filtered = df[
+        (df['GEO'].isin(ALL_PROVINCES)) &
+        (df['Labour force characteristics'].isin([
+            'Unemployment rate',
+            'Employment rate',
+            'Participation rate'
+        ])) &
+        (df['Statistics'] == 'Estimate') &
+        (df['Data type'] == 'Seasonally adjusted') &
+        (df['Gender'] == 'Total - Gender') &
+        (df['Age group'] == '15 years and over') &
+        (df['REF_DATE'] >= START_DATE)
+    ].copy()
+
+    df_filtered = df_filtered.rename(columns={
+        'REF_DATE': 'ref_date',
+        'GEO': 'geography',
+        'Labour force characteristics': 'characteristic',
+        'Data type': 'data_type',
+        'VALUE': 'value'
+    })
+    df_filtered = df_filtered[['ref_date', 'geography', 'characteristic', 'data_type', 'value']]
+    df_filtered['ref_date'] = pd.to_datetime(df_filtered['ref_date'])
+    df_filtered = df_filtered.dropna(subset=['value'])
+    return df_filtered
+
+
 def _transform_industry(df: pd.DataFrame) -> pd.DataFrame:
     df_filtered = df[
         (df['GEO'].isin(ALL_PROVINCES)) &
@@ -115,6 +143,8 @@ def fetch_and_load_all(engine: Engine) -> None:
             df_raw = _download_statcan_csv("14100287")
             df_u = _transform_unemployment(df_raw)
             _load_with_swap(df_u, 'unemployment_monthly', engine)
+            df_lfi = _transform_labour_indicators(df_raw)
+            _load_with_swap(df_lfi, 'labour_force_indicators', engine)
         except Exception:
             logger.exception("Failed to fetch/load table 14100287")
 

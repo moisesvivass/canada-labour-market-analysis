@@ -110,7 +110,31 @@ def test_industries_lists_are_non_empty(client):
 
 
 # ---------------------------------------------------------------------------
-# 6. GET /api/summary — contract: jobs_lost must be int, never float
+# 6. GET /api/labour-indicators
+# ---------------------------------------------------------------------------
+
+def test_labour_indicators_returns_200(client):
+    response = client.get(
+        "/api/labour-indicators",
+        params={"characteristic": "Employment rate", "geo": "Canada", "year_from": 2023, "year_to": 2024}
+    )
+    assert response.status_code == 200
+
+
+def test_labour_indicators_has_labels_and_series(client):
+    data = client.get(
+        "/api/labour-indicators",
+        params={"characteristic": "Employment rate", "geo": "Canada", "year_from": 2023, "year_to": 2024}
+    ).json()
+    assert "labels" in data
+    assert isinstance(data["labels"], list)
+    assert len(data["labels"]) > 0
+    assert "Canada" in data
+    assert all(isinstance(v, float) for v in data["Canada"])
+
+
+# ---------------------------------------------------------------------------
+# 7. GET /api/summary — contract: jobs_lost must be int, never float
 #    Regression test for the /1000 bug that produced "-0K" in the UI.
 # ---------------------------------------------------------------------------
 

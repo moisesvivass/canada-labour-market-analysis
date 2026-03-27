@@ -35,6 +35,9 @@ export function baseLineOptions(yLabel = 'Rate (%)'): ChartOptions<'line'> {
         titleFont: { family: FONT_MONO },
         bodyFont: { family: FONT_MONO, size: 12 },
         padding: 10,
+        callbacks: {
+          label: (ctx) => ` ${(ctx.parsed.y as number).toFixed(1)}%`,
+        },
       },
     },
     scales: {
@@ -47,7 +50,7 @@ export function baseLineOptions(yLabel = 'Rate (%)'): ChartOptions<'line'> {
         ticks: {
           color: TEXT_COLOR,
           font: { family: FONT_MONO, size: 11 },
-          callback: (val) => `${val}%`,
+          callback: (val) => `${Number(val).toFixed(1)}%`,
         },
         title: {
           display: true,

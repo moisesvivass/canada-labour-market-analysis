@@ -73,8 +73,8 @@ Data is seasonally adjusted and covers 11 Canadian provinces from January 2020 o
 | Scheduler | APScheduler |
 | Frontend | React 18 + TypeScript + Vite 5 |
 | Styling | Tailwind CSS v4 + shadcn/ui |
-| AI Insights | Claude Haiku (Anthropic), max_tokens=1024 |
-| Tests | pytest + httpx, 18 integration tests |
+| AI Insights | Claude Haiku (Anthropic) |
+| Tests | pytest + httpx |
 | Deploy | Railway (backend) + Vercel (frontend) |
 
 ## 📁 Project Structure

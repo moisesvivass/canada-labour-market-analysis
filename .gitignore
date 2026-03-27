@@ -9,3 +9,4 @@ backup.sql
 
 *.csv
 .claude/
+CLAUDE.md

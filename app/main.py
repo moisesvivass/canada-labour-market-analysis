@@ -11,7 +11,8 @@ from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
 
 from app.dependencies import engine, limiter
-from app.routers import admin, industries, insights, labour_indicators, summary, unemployment
+from app.routers import admin, industries, insights, labour_indicators, macro, summary, unemployment
+from src.boc_fetcher import fetch_and_load_boc
 from src.statcan_fetcher import fetch_and_load_all
 
 logger = logging.getLogger(__name__)
@@ -34,8 +35,15 @@ async def lifespan(app: FastAPI):
         id="monthly_statcan_fetch",
         replace_existing=True
     )
+    scheduler.add_job(
+        fetch_and_load_boc,
+        CronTrigger(day=2, hour=6, minute=0),
+        args=[engine],
+        id="monthly_boc_fetch",
+        replace_existing=True
+    )
     scheduler.start()
-    logger.info("Scheduler started — StatCan refresh runs on the 1st of each month at 06:00 UTC.")
+    logger.info("Scheduler started — StatCan refresh: 1st of month 06:00 UTC, BoC refresh: 2nd of month 06:00 UTC.")
     yield
     # wait=True (default) blocks until any running job finishes before exiting.
     scheduler.shutdown()
@@ -66,6 +74,7 @@ async def health():
 app.include_router(unemployment.router)
 app.include_router(industries.router)
 app.include_router(labour_indicators.router)
+app.include_router(macro.router)
 app.include_router(insights.router)
 app.include_router(summary.router)
 app.include_router(admin.router)

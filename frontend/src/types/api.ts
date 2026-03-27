@@ -4,11 +4,17 @@ export interface SummaryResponse {
   employment_rate: number | null;
   participation_rate: number | null;
   monthly_delta: number | null;
+  cpi_yoy: number | null;
   worst_province: {
     name: string;
     rate: number;
   };
   jobs_lost: number | null;
+}
+
+export interface MacroDataPoint {
+  month: string;
+  value: number;
 }
 
 export interface UnemploymentResponse {

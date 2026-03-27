@@ -134,6 +134,20 @@ def test_labour_indicators_has_labels_and_series(client):
 
 
 # ---------------------------------------------------------------------------
+# 8. GET /api/macro/overnight-rate and /api/macro/cpi
+# ---------------------------------------------------------------------------
+
+def test_macro_overnight_rate(client):
+    response = client.get("/api/macro/overnight-rate")
+    assert response.status_code == 200
+
+
+def test_macro_cpi(client):
+    response = client.get("/api/macro/cpi")
+    assert response.status_code == 200
+
+
+# ---------------------------------------------------------------------------
 # 7. GET /api/summary — contract: jobs_lost must be int, never float
 #    Regression test for the /1000 bug that produced "-0K" in the UI.
 # ---------------------------------------------------------------------------

@@ -29,6 +29,29 @@ _PROMPT_TEMPLATE = (
     "Write like you are briefing a smart busy executive who has zero patience for corporate speak."
 )
 
+_PROMPT_TEMPLATE_MACRO = (
+    "You are a sharp, opinionated Canadian macroeconomist. "
+    "You don't hedge, you don't repeat the obvious, you always find the angle nobody else is talking about.\n\n"
+    "Data:\n{data_summary}\n\n"
+    "CRITICAL RULES:\n"
+    "1. Analyze ONLY the specific period provided. Do NOT reference other time periods.\n"
+    "2. Focus on the relationship between monetary policy (overnight rate) and unemployment.\n"
+    "3. Every claim must be directly supported by the numbers above. No invented trends.\n\n"
+    "Write exactly this structure, separated by the marker [MORE]:\n"
+    "You MUST include the exact marker [MORE] on its own line between the two sections. "
+    "This is required for rendering. Do not skip it, do not paraphrase it. "
+    "Write exactly: [MORE]\n"
+    "BEFORE [MORE]: One punchy sentence capturing the real story of monetary policy vs unemployment in THIS period. "
+    "Then on a new line write: → followed by one brutal specific implication for Canadian workers based on THIS data.\n"
+    "AFTER [MORE]: Two more paragraphs going deeper. "
+    "When the Bank of Canada raised or cut rates, what happened to unemployment and with what lag? "
+    "Who bore the cost of tighter monetary policy? "
+    "Ground everything only in the numbers provided.\n\n"
+    "Rules: No bullet points. No em-dashes. No hedging. "
+    "Use specific numbers. Plain text only. "
+    "Write like you are briefing a smart busy executive who has zero patience for corporate speak."
+)
+
 _PROMPT_TEMPLATE_MULTI = (
     "You are a sharp, opinionated Canadian labour market economist. "
     "You don't hedge, you don't repeat the obvious, you always find the angle nobody else is talking about.\n\n"
@@ -166,6 +189,46 @@ def _build_gap_summary(conn: Connection, geo: str, extra: str, year_from: int, y
     return summary
 
 
+def _build_macro_summary(conn: Connection, year_from: int, year_to: int) -> str:
+    rate_rows = conn.execute(text("""
+        SELECT TO_CHAR(ref_date, 'YYYY-MM') AS month, value
+        FROM bank_of_canada_indicators
+        WHERE series = 'overnight_rate'
+        AND EXTRACT(YEAR FROM ref_date) BETWEEN :year_from AND :year_to
+        ORDER BY ref_date
+    """).bindparams(year_from=year_from, year_to=year_to)).fetchall()
+
+    unemp_rows = conn.execute(text("""
+        SELECT TO_CHAR(ref_date, 'YYYY-MM') AS month, value
+        FROM unemployment_monthly
+        WHERE geography = 'Canada'
+        AND EXTRACT(YEAR FROM ref_date) BETWEEN :year_from AND :year_to
+        ORDER BY ref_date
+    """).bindparams(year_from=year_from, year_to=year_to)).fetchall()
+
+    if not rate_rows:
+        raise HTTPException(status_code=404, detail="No overnight rate data found for the given period.")
+
+    summary = f"Bank of Canada monetary policy vs unemployment — {year_from} to {year_to}:\n\n"
+    summary += "Overnight Rate (%):\n"
+    summary += f"Start: {rate_rows[0][1]}% ({rate_rows[0][0]})\n"
+    summary += f"End: {rate_rows[-1][1]}% ({rate_rows[-1][0]})\n"
+    summary += f"Peak: {max(float(r[1]) for r in rate_rows)}%\n"
+    summary += f"Low: {min(float(r[1]) for r in rate_rows)}%\n"
+    summary += f"Change: {round(float(rate_rows[-1][1]) - float(rate_rows[0][1]), 2)} percentage points\n"
+    summary += "Monthly: " + ", ".join(f"{r[0]}:{r[1]}%" for r in rate_rows) + "\n\n"
+
+    if unemp_rows:
+        summary += "Canada Unemployment Rate (%):\n"
+        summary += f"Start: {unemp_rows[0][1]}% ({unemp_rows[0][0]})\n"
+        summary += f"End: {unemp_rows[-1][1]}% ({unemp_rows[-1][0]})\n"
+        summary += f"Peak: {max(float(r[1]) for r in unemp_rows)}%\n"
+        summary += f"Low: {min(float(r[1]) for r in unemp_rows)}%\n"
+        summary += f"Change: {round(float(unemp_rows[-1][1]) - float(unemp_rows[0][1]), 1)} percentage points\n"
+
+    return summary
+
+
 def _build_industry_summary(conn: Connection, geo: str, year_from: int, year_to: int) -> str:
     rows = conn.execute(text("""
         WITH base AS (
@@ -228,6 +291,8 @@ async def get_insights(
                 data_summary = _build_gap_summary(conn, geo_list[0], extra, year_from, year_to)
             elif chart == "industry":
                 data_summary = _build_industry_summary(conn, geo_list[0], year_from, year_to)
+            elif chart == "macro":
+                data_summary = _build_macro_summary(conn, year_from, year_to)
             else:
                 raise HTTPException(status_code=400, detail=f"Unknown chart type '{chart}'.")
     except HTTPException:
@@ -235,7 +300,12 @@ async def get_insights(
     except Exception:
         raise HTTPException(status_code=500, detail="Database error generating insight data.")
 
-    prompt = _PROMPT_TEMPLATE_MULTI if len(geo_list) > 1 else _PROMPT_TEMPLATE
+    if chart == "macro":
+        prompt = _PROMPT_TEMPLATE_MACRO
+    elif len(geo_list) > 1:
+        prompt = _PROMPT_TEMPLATE_MULTI
+    else:
+        prompt = _PROMPT_TEMPLATE
 
     try:
         message = anthropic_client.messages.create(

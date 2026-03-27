@@ -36,7 +36,7 @@ export function Header({ onFilterProvince }: HeaderProps) {
         </p>
       )}
 
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
         {/* Canada Unemployment */}
         <button
           type="button"
@@ -122,6 +122,26 @@ export function Header({ onFilterProvince }: HeaderProps) {
             {loading ? '—' : error ? 'N/A' : jobsLabel}
           </p>
           <p className="mt-1 font-mono text-xs text-[#8892a4]">Month-over-month net jobs</p>
+        </div>
+
+        {/* Inflation (CPI YoY) */}
+        <div className="rounded-lg border border-[#1e2d45] bg-[#161b27] p-4">
+          <p className="font-mono text-xs uppercase tracking-widest text-[#8892a4]">
+            Inflation (CPI)
+          </p>
+          <p
+            className="mt-1 font-bold text-3xl text-[#a78bfa]"
+            style={{ fontFamily: 'Syne, sans-serif' }}
+          >
+            {loading
+              ? '—'
+              : error
+              ? 'N/A'
+              : data!.cpi_yoy !== null
+              ? `${data!.cpi_yoy > 0 ? '+' : ''}${data!.cpi_yoy.toFixed(1)}%`
+              : '—'}
+          </p>
+          <p className="mt-1 font-mono text-xs text-[#8892a4]">Year-over-year</p>
         </div>
       </div>
     </header>

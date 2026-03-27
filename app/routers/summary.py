@@ -100,6 +100,27 @@ async def get_summary(request: Request):
         float(delta_rows[0][0]) if delta_rows and delta_rows[0][0] is not None else None
     )
 
+    cpi_yoy_query = text("""
+        WITH ordered AS (
+            SELECT ref_date, value,
+                   LAG(value, 12) OVER (ORDER BY ref_date) AS prev_year_value
+            FROM bank_of_canada_indicators
+            WHERE series = 'cpi'
+        )
+        SELECT ROUND(((value - prev_year_value) / prev_year_value * 100)::numeric, 1)
+        FROM ordered
+        WHERE prev_year_value IS NOT NULL
+        ORDER BY ref_date DESC
+        LIMIT 1
+    """)
+
+    cpi_yoy = None
+    try:
+        cpi_rows = run_query(cpi_yoy_query, "bank_of_canada_indicators unavailable")
+        cpi_yoy = float(cpi_rows[0][0]) if cpi_rows and cpi_rows[0][0] is not None else None
+    except HTTPException:
+        pass
+
     row = rows[0]
     return {
         "most_recent_month": row[0],
@@ -107,6 +128,7 @@ async def get_summary(request: Request):
         "employment_rate": employment_rate,
         "participation_rate": participation_rate,
         "monthly_delta": monthly_delta,
+        "cpi_yoy": cpi_yoy,
         "worst_province": {"name": row[2], "rate": float(row[3])},
         "jobs_lost": jobs_lost,
     }

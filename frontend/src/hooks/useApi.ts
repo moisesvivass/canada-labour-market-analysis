@@ -8,10 +8,10 @@ interface ApiState<T> {
   error: string | null;
 }
 
-export function useApi<T>(path: string, params?: Record<string, string>) {
+export function useApi<T>(path: string, params?: Record<string, string>, skip = false) {
   const [state, setState] = useState<ApiState<T>>({
     data: null,
-    loading: true,
+    loading: !skip,
     error: null,
   });
 
@@ -26,6 +26,11 @@ export function useApi<T>(path: string, params?: Record<string, string>) {
   }, [path, params]);
 
   useEffect(() => {
+    if (skip) {
+      setState({ data: null, loading: false, error: null });
+      return;
+    }
+
     let cancelled = false;
     setState((prev) => ({ ...prev, loading: true, error: null }));
 
@@ -47,7 +52,7 @@ export function useApi<T>(path: string, params?: Record<string, string>) {
     return () => {
       cancelled = true;
     };
-  }, [buildUrl]);
+  }, [buildUrl, skip]);
 
   return state;
 }

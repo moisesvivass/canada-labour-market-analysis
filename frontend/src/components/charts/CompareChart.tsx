@@ -84,6 +84,7 @@ export function CompareChart() {
           id="cmp-geo"
           value={geo}
           onChange={(e) => setGeo(e.target.value)}
+          className="w-auto min-w-[180px]"
         >
           {PROVINCE_LIST.map((p) => (
             <option key={p} value={p}>
@@ -109,7 +110,7 @@ export function CompareChart() {
         )}
       </div>
 
-      <AIInsight chart="compare" geo={geo} yearFrom={yearA} yearTo={yearB} />
+      <AIInsight chart="compare" geos={geo} yearFrom={yearA} yearTo={yearB} />
     </section>
   );
 }

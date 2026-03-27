@@ -14,7 +14,7 @@ interface UnemploymentChartProps {
 }
 
 export function UnemploymentChart({ highlightProvince }: UnemploymentChartProps) {
-  const [yearFrom, setYearFrom] = useState('2019');
+  const [yearFrom, setYearFrom] = useState('2020');
   const [yearTo, setYearTo] = useState('2026');
   const [selected, setSelected] = useState<string[]>(
     highlightProvince ? [highlightProvince] : []
@@ -35,7 +35,8 @@ export function UnemploymentChart({ highlightProvince }: UnemploymentChartProps)
 
   const { data, loading, error } = useApi<UnemploymentResponse>(
     '/api/unemployment',
-    params
+    params,
+    selected.length === 0
   );
 
   const toggleProvince = (prov: string) => {
@@ -49,7 +50,9 @@ export function UnemploymentChart({ highlightProvince }: UnemploymentChartProps)
 
   const chartData = useMemo(() => {
     if (!data) return { labels: [], datasets: [] };
-    const geos = Object.keys(data).filter((k) => k !== 'labels');
+    const geos = Object.keys(data)
+      .filter((k) => k !== 'labels')
+      .filter((k) => selected.includes(k));
     return {
       labels: data.labels as string[],
       datasets: geos.map((geo) => ({
@@ -63,7 +66,7 @@ export function UnemploymentChart({ highlightProvince }: UnemploymentChartProps)
         tension: 0.3,
       })),
     };
-  }, [data]);
+  }, [data, selected]);
 
   const annotations = useMemo(() => {
     if (!data?.labels) return {};
@@ -100,6 +103,7 @@ export function UnemploymentChart({ highlightProvince }: UnemploymentChartProps)
       ...base,
       plugins: {
         ...base.plugins,
+        legend: { display: false },
         annotation: { annotations },
       },
     };
@@ -178,24 +182,29 @@ export function UnemploymentChart({ highlightProvince }: UnemploymentChartProps)
       </div>
 
       <div className="relative h-72">
-        {loading && (
+        {selected.length === 0 && (
+          <div className="absolute inset-0 flex items-center justify-center font-mono text-sm text-[#8892a4]">
+            Select a province above to begin
+          </div>
+        )}
+        {selected.length > 0 && loading && (
           <div className="absolute inset-0 flex items-center justify-center font-mono text-sm text-[#8892a4]">
             Loading…
           </div>
         )}
-        {error && (
+        {selected.length > 0 && error && (
           <div className="absolute inset-0 flex items-center justify-center font-mono text-sm text-red-400">
             Error: {error}
           </div>
         )}
-        {!loading && !error && (
+        {selected.length > 0 && !loading && !error && (
           <Line data={chartData} options={options} />
         )}
       </div>
 
       <AIInsight
         chart="unemployment"
-        geo={selected[0] ?? 'Canada'}
+        geos={selected.join(',') || 'Canada'}
         yearFrom={yearFrom}
         yearTo={yearTo}
       />

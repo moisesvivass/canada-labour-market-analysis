@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 from fastapi import APIRouter, HTTPException, Query, Request
 from sqlalchemy import text
 from sqlalchemy.engine import Connection
@@ -15,6 +17,9 @@ _PROMPT_TEMPLATE = (
     "2. Every claim must be directly supported by the numbers above. No invented trends.\n"
     "3. If the data only covers a short period, say what you can honestly say about that period only.\n\n"
     "Write exactly this structure, separated by the marker [MORE]:\n"
+    "You MUST include the exact marker [MORE] on its own line between the two sections. "
+    "This is required for rendering. Do not skip it, do not paraphrase it. "
+    "Write exactly: [MORE]\n"
     "BEFORE [MORE]: One punchy sentence capturing the real story of THIS specific period. "
     "Then on a new line write: → followed by one brutal specific implication for Canadian workers based on THIS data.\n"
     "AFTER [MORE]: Two more paragraphs going deeper into THIS period only. "
@@ -24,27 +29,80 @@ _PROMPT_TEMPLATE = (
     "Write like you are briefing a smart busy executive who has zero patience for corporate speak."
 )
 
+_PROMPT_TEMPLATE_MULTI = (
+    "You are a sharp, opinionated Canadian labour market economist. "
+    "You don't hedge, you don't repeat the obvious, you always find the angle nobody else is talking about.\n\n"
+    "Data:\n{data_summary}\n\n"
+    "CRITICAL RULES:\n"
+    "1. Analyze ONLY the specific period and provinces provided above. Do NOT reference any other time periods.\n"
+    "2. Every claim must be directly supported by the numbers above. No invented trends.\n"
+    "3. Use specific numbers from each province — do not generalize.\n\n"
+    "Write exactly this structure, separated by the marker [MORE]:\n"
+    "You MUST include the exact marker [MORE] on its own line between the two sections. "
+    "This is required for rendering. Do not skip it, do not paraphrase it. "
+    "Write exactly: [MORE]\n"
+    "BEFORE [MORE]: One punchy sentence capturing the key divergence across these provinces in THIS period. "
+    "Then on a new line write: → followed by one brutal implication for workers in the worst-performing province.\n"
+    "AFTER [MORE]: Two more paragraphs going deeper. "
+    "Which province had the worst and best outcome and why. "
+    "What the divergence reveals about regional labour market dynamics. "
+    "Give specific implications for workers in each region based only on what the data shows.\n\n"
+    "Rules: No bullet points. No em-dashes. No hedging. "
+    "Use specific numbers from each province. Plain text only. "
+    "Write like you are briefing a smart busy executive who has zero patience for corporate speak."
+)
 
-def _build_unemployment_summary(conn: Connection, geo: str, year_from: int, year_to: int) -> str:
-    rows = conn.execute(text("""
+
+def _build_unemployment_summary(conn: Connection, geos: list[str], year_from: int, year_to: int) -> str:
+    placeholders = ', '.join(f':geo_{i}' for i in range(len(geos)))
+    params: dict = {f'geo_{i}': g for i, g in enumerate(geos)}
+    params['year_from'] = year_from
+    params['year_to'] = year_to
+
+    rows = conn.execute(text(f"""
         SELECT geography, TO_CHAR(ref_date, 'YYYY-MM') as month, value
         FROM unemployment_monthly
-        WHERE geography = :geo
+        WHERE geography IN ({placeholders})
         AND EXTRACT(YEAR FROM ref_date) BETWEEN :year_from AND :year_to
-        ORDER BY ref_date
-    """).bindparams(geo=geo, year_from=year_from, year_to=year_to)).fetchall()
+        ORDER BY geography, ref_date
+    """), params).fetchall()
 
     if not rows:
         raise HTTPException(status_code=404, detail="No data found for the given parameters.")
 
-    summary = f"Unemployment rate for {geo} — ONLY the period {year_from} to {year_to}:\n"
-    summary += f"Start: {rows[0][2]}% ({rows[0][1]})\n"
-    summary += f"End: {rows[-1][2]}% ({rows[-1][1]})\n"
-    summary += f"Peak: {max(r[2] for r in rows)}%\n"
-    summary += f"Low: {min(r[2] for r in rows)}%\n"
-    summary += f"Total change: {round(rows[-1][2] - rows[0][2], 1)} percentage points\n"
-    summary += f"Number of months analyzed: {len(rows)}\n"
-    summary += "Monthly data: " + ", ".join([f"{r[1]}:{r[2]}%" for r in rows])
+    if len(geos) == 1:
+        geo = geos[0]
+        geo_rows = rows
+        summary = f"Unemployment rate for {geo} — ONLY the period {year_from} to {year_to}:\n"
+        summary += f"Start: {geo_rows[0][2]}% ({geo_rows[0][1]})\n"
+        summary += f"End: {geo_rows[-1][2]}% ({geo_rows[-1][1]})\n"
+        summary += f"Peak: {max(r[2] for r in geo_rows)}%\n"
+        summary += f"Low: {min(r[2] for r in geo_rows)}%\n"
+        summary += f"Total change: {round(geo_rows[-1][2] - geo_rows[0][2], 1)} percentage points\n"
+        summary += f"Number of months analyzed: {len(geo_rows)}\n"
+        summary += "Monthly data: " + ", ".join(f"{r[1]}:{r[2]}%" for r in geo_rows)
+        return summary
+
+    # Multi-province comparative summary
+    geo_data: dict[str, list] = defaultdict(list)
+    for row in rows:
+        geo_data[row[0]].append(row)
+
+    summary = (
+        f"Comparative unemployment rates — {len(geos)} provinces "
+        f"— ONLY {year_from} to {year_to}:\n"
+        f"Provinces compared: {', '.join(geos)}\n\n"
+    )
+    for geo in geos:
+        geo_rows = geo_data.get(geo, [])
+        if not geo_rows:
+            continue
+        summary += f"--- {geo} ---\n"
+        summary += f"Start: {geo_rows[0][2]}% ({geo_rows[0][1]})\n"
+        summary += f"End: {geo_rows[-1][2]}% ({geo_rows[-1][1]})\n"
+        summary += f"Peak: {max(r[2] for r in geo_rows)}%\n"
+        summary += f"Low: {min(r[2] for r in geo_rows)}%\n"
+        summary += f"Total change: {round(geo_rows[-1][2] - geo_rows[0][2], 1)} pts\n\n"
     return summary
 
 
@@ -146,22 +204,30 @@ async def get_insights(
     request: Request,
     chart: str = Query(...),
     geo: str = Query(default="Canada"),
+    geos: str = Query(default=""),
     year_from: int = Query(default=2020),
     year_to: int = Query(default=2026),
     extra: str = Query(default="")
 ):
-    validate_geo(geo)
+    # geos takes priority over geo when present
+    if geos:
+        geo_list = [g.strip() for g in geos.split(',') if g.strip()]
+        for g in geo_list:
+            validate_geo(g)
+    else:
+        validate_geo(geo)
+        geo_list = [geo]
 
     try:
         with engine.connect() as conn:
             if chart == "unemployment":
-                data_summary = _build_unemployment_summary(conn, geo, year_from, year_to)
+                data_summary = _build_unemployment_summary(conn, geo_list, year_from, year_to)
             elif chart == "compare":
-                data_summary = _build_compare_summary(conn, geo, extra)
+                data_summary = _build_compare_summary(conn, geo_list[0], extra)
             elif chart == "gap":
-                data_summary = _build_gap_summary(conn, geo, extra, year_from, year_to)
+                data_summary = _build_gap_summary(conn, geo_list[0], extra, year_from, year_to)
             elif chart == "industry":
-                data_summary = _build_industry_summary(conn, geo, year_from, year_to)
+                data_summary = _build_industry_summary(conn, geo_list[0], year_from, year_to)
             else:
                 raise HTTPException(status_code=400, detail=f"Unknown chart type '{chart}'.")
     except HTTPException:
@@ -169,13 +235,20 @@ async def get_insights(
     except Exception:
         raise HTTPException(status_code=500, detail="Database error generating insight data.")
 
+    prompt = _PROMPT_TEMPLATE_MULTI if len(geo_list) > 1 else _PROMPT_TEMPLATE
+
     try:
         message = anthropic_client.messages.create(
             model="claude-haiku-4-5-20251001",
-            max_tokens=500,
-            messages=[{"role": "user", "content": _PROMPT_TEMPLATE.format(data_summary=data_summary)}]
+            max_tokens=1024,
+            messages=[{"role": "user", "content": prompt.format(data_summary=data_summary)}]
         )
     except Exception:
         raise HTTPException(status_code=502, detail="Error calling AI service. Please try again.")
 
-    return {"insight": message.content[0].text}
+    text = message.content[0].text
+    if '[MORE]' not in text:
+        parts = text.split('\n\n', 1)
+        if len(parts) == 2:
+            text = parts[0] + '\n\n[MORE]\n\n' + parts[1]
+    return {"insight": text}

@@ -114,7 +114,7 @@ export function IndustryChart() {
         )}
       </div>
 
-      <AIInsight chart="industry" geo={geo} yearFrom={yearFrom} yearTo={yearTo} />
+      <AIInsight chart="industry" geos={geo} yearFrom={yearFrom} yearTo={yearTo} />
     </section>
   );
 }

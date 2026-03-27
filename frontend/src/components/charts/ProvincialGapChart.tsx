@@ -143,7 +143,7 @@ export function ProvincialGapChart() {
         )}
       </div>
 
-      <AIInsight chart="gap" geo={geoA} yearFrom={yearFrom} yearTo={yearTo} />
+      <AIInsight chart="gap" geos={geoA} yearFrom={yearFrom} yearTo={yearTo} />
     </section>
   );
 }

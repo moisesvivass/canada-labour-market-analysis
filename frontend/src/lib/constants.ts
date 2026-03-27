@@ -3,17 +3,17 @@ const YEAR_END = new Date().getFullYear();
 export const YEARS = Array.from({ length: YEAR_END - YEAR_START + 1 }, (_, i) => String(YEAR_START + i));
 
 export const PROVINCE_COLORS: Record<string, string> = {
-  Canada: '#4f8ef7',
-  Ontario: '#f59e0b',
-  Alberta: '#10b981',
-  Quebec: '#e879f9',
-  'British Columbia': '#06b6d4',
-  Manitoba: '#f97316',
-  Saskatchewan: '#84cc16',
-  'Nova Scotia': '#a78bfa',
-  'New Brunswick': '#fb7185',
-  'Newfoundland and Labrador': '#34d399',
-  'Prince Edward Island': '#fbbf24',
+  Canada: '#4f8ef7',                       // blue — national anchor
+  Ontario: '#f59e0b',                      // amber
+  Quebec: '#e879f9',                       // magenta
+  'British Columbia': '#06b6d4',           // cyan
+  Alberta: '#10b981',                      // emerald green
+  Manitoba: '#f97316',                     // orange
+  Saskatchewan: '#facc15',                 // yellow
+  'Nova Scotia': '#a78bfa',               // purple
+  'New Brunswick': '#fb7185',             // pink/rose
+  'Newfoundland and Labrador': '#ef4444', // red
+  'Prince Edward Island': '#ffffff',      // white
 };
 
 export const PROVINCE_LIST = [

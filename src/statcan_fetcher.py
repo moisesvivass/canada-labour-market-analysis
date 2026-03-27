@@ -15,7 +15,7 @@ ALL_PROVINCES = [
     'Newfoundland and Labrador', 'Prince Edward Island'
 ]
 START_DATE = '2020-01'
-STATCAN_DOWNLOAD_URL = "https://www150.statcan.gc.ca/t1/tbl1/en/dtbl/downloadCSV/{table_id}"
+STATCAN_DOWNLOAD_URL = "https://www150.statcan.gc.ca/n1/tbl/csv/{table_id}-eng.zip"
 
 TARGET_INDUSTRIES = [
     'Total employed, all industries',
@@ -39,7 +39,7 @@ def _download_statcan_csv(table_id: str) -> pd.DataFrame:
     response = requests.get(url, timeout=(10, 120))
     response.raise_for_status()
     with zipfile.ZipFile(io.BytesIO(response.content)) as z:
-        with z.open(f"{table_id}.csv") as f:
+        with z.open(f"{table_id}-eng.csv") as f:
             df = pd.read_csv(f)
     logger.info("Downloaded %d rows for table %s", len(df), table_id)
     return df

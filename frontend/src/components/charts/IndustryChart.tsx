@@ -51,7 +51,7 @@ export function IndustryChart() {
   const options = useMemo(() => baseBarOptions(), []);
 
   return (
-    <section className="rounded-lg border border-[#1e2d45] bg-[#161b27] p-5">
+    <section className="relative rounded-lg border border-[#1e2d45] bg-[#161b27] p-5">
       <h2
         className="mb-4 text-lg font-bold text-[#e8edf5]"
         style={{ fontFamily: 'Syne, sans-serif' }}
@@ -114,7 +114,7 @@ export function IndustryChart() {
         )}
       </div>
 
-      <AIInsight chart="industries" geo={geo} yearFrom={yearFrom} yearTo={yearTo} />
+      <AIInsight chart="industry" geo={geo} yearFrom={yearFrom} yearTo={yearTo} />
     </section>
   );
 }

@@ -46,7 +46,7 @@ export function CompareChart() {
   const options = useMemo(() => baseLineOptions(), []);
 
   return (
-    <section className="rounded-lg border border-[#1e2d45] bg-[#161b27] p-5">
+    <section className="relative rounded-lg border border-[#1e2d45] bg-[#161b27] p-5">
       <h2
         className="mb-4 text-lg font-bold text-[#e8edf5]"
         style={{ fontFamily: 'Syne, sans-serif' }}

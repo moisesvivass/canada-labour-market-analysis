@@ -1,5 +1,5 @@
-const YEAR_START = 2006;
-const YEAR_END = 2026;
+const YEAR_START = 2020;
+const YEAR_END = new Date().getFullYear();
 export const YEARS = Array.from({ length: YEAR_END - YEAR_START + 1 }, (_, i) => String(YEAR_START + i));
 
 export const PROVINCE_COLORS: Record<string, string> = {

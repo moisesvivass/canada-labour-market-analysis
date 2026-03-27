@@ -35,6 +35,7 @@ export function baseLineOptions(yLabel = 'Rate (%)'): ChartOptions<'line'> {
         titleFont: { family: FONT_MONO },
         bodyFont: { family: FONT_MONO, size: 12 },
         padding: 10,
+        itemSort: (a, b) => (b.parsed.y as number) - (a.parsed.y as number),
         callbacks: {
           label: (ctx) => ` ${(ctx.parsed.y as number).toFixed(1)}%`,
         },

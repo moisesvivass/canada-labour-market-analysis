@@ -1,5 +1,5 @@
 import '@/lib/chartSetup';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import { useApi } from '@/hooks/useApi';
 import type { UnemploymentResponse } from '@/types/api';
@@ -17,8 +17,12 @@ export function UnemploymentChart({ highlightProvince }: UnemploymentChartProps)
   const [yearFrom, setYearFrom] = useState('2019');
   const [yearTo, setYearTo] = useState('2026');
   const [selected, setSelected] = useState<string[]>(
-    highlightProvince ? [highlightProvince] : ['Canada', 'Ontario', 'Alberta']
+    highlightProvince ? [highlightProvince] : []
   );
+
+  useEffect(() => {
+    if (highlightProvince) setSelected([highlightProvince]);
+  }, [highlightProvince]);
 
   const params = useMemo(
     () => ({
@@ -102,7 +106,7 @@ export function UnemploymentChart({ highlightProvince }: UnemploymentChartProps)
   }, [annotations]);
 
   return (
-    <section className="rounded-lg border border-[#1e2d45] bg-[#161b27] p-5">
+    <section className="relative rounded-lg border border-[#1e2d45] bg-[#161b27] p-5">
       <h2
         className="mb-4 text-lg font-bold text-[#e8edf5]"
         style={{ fontFamily: 'Syne, sans-serif' }}

@@ -39,7 +39,12 @@ def _download_statcan_csv(table_id: str) -> pd.DataFrame:
     response = requests.get(url, timeout=(10, 120))
     response.raise_for_status()
     with zipfile.ZipFile(io.BytesIO(response.content)) as z:
-        with z.open(f"{table_id}-eng.csv") as f:
+        csv_files = [name for name in z.namelist() if name.endswith('.csv')]
+        if not csv_files:
+            raise ValueError(f"No CSV found in ZIP for table {table_id}")
+        csv_filename = csv_files[0]
+        logger.info("Found CSV in ZIP: %s", csv_filename)
+        with z.open(csv_filename) as f:
             df = pd.read_csv(f)
     logger.info("Downloaded %d rows for table %s", len(df), table_id)
     return df

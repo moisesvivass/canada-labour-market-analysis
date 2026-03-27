@@ -102,8 +102,9 @@ export function MacroChart() {
           titleFont: { family: FONT_MONO },
           bodyFont: { family: FONT_MONO, size: 12 },
           padding: 10,
+          itemSort: (a, b) => (b.parsed?.y ?? 0) - (a.parsed?.y ?? 0),
           callbacks: {
-            label: (ctx) => ` ${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)}%`,
+            label: (ctx) => ` ${ctx.dataset.label}: ${(ctx.parsed?.y ?? 0).toFixed(2)}%`,
           },
         },
       },

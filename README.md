@@ -1,4 +1,4 @@
-# Canada Labour Market Analysis (2020–2026)
+# Canada Labour Market & Macro Dashboard (2020–2026)
 
 [![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115-green?logo=fastapi)](https://fastapi.tiangolo.com)
@@ -7,7 +7,7 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-analytics-blue?logo=postgresql)](https://postgresql.org)
 [![Claude AI](https://img.shields.io/badge/Claude-Haiku-orange)](https://anthropic.com)
 
-Interactive dashboard tracking Canada's labour market trends (2020–2026). ETL pipeline from Statistics Canada, REST API with FastAPI, React + TypeScript frontend, deployed on Railway and Vercel.
+Interactive dashboard tracking Canada's labour market and macroeconomic trends (2020–2026). Automated ETL pipelines from Statistics Canada and the Bank of Canada, REST API with FastAPI, React + TypeScript frontend, deployed on Railway and Vercel.
 
 ## 🚀 Live
 
@@ -15,27 +15,50 @@ Interactive dashboard tracking Canada's labour market trends (2020–2026). ETL 
 |---|---|
 | 📊 Frontend | [canada-labour-market-analysis.vercel.app](https://canada-labour-market-analysis.vercel.app) |
 | 🔌 Backend API | [web-production-6f4de.up.railway.app](https://web-production-6f4de.up.railway.app) |
-| 🤖 AI Insights | Powered by Claude Haiku — click "Analyze" on any chart |
-| 📅 Data updated | Automatically every 1st of the month via Statistics Canada API |
+| 🤖 AI Insights | Powered by Claude Haiku — multi-province comparative analysis per chart |
+| 📅 Data updated | Automatically — StatCan on the 1st, Bank of Canada on the 2nd of each month |
 
-**The problem:** Canada's labour market data is publicly available but scattered across Statistics Canada tables, making it hard to quickly understand employment trends by province or industry.
+**The problem:** Canada's labour market and macroeconomic data is publicly available but scattered across Statistics Canada and Bank of Canada sources, making it hard to quickly understand employment trends, monetary policy impact, and regional differences.
 
-**What this solves:** An end-to-end pipeline that ingests official Statistics Canada data, loads it into PostgreSQL, and surfaces the answers through an interactive React dashboard with AI-generated insights per chart.
+**What this solves:** End-to-end automated pipelines that ingest official data from Statistics Canada and the Bank of Canada Valet API, load it into PostgreSQL, and surface the answers through an interactive React dashboard with AI-generated insights per chart.
 
 ## 📊 What This Project Does
 
-- **ETL Pipeline:** Extracts raw CSV data from Statistics Canada (tables 14100287 and 14100355), transforms and filters it with Pandas, and loads it into PostgreSQL. Automatic monthly scheduler via APScheduler fetches live data from the StatCan API on the 1st of every month
-- **REST API:** FastAPI backend with APIRouter — 5 routers covering unemployment, industries, summary, insights, and admin endpoints
-- **React Dashboard:** React 18 + TypeScript + Vite 5 + Tailwind CSS v4 + shadcn/ui — 4 interactive charts with province/industry filters
-- **AI Insights:** Claude Haiku generates contextual analysis per chart on demand
-- **Integration Tests:** 14 tests with pytest + httpx covering all API endpoints
+- **ETL Pipelines:** Two automated pipelines — one for Statistics Canada (tables 14100287 and 14100355), one for the Bank of Canada Valet API (overnight rate + CPI). Both run automatically on a monthly schedule via APScheduler.
+- **REST API:** FastAPI backend with APIRouter — 7 routers covering unemployment, industries, labour indicators, macro, summary, insights, and admin endpoints
+- **React Dashboard:** React 18 + TypeScript + Vite 5 + Tailwind CSS v4 + shadcn/ui — 5 interactive charts with province/industry filters and 6 real-time KPI cards
+- **AI Insights:** Claude Haiku generates contextual analysis per chart on demand — supports multi-province comparative analysis and monetary policy context
+- **Integration Tests:** 18 tests with pytest + httpx covering all API endpoints
+
+## 📈 Dashboard KPIs
+
+| Card | Description |
+|---|---|
+| Canada Unemployment | Latest national unemployment rate with month-over-month delta |
+| Employment Rate | Share of population aged 15+ currently employed |
+| Participation Rate | Share of population employed or actively seeking work |
+| Highest Province | Province with the highest current unemployment rate |
+| Jobs Change | Month-over-month net job change across Canada |
+| Inflation (CPI YoY) | Year-over-year consumer price index change |
+
+## 📉 Charts
+
+| Chart | Description |
+|---|---|
+| Unemployment Rate Trend | Monthly unemployment by province (2020–2026), multi-province selection |
+| Year-over-Year Comparison | Compare unemployment rates across two years for any province |
+| Provincial Gap | Track the unemployment gap between any two provinces over time |
+| Industry Winners & Losers | Employment % change by industry between two selected years |
+| Interest Rate vs Unemployment | Bank of Canada overnight rate overlaid with unemployment rate — dual Y-axis |
 
 ## 🗂️ Data Sources
 
-| Table | Description |
-|---|---|
-| `14100287` | Monthly unemployment rate by province |
-| `14100355` | Monthly employment by industry (NAICS classification) |
+| Source | Table / Series | Description |
+|---|---|---|
+| Statistics Canada | `14100287` | Monthly unemployment, employment, and participation rates by province |
+| Statistics Canada | `14100355` | Monthly employment by industry (NAICS classification) |
+| Bank of Canada Valet API | `V39079` | Target overnight rate (policy interest rate) |
+| Bank of Canada Valet API | `STATIC_INFLATIONCALC` | Total Consumer Price Index (CPI) |
 
 Data is seasonally adjusted and covers 11 Canadian provinces from January 2020 onward.
 
@@ -50,45 +73,47 @@ Data is seasonally adjusted and covers 11 Canadian provinces from January 2020 o
 | Scheduler | APScheduler |
 | Frontend | React 18 + TypeScript + Vite 5 |
 | Styling | Tailwind CSS v4 + shadcn/ui |
-| AI Insights | Claude Haiku (Anthropic) |
-| Tests | pytest + httpx |
+| AI Insights | Claude Haiku (Anthropic), max_tokens=1024 |
+| Tests | pytest + httpx, 18 integration tests |
 | Deploy | Railway (backend) + Vercel (frontend) |
 
 ## 📁 Project Structure
 ```
 canada-labour-market-analysis/
 ├── app/
-│   ├── main.py                 # FastAPI app entry point
-│   ├── dependencies.py         # Shared DB dependencies
+│   ├── main.py                 # FastAPI entry point, CORS, scheduler, rate limiter
+│   ├── dependencies.py         # DB engine, Anthropic client, validators
 │   └── routers/
-│       ├── admin.py            # Manual refresh endpoint
+│       ├── admin.py            # Manual refresh endpoint (StatCan + BoC)
 │       ├── industries.py       # Employment by industry
-│       ├── insights.py         # Claude AI insights
-│       ├── summary.py          # Summary stats
+│       ├── insights.py         # Claude AI insights — multi-province + macro
+│       ├── labour_indicators.py # Employment rate + participation rate
+│       ├── macro.py            # Overnight rate + CPI endpoints
+│       ├── summary.py          # KPI cards — all 6 indicators
 │       └── unemployment.py     # Unemployment by province
 ├── frontend/
 │   └── src/
 │       ├── App.tsx
 │       ├── components/
-│       │   ├── AIInsight.tsx
-│       │   ├── Header.tsx
+│       │   ├── AIInsight.tsx   # Shared AI panel — split on [MORE], Read more/Show less
+│       │   ├── Header.tsx      # 6 KPI cards with delta indicators
 │       │   └── charts/
 │       │       ├── CompareChart.tsx
 │       │       ├── IndustryChart.tsx
+│       │       ├── MacroChart.tsx
 │       │       ├── ProvincialGapChart.tsx
 │       │       └── UnemploymentChart.tsx
 │       ├── hooks/useApi.ts
-│       ├── lib/                # chartConfig, chartSetup, constants, utils
+│       ├── lib/                # chartConfig, constants, utils
 │       └── types/api.ts
 ├── src/
-│   └── statcan_fetcher.py      # Live StatCan API fetcher + APScheduler
+│   ├── statcan_fetcher.py      # StatCan ETL + APScheduler (day 1)
+│   └── boc_fetcher.py          # Bank of Canada Valet API + APScheduler (day 2)
 ├── scripts/
-│   └── manual_etl.py           # One-time ETL for initial data load
+│   └── manual_etl.py           # Manual ETL for local data load
 ├── tests/
 │   ├── conftest.py
-│   └── test_api.py             # 14 integration tests
-├── data/raw/                   # Original StatCan CSV files
-├── notebooks/                  # Exploratory analysis
+│   └── test_api.py             # 18 integration tests
 ├── .env.example
 ├── requirements.txt
 ├── Procfile
@@ -123,13 +148,13 @@ REFRESH_SECRET=change-me-to-a-strong-random-string
 
 # Comma-separated list of allowed CORS origins
 # Local dev: http://localhost:5173
-# Production: https://your-app.onrender.com
+# Production: https://canada-labour-market-analysis.vercel.app
 CORS_ORIGINS=http://localhost:5173
 ```
 
 Run the ETL to load initial data:
 ```bash
-python scripts/manual_etl.py
+python -m scripts.manual_etl
 ```
 
 Start the API:
@@ -151,11 +176,11 @@ The frontend expects the backend running at `http://localhost:8000`. To point it
 pytest tests/ -v
 ```
 
-14 integration tests covering all routers — unemployment, industries, summary, insights, and admin endpoints.
+18 integration tests covering all routers — unemployment, industries, labour indicators, macro, summary, insights, and admin endpoints.
 
 ## 🔄 Manual Data Refresh
 
-To trigger an immediate data refresh from the StatCan API:
+To trigger an immediate data refresh from both StatCan and Bank of Canada APIs:
 ```bash
 curl -X POST https://web-production-6f4de.up.railway.app/api/admin/refresh \
   -H "x-refresh-secret: YOUR_REFRESH_SECRET"

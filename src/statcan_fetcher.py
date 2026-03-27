@@ -36,7 +36,7 @@ _refresh_lock = threading.Lock()
 def _download_statcan_csv(table_id: str) -> pd.DataFrame:
     url = STATCAN_DOWNLOAD_URL.format(table_id=table_id)
     logger.info("Downloading StatCan table %s...", table_id)
-    response = requests.get(url, timeout=120)
+    response = requests.get(url, timeout=(10, 120))
     response.raise_for_status()
     with zipfile.ZipFile(io.BytesIO(response.content)) as z:
         with z.open(f"{table_id}.csv") as f:

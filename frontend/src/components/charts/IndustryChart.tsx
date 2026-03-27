@@ -43,7 +43,12 @@ export function IndustryChart() {
     };
   }, [data]);
 
-  const barHeight = data ? Math.max(data.industries.length * 36, 300) : 300;
+  const barHeight = useMemo(
+    () => (data ? Math.max(data.industries.length * 36, 300) : 300),
+    [data]
+  );
+
+  const options = useMemo(() => baseBarOptions(), []);
 
   return (
     <section className="rounded-lg border border-[#1e2d45] bg-[#161b27] p-5">
@@ -105,7 +110,7 @@ export function IndustryChart() {
           </div>
         )}
         {!loading && !error && (
-          <Bar data={chartData} options={baseBarOptions()} />
+          <Bar data={chartData} options={options} />
         )}
       </div>
 

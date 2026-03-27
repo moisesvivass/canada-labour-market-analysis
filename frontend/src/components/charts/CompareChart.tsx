@@ -43,6 +43,8 @@ export function CompareChart() {
     };
   }, [data]);
 
+  const options = useMemo(() => baseLineOptions(), []);
+
   return (
     <section className="rounded-lg border border-[#1e2d45] bg-[#161b27] p-5">
       <h2
@@ -103,7 +105,7 @@ export function CompareChart() {
           </div>
         )}
         {!loading && !error && (
-          <Line data={chartData} options={baseLineOptions()} />
+          <Line data={chartData} options={options} />
         )}
       </div>
 

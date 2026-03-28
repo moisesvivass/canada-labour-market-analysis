@@ -36,6 +36,8 @@ export interface ProvincialGapResponse {
 export interface IndustryResponse {
   industries: string[];
   pct_change: number[];
+  base: number[];
+  current: number[];
 }
 
 export interface InsightResponse {

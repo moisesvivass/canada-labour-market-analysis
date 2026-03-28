@@ -1,6 +1,6 @@
 from typing import Optional
 
-from fastapi import APIRouter, Query, Request
+from fastapi import APIRouter, HTTPException, Query, Request
 from sqlalchemy import text
 
 from app.dependencies import limiter, run_query, validate_geo
@@ -20,7 +20,6 @@ async def get_labour_indicators(
     year_to: Optional[int] = Query(None),
 ):
     if characteristic not in VALID_CHARACTERISTICS:
-        from fastapi import HTTPException
         raise HTTPException(
             status_code=400,
             detail=f"Invalid characteristic '{characteristic}'. "
@@ -55,15 +54,14 @@ async def get_labour_indicators(
     rows = run_query(query, "Database error fetching labour indicator data.")
 
     data: dict = {}
-    labels_set: list = []
+    labels_seen: dict[str, None] = {}  # ordered set — O(1) lookup, insertion-order preserved
     for row in rows:
         month = row[1]
-        if month not in labels_set:
-            labels_set.append(month)
+        labels_seen[month] = None
         province = row[0]
         if province not in data:
             data[province] = []
         data[province].append(float(row[2]))
 
-    data["labels"] = labels_set
+    data["labels"] = list(labels_seen)
     return data

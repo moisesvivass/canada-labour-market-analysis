@@ -10,7 +10,7 @@ import { Select } from '@/components/ui/select';
 import type { ChartOptions } from 'chart.js';
 
 export function ProvincialGapChart() {
-  const [yearFrom, setYearFrom] = useState('2019');
+  const [yearFrom, setYearFrom] = useState('2020');
   const [yearTo, setYearTo] = useState('2026');
   const [geoA, setGeoA] = useState('Ontario');
   const [geoB, setGeoB] = useState('Alberta');

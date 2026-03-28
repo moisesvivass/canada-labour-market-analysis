@@ -33,6 +33,7 @@ def test_summary_has_required_keys(client):
     assert "worst_province" in data
     assert "most_recent_month" in data
     assert "jobs_lost" in data
+    assert "cpi_yoy" in data
 
 
 def test_summary_canada_rate_is_valid_float(client):

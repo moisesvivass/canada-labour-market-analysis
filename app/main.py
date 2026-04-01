@@ -30,20 +30,20 @@ async def lifespan(app: FastAPI):
     scheduler = AsyncIOScheduler()
     scheduler.add_job(
         fetch_and_load_all,
-        CronTrigger(day=1, hour=6, minute=0),
+        CronTrigger(day="1,8,15", hour=6, minute=0),
         args=[engine],
         id="monthly_statcan_fetch",
         replace_existing=True
     )
     scheduler.add_job(
         fetch_and_load_boc,
-        CronTrigger(day=2, hour=6, minute=0),
+        CronTrigger(day="2,9,16", hour=6, minute=0),
         args=[engine],
         id="monthly_boc_fetch",
         replace_existing=True
     )
     scheduler.start()
-    logger.info("Scheduler started — StatCan refresh: 1st of month 06:00 UTC, BoC refresh: 2nd of month 06:00 UTC.")
+    logger.info("Scheduler started — StatCan refresh: 1st/8th/15th 06:00 UTC, BoC refresh: 2nd/9th/16th 06:00 UTC.")
     yield
     # wait=True (default) blocks until any running job finishes before exiting.
     scheduler.shutdown()

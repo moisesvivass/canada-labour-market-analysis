@@ -1,7 +1,6 @@
 import logging
 import threading
 
-import pandas as pd
 import requests
 from sqlalchemy import Engine
 
@@ -29,7 +28,8 @@ def _fetch_series(series_key: str) -> list[dict]:
     return response.json()["observations"]
 
 
-def _to_dataframe(observations: list[dict], series_key: str, series_label: str) -> pd.DataFrame:
+def _to_dataframe(observations: list[dict], series_key: str, series_label: str):
+    import pandas as pd
     rows = []
     for obs in observations:
         raw = obs.get(series_key, {}).get("v")
@@ -67,6 +67,7 @@ def fetch_and_load_boc(engine: Engine) -> None:
                 logger.exception("Failed to fetch BoC series %s", series_key)
 
         if dfs:
+            import pandas as pd
             df_all = pd.concat(dfs, ignore_index=True)
             _load_with_swap(df_all, "bank_of_canada_indicators", engine)
 

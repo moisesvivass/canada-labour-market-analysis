@@ -3,7 +3,6 @@ import logging
 import threading
 import zipfile
 
-import pandas as pd
 import requests
 from sqlalchemy import Engine, text
 
@@ -33,7 +32,8 @@ TARGET_INDUSTRIES = [
 _refresh_lock = threading.Lock()
 
 
-def _download_statcan_csv(table_id: str) -> pd.DataFrame:
+def _download_statcan_csv(table_id: str):
+    import pandas as pd
     url = STATCAN_DOWNLOAD_URL.format(table_id=table_id)
     logger.info("Downloading StatCan table %s...", table_id)
     response = requests.get(url, timeout=(10, 120))
@@ -50,7 +50,8 @@ def _download_statcan_csv(table_id: str) -> pd.DataFrame:
     return df
 
 
-def _transform_unemployment(df: pd.DataFrame) -> pd.DataFrame:
+def _transform_unemployment(df):
+    import pandas as pd
     df_filtered = df[
         (df['GEO'].isin(ALL_PROVINCES)) &
         (df['Labour force characteristics'] == 'Unemployment rate') &
@@ -74,7 +75,8 @@ def _transform_unemployment(df: pd.DataFrame) -> pd.DataFrame:
     return df_filtered
 
 
-def _transform_labour_indicators(df: pd.DataFrame) -> pd.DataFrame:
+def _transform_labour_indicators(df):
+    import pandas as pd
     df_filtered = df[
         (df['GEO'].isin(ALL_PROVINCES)) &
         (df['Labour force characteristics'].isin([
@@ -102,7 +104,8 @@ def _transform_labour_indicators(df: pd.DataFrame) -> pd.DataFrame:
     return df_filtered
 
 
-def _transform_industry(df: pd.DataFrame) -> pd.DataFrame:
+def _transform_industry(df):
+    import pandas as pd
     df_filtered = df[
         (df['GEO'].isin(ALL_PROVINCES)) &
         (df['North American Industry Classification System (NAICS)'].isin(TARGET_INDUSTRIES)) &
@@ -124,7 +127,7 @@ def _transform_industry(df: pd.DataFrame) -> pd.DataFrame:
     return df_filtered
 
 
-def _load_with_swap(df: pd.DataFrame, table_name: str, engine: Engine) -> None:
+def _load_with_swap(df, table_name: str, engine: Engine) -> None:
     # Write to a staging table then atomically rename it over the live table.
     # PostgreSQL DDL is transactional: if any step fails the whole transaction
     # rolls back and the live table is left untouched.

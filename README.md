@@ -9,19 +9,19 @@ Full-stack labour market dashboard — React + TypeScript + FastAPI + PostgreSQL
 
 ## Overview
 
-A full-stack dashboard reporting Canadian employment trends by province (2020–2026) using live data from Statistics Canada and the Bank of Canada. The backend runs automated ETL pipelines on a scheduled basis, stores normalized data in PostgreSQL, and serves a React frontend with AI-generated narrative insights per chart.
+A full-stack dashboard reporting Canadian employment trends by province (2020–2026) using live data from Statistics Canada and the Bank of Canada. The backend runs automated ETL pipelines via Railway cron services, stores normalized data in PostgreSQL, and serves a React frontend with AI-generated narrative insights per chart.
 
 ---
 
 ## Stack
 
-**Backend:** Python 3.12 · FastAPI · SQLAlchemy · PostgreSQL · Pandas · APScheduler · Claude Haiku · slowapi
+**Backend:** Python 3.12 · FastAPI · SQLAlchemy · PostgreSQL · Pandas · Claude Haiku · slowapi
 
 **Frontend:** React 18 · TypeScript · Vite 5 · Tailwind CSS v4 · shadcn/ui
 
 **Testing:** pytest · httpx (14+ integration tests)
 
-**Deploy:** Railway (backend + DB) · Vercel (frontend)
+**Deploy:** Railway (backend + DB + cron services) · Vercel (frontend)
 
 ---
 
@@ -29,17 +29,16 @@ A full-stack dashboard reporting Canadian employment trends by province (2020–
 
 | Source | Tables / Series | Refresh Schedule |
 |---|---|---|
-| Statistics Canada API | 14100287 — Unemployment by province | 1st of each month |
-| Statistics Canada API | 14100355 — Employment by industry | 1st of each month |
-| Bank of Canada Valet API | V39079 — Overnight rate | 2nd of each month |
-| Bank of Canada Valet API | STATIC_INFLATIONCALC — CPI | 2nd of each month |
+| Statistics Canada API | 14100287 — Unemployment by province | 1st, 8th, 15th of each month |
+| Statistics Canada API | 14100355 — Employment by industry | 1st, 8th, 15th of each month |
+| Bank of Canada Valet API | V39079 — Overnight rate | 2nd, 9th, 16th of each month |
+| Bank of Canada Valet API | STATIC_INFLATIONCALC — CPI | 2nd, 9th, 16th of each month |
 
 ---
 
 ## Features
 
-- Automated ETL pipelines from two government APIs
-- APScheduler-driven data refresh (StatsCan on the 1st, Bank of Canada on the 2nd)
+- Automated ETL pipelines from two government APIs via Railway cron services
 - Multi-province dashboard (Canada, Ontario, Alberta) with interactive charts
 - AI-generated narrative insights per chart (Claude Haiku)
 - Macroeconomic overlay: overnight rate vs. unemployment correlation
@@ -56,7 +55,7 @@ A full-stack dashboard reporting Canadian employment trends by province (2020–
 ```
 canada-labour-market-analysis/
 ├── app/
-│   ├── main.py              # App init, middleware, scheduler, router registration
+│   ├── main.py              # App init, middleware, router registration
 │   ├── dependencies.py      # Shared: engine, limiter, helpers
 │   └── routers/
 │       ├── unemployment.py
@@ -66,6 +65,7 @@ canada-labour-market-analysis/
 │       ├── macro.py         # Bank of Canada endpoints
 │       └── admin.py
 ├── src/
+│   ├── etl.py               # Standalone ETL runner — invoked by Railway cron services
 │   ├── statcan_fetcher.py   # StatsCan ETL + API fetcher
 │   └── boc_fetcher.py       # Bank of Canada Valet API fetcher
 ├── frontend/
@@ -77,9 +77,31 @@ canada-labour-market-analysis/
 ├── tests/
 │   ├── conftest.py
 │   └── test_api.py
+├── railway.json             # Web service config (uvicorn)
+├── railway.boc.json         # Cron config — Bank of Canada ETL
+├── railway.statcan.json     # Cron config — Statistics Canada ETL
 ├── .env.example
 ├── requirements.txt
 └── Procfile
+```
+
+---
+
+## Railway Cron Services
+
+ETL runs are handled by two dedicated Railway cron services, each pointing to its own config file:
+
+| Service | Config File | Schedule | Command |
+|---|---|---|---|
+| `bountiful-liberation` | `src/railway.statcan.json` | `0 6 1,8,15 * *` | `python src/etl.py statcan` |
+| `unique-nature` | `src/railway.boc.json` | `0 6 2,9,16 * *` | `python src/etl.py boc` |
+
+The ETL runner (`src/etl.py`) can also be run locally:
+
+```bash
+python src/etl.py statcan
+python src/etl.py boc
+python src/etl.py all
 ```
 
 ---
@@ -92,7 +114,7 @@ canada-labour-market-analysis/
 git clone https://github.com/moisesvivass/canada-labour-market-analysis
 cd canada-labour-market-analysis
 pip install -r requirements.txt
-cp .env.example .env  # add your DATABASE_URL and ANTHROPIC_API_KEY
+cp .env.example .env  # add your environment variables
 uvicorn app.main:app --reload
 ```
 
@@ -103,6 +125,19 @@ cd frontend
 npm install
 npm run dev
 ```
+
+---
+
+## Environment Variables
+
+| Variable | Description |
+|---|---|
+| `DATABASE_URL` | PostgreSQL connection string |
+| `ANTHROPIC_API_KEY` | Claude API key for AI insights |
+| `REFRESH_SECRET` | Secret key for manual data refresh endpoint |
+| `CORS_ORIGINS` | Allowed frontend origins |
+
+In Railway, `DATABASE_URL` and `REFRESH_SECRET` are configured as shared variables available to all services including cron jobs.
 
 ---
 

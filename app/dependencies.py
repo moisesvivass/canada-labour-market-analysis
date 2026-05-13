@@ -15,7 +15,7 @@ if not DATABASE_URL:
         "DATABASE_URL environment variable is not set. "
         "Add it to .env (local) or Railway environment variables (production)."
     )
-engine = create_engine(DATABASE_URL)
+engine = create_engine(DATABASE_URL, pool_pre_ping=True, pool_recycle=1800)
 
 ANTHROPIC_API_KEY = os.getenv('ANTHROPIC_API_KEY')
 if not ANTHROPIC_API_KEY:

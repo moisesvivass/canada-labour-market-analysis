@@ -106,6 +106,17 @@ python src/etl.py all
 
 ---
 
+## Railway Memory Notes
+
+Low-traffic portfolio demo with a tight Railway memory budget.
+
+- `--limit-max-requests 500` is set in both `Procfile` and `railway.json` so uvicorn recycles the worker periodically. Bounds SlowAPI's in-memory storage (IP × bucket × timestamps) from growing unbounded on public endpoints.
+- SQLAlchemy engine in `app/dependencies.py` uses `pool_pre_ping=True` and `pool_recycle=1800` to rotate stale connections.
+- `pandas` lives in `requirements.txt` for the ETL scripts in `src/` and `scripts/` only. **Do not `import pandas` from inside `app/`** — it would add ~150 MB of resident memory to the web service for no runtime benefit (the ETL runs in separate Railway cron services).
+- No `APScheduler` or background tasks in the web service. If you add one, revisit `--limit-max-requests` because worker recycles will kill it.
+
+---
+
 ## Setup
 
 ### Backend

@@ -5,112 +5,81 @@ import { useApi } from '@/hooks/useApi';
 import type { CompareResponse } from '@/types/api';
 import { PROVINCE_LIST, YEARS } from '@/lib/constants';
 import { baseLineOptions } from '@/lib/chartConfig';
+import { average } from '@/lib/format';
+import { useChartTheme } from '@/lib/theme';
 import { AIInsight } from '@/components/AIInsight';
+import { ChartPanel } from '@/components/ui/ChartPanel';
+import { LineLegend } from '@/components/ui/LineLegend';
 import { Select } from '@/components/ui/select';
 
-const YEAR_COLORS = ['#4f8ef7', '#f59e0b', '#10b981', '#e879f9', '#06b6d4'];
+// Compares only the months both years have, so a partial year is a fair match.
+function compareFinding(data: CompareResponse, geo: string, yearA: string, yearB: string): string | null {
+  const a = data[yearA] as number[] | undefined;
+  const b = data[yearB] as number[] | undefined;
+  if (!a?.length || !b?.length || yearA === yearB) return null;
+  const months = Math.min(a.length, b.length);
+  const avgA = average(a.slice(0, months));
+  const avgB = average(b.slice(0, months));
+  if (avgA === null || avgB === null) return null;
+  const span = months === 12 ? '' : ` through ${(data.labels as string[])[months - 1]}`;
+  const verb = avgB > avgA ? 'higher than' : avgB < avgA ? 'lower than' : 'the same as';
+  return `${geo}'s unemployment averaged ${avgB.toFixed(1)}% in ${yearB}${span}, ${verb} ${avgA.toFixed(1)}% over the same months of ${yearA}.`;
+}
 
 export function CompareChart() {
+  const theme = useChartTheme();
   const [yearA, setYearA] = useState('2024');
   const [yearB, setYearB] = useState('2025');
   const [geo, setGeo] = useState('Canada');
 
-  const params = useMemo(
-    () => ({ year_a: yearA, year_b: yearB, geo }),
-    [yearA, yearB, geo]
-  );
+  const { data, loading, error } = useApi<CompareResponse>('/api/compare', {
+    year_a: yearA,
+    year_b: yearB,
+    geo,
+  });
 
-  const { data, loading, error } = useApi<CompareResponse>(
-    '/api/compare',
-    params
-  );
+  // The baseline year is grey, the year being compared uses the accent color.
+  const colorFor = (year: string) =>
+    year === yearA && yearA !== yearB ? theme.subtle : theme.accent;
 
-  const chartData = useMemo(() => {
-    if (!data) return { labels: [], datasets: [] };
-    const years = Object.keys(data).filter((k) => k !== 'labels');
-    return {
-      labels: data.labels as string[],
-      datasets: years.map((year, i) => ({
-        label: year,
-        data: data[year] as number[],
-        borderColor: YEAR_COLORS[i % YEAR_COLORS.length],
-        backgroundColor: 'transparent',
-        borderWidth: 2,
-        pointRadius: 3,
-        pointHoverRadius: 5,
-        tension: 0.3,
-      })),
-    };
-  }, [data]);
+  const chartData = data
+    ? {
+        labels: data.labels as string[],
+        datasets: Object.keys(data)
+          .filter((k) => k !== 'labels')
+          .map((year) => ({
+            label: year,
+            data: data[year] as number[],
+            borderColor: colorFor(year),
+            backgroundColor: colorFor(year),
+            pointRadius: 3,
+            pointHoverRadius: 5,
+          })),
+      }
+    : { labels: [], datasets: [] };
 
-  const options = useMemo(() => baseLineOptions(), []);
+  const options = useMemo(() => baseLineOptions(theme), [theme]);
 
   return (
-    <section className="relative rounded-lg border border-[#1e2d45] bg-[#161b27] p-5">
-      <h2
-        className="mb-4 text-lg font-bold text-[#e8edf5]"
-        style={{ fontFamily: 'Syne, sans-serif' }}
-      >
-        Year-over-Year Comparison
-      </h2>
-
-      <div className="mb-4 flex flex-wrap gap-4">
-        <Select
-          label="Year A"
-          id="cmp-year-a"
-          value={yearA}
-          onChange={(e) => setYearA(e.target.value)}
-        >
-          {YEARS.map((y) => (
-            <option key={y} value={y}>
-              {y}
-            </option>
-          ))}
-        </Select>
-        <Select
-          label="Year B"
-          id="cmp-year-b"
-          value={yearB}
-          onChange={(e) => setYearB(e.target.value)}
-        >
-          {YEARS.map((y) => (
-            <option key={y} value={y}>
-              {y}
-            </option>
-          ))}
-        </Select>
-        <Select
-          label="Province"
-          id="cmp-geo"
-          value={geo}
-          onChange={(e) => setGeo(e.target.value)}
-          className="w-auto min-w-[180px]"
-        >
-          {PROVINCE_LIST.map((p) => (
-            <option key={p} value={p}>
-              {p}
-            </option>
-          ))}
-        </Select>
-      </div>
-
-      <div className="relative h-72">
-        {loading && (
-          <div className="absolute inset-0 flex items-center justify-center font-mono text-sm text-[#8892a4]">
-            Loading…
-          </div>
-        )}
-        {error && (
-          <div className="absolute inset-0 flex items-center justify-center font-mono text-sm text-red-400">
-            Error: {error}
-          </div>
-        )}
-        {!loading && !error && (
-          <Line data={chartData} options={options} />
-        )}
-      </div>
-
-      <AIInsight chart="compare" geos={geo} yearFrom={yearA} yearTo={yearB} />
-    </section>
+    <ChartPanel
+      id="year-over-year"
+      title="Year over year"
+      finding={data ? compareFinding(data, geo, yearA, yearB) : null}
+      loading={loading}
+      error={error}
+      height={300}
+      source="Statistics Canada, Table 14-10-0287-01"
+      legend={<LineLegend items={[...new Set([yearA, yearB])].map((y) => ({ label: y, color: colorFor(y) }))} />}
+      controls={
+        <>
+          <Select label="Compare" id="cmp-year-a" value={yearA} options={YEARS} onChange={(e) => setYearA(e.target.value)} />
+          <Select label="With" id="cmp-year-b" value={yearB} options={YEARS} onChange={(e) => setYearB(e.target.value)} />
+          <Select label="Region" id="cmp-geo" value={geo} options={PROVINCE_LIST} onChange={(e) => setGeo(e.target.value)} />
+        </>
+      }
+      insight={<AIInsight chart="compare" geos={geo} yearFrom={yearA} yearTo={yearB} />}
+    >
+      <Line data={chartData} options={options} />
+    </ChartPanel>
   );
 }

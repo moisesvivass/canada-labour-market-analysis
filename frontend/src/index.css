@@ -1,34 +1,87 @@
 @import "tailwindcss";
 
+/* Design tokens. Charts read these same variables at runtime (see lib/theme.ts),
+   so keep every color token a 6-digit hex. */
 :root {
-  --background: #0d1117;
-  --chart-bg: #161b27;
-  --grid: #1a2030;
-  --text-muted: #8892a4;
-  --text-primary: #e8edf5;
-  --border: #1e2d45;
-  --font-heading: 'Syne', sans-serif;
-  --font-mono: 'IBM Plex Mono', monospace;
+  --bg: #fbfaf7;
+  --surface: #ffffff;
+  --ink: #16181d;
+  --muted: #5b6270;
+  --subtle: #8a909c;
+  --border: #e6e3dc;
+  --grid: #eeece6;
+  --context: #d6d3cc;
+  --accent: #1d4ed8;
+  --accent-soft: #e8eefc;
+  --positive: #15803d;
+  --negative: #c2410c;
+  color-scheme: light;
 }
 
-* {
-  box-sizing: border-box;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1012;
+    --surface: #16171a;
+    --ink: #ececea;
+    --muted: #a3a7b0;
+    --subtle: #6f747d;
+    --border: #2a2c31;
+    --grid: #222429;
+    --context: #3a3d43;
+    --accent: #7ea6ff;
+    --accent-soft: #1b2440;
+    --positive: #5cc28a;
+    --negative: #f08a5d;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-line: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-positive: var(--positive);
+  --color-negative: var(--negative);
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Source Serif 4', Georgia, serif;
 }
 
 body {
   margin: 0;
-  background-color: var(--background);
-  color: var(--text-primary);
-  font-family: var(--font-mono);
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-feature-settings: 'tnum' 1, 'cv11' 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
   min-height: 100svh;
-  width: 100%;
 }
 
-h1, h2, h3, h4 {
-  font-family: var(--font-heading);
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--grid) 25%, var(--border) 50%, var(--grid) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .skeleton { animation: none; }
 }

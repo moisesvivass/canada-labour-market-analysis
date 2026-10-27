@@ -1,29 +1,29 @@
 import { cn } from '@/lib/utils';
 import type { SelectHTMLAttributes } from 'react';
 
-interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
-  label?: string;
+interface SelectProps extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'children'> {
+  label: string;
+  options: string[];
 }
 
-export function Select({ className, label, id, ...props }: SelectProps) {
+export function Select({ className, label, id, options, ...props }: SelectProps) {
   return (
-    <div className="flex flex-col gap-1">
-      {label && (
-        <label
-          htmlFor={id}
-          className="font-mono text-xs text-[#8892a4] uppercase tracking-wider"
-        >
-          {label}
-        </label>
-      )}
+    <label htmlFor={id} className="flex flex-col gap-1">
+      <span className="text-[11px] font-medium text-subtle">{label}</span>
       <select
         id={id}
         className={cn(
-          'rounded border border-[#1e2d45] bg-[#0d1117] px-3 py-1.5 font-mono text-sm text-[#e8edf5] focus:border-[#4f8ef7] focus:outline-none',
+          'h-8 rounded-md border border-line bg-surface pl-2.5 pr-7 text-sm text-ink transition-colors hover:border-subtle focus:border-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25',
           className
         )}
         {...props}
-      />
-    </div>
+      >
+        {options.map((o) => (
+          <option key={o} value={o}>
+            {o}
+          </option>
+        ))}
+      </select>
+    </label>
   );
 }

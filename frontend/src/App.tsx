@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Header } from '@/components/Header';
+import { SectionNav } from '@/components/SectionNav';
+import { Footer } from '@/components/Footer';
 import { UnemploymentChart } from '@/components/charts/UnemploymentChart';
 import { CompareChart } from '@/components/charts/CompareChart';
 import { ProvincialGapChart } from '@/components/charts/ProvincialGapChart';
@@ -7,26 +9,28 @@ import { IndustryChart } from '@/components/charts/IndustryChart';
 import { MacroChart } from '@/components/charts/MacroChart';
 
 function App() {
-  const [highlightProvince, setHighlightProvince] = useState<string | undefined>(
-    undefined
-  );
+  const [trendSelection, setTrendSelection] = useState(['Canada']);
+
+  const showProvince = (province: string) => {
+    setTrendSelection([province]);
+    document.getElementById('trend')?.scrollIntoView();
+  };
 
   return (
-    <div className="min-h-screen bg-[#0d1117]">
-      <div className="mx-auto max-w-6xl">
-        <Header onFilterProvince={setHighlightProvince} />
+    <div id="top">
+      <SectionNav />
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <Header onFilterProvince={showProvince} />
 
-        <main className="space-y-6 p-6">
-          <UnemploymentChart highlightProvince={highlightProvince} />
+        <main className="space-y-6">
+          <UnemploymentChart selected={trendSelection} onSelectedChange={setTrendSelection} />
           <CompareChart />
           <ProvincialGapChart />
           <IndustryChart />
           <MacroChart />
         </main>
 
-        <footer className="border-t border-[#1e2d45] px-6 py-4 text-center font-mono text-xs text-[#8892a4]">
-          Data sources: Statistics Canada · Labour Force Survey · Bank of Canada Valet API
-        </footer>
+        <Footer />
       </div>
     </div>
   );

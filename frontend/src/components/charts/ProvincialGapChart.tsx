@@ -3,27 +3,44 @@ import { useState, useMemo } from 'react';
 import { Line } from 'react-chartjs-2';
 import { useApi } from '@/hooks/useApi';
 import type { ProvincialGapResponse } from '@/types/api';
-import { PROVINCE_LIST, PROVINCE_COLORS, YEARS } from '@/lib/constants';
+import { DEFAULT_YEAR_FROM, DEFAULT_YEAR_TO, PROVINCE_LIST, provinceColor } from '@/lib/constants';
 import { baseLineOptions } from '@/lib/chartConfig';
+import { formatMonth } from '@/lib/format';
+import { useChartTheme } from '@/lib/theme';
 import { AIInsight } from '@/components/AIInsight';
+import { ChartPanel } from '@/components/ui/ChartPanel';
+import { LineLegend } from '@/components/ui/LineLegend';
 import { Select } from '@/components/ui/select';
-import type { ChartOptions } from 'chart.js';
+import { YearRange } from '@/components/ui/YearRange';
+
+const PROVINCES = PROVINCE_LIST.filter((p) => p !== 'Canada');
+
+function gapFinding(data: ProvincialGapResponse, geoA: string, geoB: string): string | null {
+  const last = data.labels.length - 1;
+  const a = data.geo_a[last];
+  const b = data.geo_b[last];
+  if (last < 0 || a === undefined || b === undefined) return null;
+  if (a === b) return `In ${formatMonth(data.labels[last])}, ${geoA} and ${geoB} had the same rate: ${a}%.`;
+  const [higher, lower] = a > b ? [geoA, geoB] : [geoB, geoA];
+  return `In ${formatMonth(data.labels[last])}, ${higher}'s rate was ${Math.abs(a - b).toFixed(1)} points above ${lower}'s (${Math.max(a, b).toFixed(1)}% vs ${Math.min(a, b).toFixed(1)}%).`;
+}
 
 export function ProvincialGapChart() {
-  const [yearFrom, setYearFrom] = useState('2020');
-  const [yearTo, setYearTo] = useState('2026');
+  const theme = useChartTheme();
+  const [yearFrom, setYearFrom] = useState(DEFAULT_YEAR_FROM);
+  const [yearTo, setYearTo] = useState(DEFAULT_YEAR_TO);
   const [geoA, setGeoA] = useState('Ontario');
   const [geoB, setGeoB] = useState('Alberta');
 
-  const params = useMemo(
-    () => ({ year_from: yearFrom, year_to: yearTo, geo_a: geoA, geo_b: geoB }),
-    [yearFrom, yearTo, geoA, geoB]
-  );
+  const { data, loading, error } = useApi<ProvincialGapResponse>('/api/provinces-gap', {
+    year_from: yearFrom,
+    year_to: yearTo,
+    geo_a: geoA,
+    geo_b: geoB,
+  });
 
-  const { data, loading, error } = useApi<ProvincialGapResponse>(
-    '/api/provinces-gap',
-    params
-  );
+  const colorA = provinceColor(geoA, theme.accent);
+  const colorB = provinceColor(geoB, theme.accent);
 
   const chartData = useMemo(() => {
     if (!data) return { labels: [], datasets: [] };
@@ -33,117 +50,43 @@ export function ProvincialGapChart() {
         {
           label: geoA,
           data: data.geo_a,
-          borderColor: PROVINCE_COLORS[geoA] ?? '#4f8ef7',
-          backgroundColor: (PROVINCE_COLORS[geoA] ?? '#4f8ef7') + '22',
-          borderWidth: 2,
-          pointRadius: 0,
-          pointHoverRadius: 4,
-          tension: 0.3,
+          borderColor: colorA,
+          backgroundColor: `${theme.context}55`,
           fill: '+1' as const,
         },
         {
           label: geoB,
           data: data.geo_b,
-          borderColor: PROVINCE_COLORS[geoB] ?? '#f59e0b',
-          backgroundColor: (PROVINCE_COLORS[geoB] ?? '#f59e0b') + '22',
-          borderWidth: 2,
-          pointRadius: 0,
-          pointHoverRadius: 4,
-          tension: 0.3,
+          borderColor: colorB,
+          backgroundColor: 'transparent',
           fill: false as const,
         },
       ],
     };
-  }, [data, geoA, geoB]);
+  }, [data, geoA, geoB, colorA, colorB, theme]);
 
-  const options: ChartOptions<'line'> = useMemo(() => {
-    const base = baseLineOptions();
-    return {
-      ...base,
-      plugins: {
-        ...base.plugins,
-        filler: { propagate: true },
-      },
-    };
-  }, []);
+  const options = useMemo(() => baseLineOptions(theme), [theme]);
 
   return (
-    <section className="relative rounded-lg border border-[#1e2d45] bg-[#161b27] p-5">
-      <h2
-        className="mb-4 text-lg font-bold text-[#e8edf5]"
-        style={{ fontFamily: 'Syne, sans-serif' }}
-      >
-        Provincial Gap
-      </h2>
-
-      <div className="mb-4 flex flex-wrap gap-4">
-        <Select
-          label="Year from"
-          id="gap-year-from"
-          value={yearFrom}
-          onChange={(e) => setYearFrom(e.target.value)}
-        >
-          {YEARS.map((y) => (
-            <option key={y} value={y}>
-              {y}
-            </option>
-          ))}
-        </Select>
-        <Select
-          label="Year to"
-          id="gap-year-to"
-          value={yearTo}
-          onChange={(e) => setYearTo(e.target.value)}
-        >
-          {YEARS.map((y) => (
-            <option key={y} value={y}>
-              {y}
-            </option>
-          ))}
-        </Select>
-        <Select
-          label="Province A"
-          id="gap-geo-a"
-          value={geoA}
-          onChange={(e) => setGeoA(e.target.value)}
-        >
-          {PROVINCE_LIST.filter((p) => p !== 'Canada').map((p) => (
-            <option key={p} value={p}>
-              {p}
-            </option>
-          ))}
-        </Select>
-        <Select
-          label="Province B"
-          id="gap-geo-b"
-          value={geoB}
-          onChange={(e) => setGeoB(e.target.value)}
-        >
-          {PROVINCE_LIST.filter((p) => p !== 'Canada').map((p) => (
-            <option key={p} value={p}>
-              {p}
-            </option>
-          ))}
-        </Select>
-      </div>
-
-      <div className="relative h-72">
-        {loading && (
-          <div className="absolute inset-0 flex items-center justify-center font-mono text-sm text-[#8892a4]">
-            Loading…
-          </div>
-        )}
-        {error && (
-          <div className="absolute inset-0 flex items-center justify-center font-mono text-sm text-red-400">
-            Error: {error}
-          </div>
-        )}
-        {!loading && !error && (
-          <Line data={chartData} options={options} />
-        )}
-      </div>
-
-      <AIInsight chart="gap" geos={geoA} yearFrom={yearFrom} yearTo={yearTo} />
-    </section>
+    <ChartPanel
+      id="provinces"
+      title="The gap between two provinces"
+      finding={data ? gapFinding(data, geoA, geoB) : null}
+      loading={loading}
+      error={error}
+      height={320}
+      source="Statistics Canada, Table 14-10-0287-01"
+      legend={<LineLegend items={[{ label: geoA, color: colorA }, { label: geoB, color: colorB }]} />}
+      controls={
+        <>
+          <Select label="Province" id="gap-geo-a" value={geoA} options={PROVINCES} onChange={(e) => setGeoA(e.target.value)} />
+          <Select label="Versus" id="gap-geo-b" value={geoB} options={PROVINCES} onChange={(e) => setGeoB(e.target.value)} />
+          <YearRange idPrefix="gap" from={yearFrom} to={yearTo} onFromChange={setYearFrom} onToChange={setYearTo} />
+        </>
+      }
+      insight={<AIInsight chart="gap" geos={geoA} yearFrom={yearFrom} yearTo={yearTo} />}
+    >
+      <Line data={chartData} options={options} />
+    </ChartPanel>
   );
 }

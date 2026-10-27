@@ -3,25 +3,36 @@ import { useState, useMemo } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { useApi } from '@/hooks/useApi';
 import type { IndustryResponse } from '@/types/api';
-import { PROVINCE_LIST, YEARS } from '@/lib/constants';
+import { DEFAULT_YEAR_FROM, DEFAULT_YEAR_TO, PROVINCE_LIST } from '@/lib/constants';
 import { baseBarOptions } from '@/lib/chartConfig';
+import { signed } from '@/lib/format';
+import { useChartTheme } from '@/lib/theme';
 import { AIInsight } from '@/components/AIInsight';
+import { ChartPanel } from '@/components/ui/ChartPanel';
 import { Select } from '@/components/ui/select';
+import { YearRange } from '@/components/ui/YearRange';
+
+// Rows arrive sorted by pct_change, highest first.
+function industryFinding(data: IndustryResponse, yearFrom: string, yearTo: string): string | null {
+  const n = data.industries.length;
+  if (n < 2) return null;
+  const top = `${data.industries[0]} (${signed(data.pct_change[0])}%)`;
+  const bottom = `${data.industries[n - 1]} (${signed(data.pct_change[n - 1])}%)`;
+  const bottomVerb = data.pct_change[n - 1] < 0 ? 'shrank the most' : 'grew the least';
+  return `From ${yearFrom} to ${yearTo}, ${top} grew the most, while ${bottom} ${bottomVerb}.`;
+}
 
 export function IndustryChart() {
-  const [yearFrom, setYearFrom] = useState('2020');
-  const [yearTo, setYearTo] = useState('2026');
+  const theme = useChartTheme();
+  const [yearFrom, setYearFrom] = useState(DEFAULT_YEAR_FROM);
+  const [yearTo, setYearTo] = useState(DEFAULT_YEAR_TO);
   const [geo, setGeo] = useState('Canada');
 
-  const params = useMemo(
-    () => ({ year_from: yearFrom, year_to: yearTo, geo }),
-    [yearFrom, yearTo, geo]
-  );
-
-  const { data, loading, error } = useApi<IndustryResponse>(
-    '/api/industries',
-    params
-  );
+  const { data, loading, error } = useApi<IndustryResponse>('/api/industries', {
+    year_from: yearFrom,
+    year_to: yearTo,
+    geo,
+  });
 
   const chartData = useMemo(() => {
     if (!data) return { labels: [], datasets: [] };
@@ -31,90 +42,34 @@ export function IndustryChart() {
         {
           label: 'Change (%)',
           data: data.pct_change,
-          backgroundColor: data.pct_change.map((v) =>
-            v >= 0 ? '#10b98133' : '#fb718533'
-          ),
-          borderColor: data.pct_change.map((v) =>
-            v >= 0 ? '#10b981' : '#fb7185'
-          ),
-          borderWidth: 1,
+          backgroundColor: data.pct_change.map((v) => (v >= 0 ? theme.accent : theme.negative)),
+          borderRadius: 3,
+          barPercentage: 0.7,
         },
       ],
     };
-  }, [data]);
+  }, [data, theme]);
 
-  const barHeight = useMemo(
-    () => (data ? Math.max(data.industries.length * 36, 300) : 300),
-    [data]
-  );
-
-  const options = useMemo(() => baseBarOptions(), []);
+  const options = useMemo(() => baseBarOptions(theme), [theme]);
 
   return (
-    <section className="relative rounded-lg border border-[#1e2d45] bg-[#161b27] p-5">
-      <h2
-        className="mb-4 text-lg font-bold text-[#e8edf5]"
-        style={{ fontFamily: 'Syne, sans-serif' }}
-      >
-        Industry Winners &amp; Losers
-      </h2>
-
-      <div className="mb-4 flex flex-wrap gap-4">
-        <Select
-          label="Year from"
-          id="ind-year-from"
-          value={yearFrom}
-          onChange={(e) => setYearFrom(e.target.value)}
-        >
-          {YEARS.map((y) => (
-            <option key={y} value={y}>
-              {y}
-            </option>
-          ))}
-        </Select>
-        <Select
-          label="Year to"
-          id="ind-year-to"
-          value={yearTo}
-          onChange={(e) => setYearTo(e.target.value)}
-        >
-          {YEARS.map((y) => (
-            <option key={y} value={y}>
-              {y}
-            </option>
-          ))}
-        </Select>
-        <Select
-          label="Province"
-          id="ind-geo"
-          value={geo}
-          onChange={(e) => setGeo(e.target.value)}
-        >
-          {PROVINCE_LIST.map((p) => (
-            <option key={p} value={p}>
-              {p}
-            </option>
-          ))}
-        </Select>
-      </div>
-
-      <div className="relative overflow-x-auto" style={{ height: barHeight }}>
-        {loading && (
-          <div className="absolute inset-0 flex items-center justify-center font-mono text-sm text-[#8892a4]">
-            Loading…
-          </div>
-        )}
-        {error && (
-          <div className="absolute inset-0 flex items-center justify-center font-mono text-sm text-red-400">
-            Error: {error}
-          </div>
-        )}
-        {!loading && !error && (
-          <Bar data={chartData} options={options} />
-        )}
-      </div>
-
-      <AIInsight chart="industry" geos={geo} yearFrom={yearFrom} yearTo={yearTo} />
-    </section>
+    <ChartPanel
+      id="industries"
+      title="Which industries gained and lost jobs"
+      finding={data ? industryFinding(data, yearFrom, yearTo) : null}
+      loading={loading}
+      error={error}
+      height={data ? Math.max(data.industries.length * 30, 300) : 420}
+      source="Statistics Canada, Table 14-10-0355-01 · change in average annual employment"
+      controls={
+        <>
+          <Select label="Region" id="ind-geo" value={geo} options={PROVINCE_LIST} onChange={(e) => setGeo(e.target.value)} />
+          <YearRange idPrefix="ind" from={yearFrom} to={yearTo} onFromChange={setYearFrom} onToChange={setYearTo} />
+        </>
+      }
+      insight={<AIInsight chart="industry" geos={geo} yearFrom={yearFrom} yearTo={yearTo} />}
+    >
+      <Bar data={chartData} options={options} />
+    </ChartPanel>
   );
 }

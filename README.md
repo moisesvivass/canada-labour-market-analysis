@@ -29,22 +29,31 @@ A full-stack dashboard reporting Canadian employment trends by province (2020–
 
 | Source | Tables / Series | Refresh Schedule |
 |---|---|---|
-| Statistics Canada API | 14100287 — Unemployment by province | 1st, 8th, 15th of each month |
-| Statistics Canada API | 14100355 — Employment by industry | 1st, 8th, 15th of each month |
-| Bank of Canada Valet API | V39079 — Overnight rate | 2nd, 9th, 16th of each month |
-| Bank of Canada Valet API | STATIC_INFLATIONCALC — CPI | 2nd, 9th, 16th of each month |
+| Statistics Canada | 14-10-0287-01 — Labour Force Survey by province, age, gender, full/part-time | 1st, 8th, 15th of each month |
+| Statistics Canada | 14-10-0460-01 — Toronto, Montréal, Vancouver (with standard errors) | 1st, 8th, 15th of each month |
+| Statistics Canada | 14-10-0355-01 — Employment by industry | 1st, 8th, 15th of each month |
+| Statistics Canada | 14-10-0432-01 — Job vacancies by province | 1st, 8th, 15th of each month |
+| Statistics Canada | 14-10-0223-01 — Average weekly earnings (SEPH) | 1st, 8th, 15th of each month |
+| Bank of Canada Valet API | V39079 overnight rate · CPI · CPI-trim, -median, -common | 2nd, 9th, 16th of each month |
+| Official announcements | StatCan The Daily (labour feed) · BoC press releases · Canada.ca news API (Finance, IRCC, ESDC) | 2nd, 9th, 16th of each month |
+
+Province boundaries: Natural Earth admin-1 (public domain), simplified by `scripts/build_canada_map.py`.
 
 ---
 
 ## Features
 
-- Automated ETL pipelines from two government APIs via Railway cron services
-- Multi-province dashboard (Canada, Ontario, Alberta) with interactive charts
+- **Where:** choropleth map of provinces (rate or change vs a year ago), trend by province, provincial gap, year-over-year comparison
+- **Who:** unemployment by age group and gender, part-time share of jobs
+- **Cities:** Toronto, Montréal and Vancouver with 95% confidence bands from StatCan's standard errors
+- **Tightness:** unemployed people per job vacancy, by province
+- **Prices and pay:** headline vs core inflation against the 2% target; real wage growth
+- **What moved this month:** Statistics Canada's own release summary and section headings, quoted with attribution
+- **Policy and events:** every Bank of Canada rate change plus federal policy releases, as dated, linked context
+- Key findings computed from the latest data; one-line takeaway under every chart
+- Every chart exports CSV and a 1200×675 share image with the licence-required attribution baked in
 - AI-generated narrative insights per chart (Claude Haiku)
-- Macroeconomic overlay: overnight rate vs. unemployment correlation
-- KPI cards: Employment Rate, Participation Rate, monthly unemployment delta
-- Rate limiting via slowapi
-- 14+ integration tests covering all critical endpoints
+- Automated ETL pipelines via Railway cron services; rate limiting via slowapi
 
 **Industries tracked:** Total employed · Construction · Manufacturing · Professional/Scientific/Technical Services · Health Care · Wholesale/Retail Trade · Transportation/Warehousing · Public Administration
 
@@ -64,18 +73,24 @@ canada-labour-market-analysis/
 │       ├── insights.py
 │       ├── summary.py
 │       ├── macro.py         # Bank of Canada endpoints
+│       ├── labour.py        # Demographics, cities, tightness, provinces
+│       ├── prices.py        # Inflation and real wages
+│       ├── news.py          # Official news and dated events
 │       └── admin.py
 ├── src/
 │   ├── etl.py               # Standalone ETL runner — invoked by Railway cron services
-│   ├── statcan_fetcher.py   # StatsCan ETL + API fetcher
-│   └── boc_fetcher.py       # Bank of Canada Valet API fetcher
+│   ├── statcan_fetcher.py   # StatCan tables, streamed and filtered in chunks
+│   ├── boc_fetcher.py       # Bank of Canada Valet API fetcher
+│   └── official_feeds.py    # StatCan Daily, BoC and Canada.ca announcements
+├── scripts/build_canada_map.py  # Natural Earth -> simplified province GeoJSON
 ├── .github/                 # CI workflow and Dependabot config
 ├── frontend/
 │   ├── vercel.json          # Security headers (CSP, framing, referrer)
 │   └── src/
-│       ├── components/      # Header, AIInsight, chart components
-│       ├── hooks/useApi.ts
-│       ├── lib/             # constants, chartConfig, utils
+│       ├── components/      # Sections, key findings, news, policy timeline
+│       ├── components/charts/  # One component per chart, incl. the province map
+│       ├── hooks/useApi.ts  # Fetching with per-visit request sharing
+│       ├── lib/             # attribution, chart export, format, theme, constants
 │       └── types/api.ts
 ├── tests/
 │   ├── conftest.py
@@ -118,6 +133,8 @@ Low-traffic portfolio demo with a tight Railway memory budget.
 - SQLAlchemy engines from `app/db.py` use `pool_pre_ping=True` and `pool_recycle=1800` to rotate stale connections.
 - `pandas` lives in `requirements.txt` for the ETL scripts in `src/` and `scripts/` only. **Do not `import pandas` from inside `app/`** — it would add ~150 MB of resident memory to the web service for no runtime benefit (the ETL runs in separate Railway cron services).
 - No `APScheduler` or background tasks in the web service. If you add one, revisit `--limit-max-requests` because worker recycles will kill it.
+- The StatCan ETL streams each zip to a temp file and filters the CSV in 200k-row chunks (table 14-10-0287-01 alone has ~5.5M rows). Measured peak: ~0.2 GB, down from ~1.26 GB when the whole CSV was loaded at once.
+- Data endpoints send `Cache-Control: public, max-age=3600`, so repeat visits don't hit the database; the frontend also shares identical requests within a page view.
 
 ---
 
@@ -185,6 +202,11 @@ This is a portfolio demo, but it runs in production on the public internet, so i
 **Supply chain**
 - Exact version pins for every dependency, a committed lockfile, and Dependabot for weekly updates.
 - CI on every push and pull request: `pip-audit`, security tests, lint and a production build. GitHub Actions are pinned to commit SHAs with a read-only token.
+
+**Official content and licences**
+- Statistics Canada data is used under the Statistics Canada Open Licence with its "Adapted from…" attribution and non-endorsement notice; Bank of Canada data under its terms of use.
+- Feeds are fetched server-side by the ETL, parsed with `defusedxml`, stored as plain text, and only HTTPS links to `statcan.gc.ca`, `bankofcanada.ca` and `canada.ca` are kept.
+- Canada.ca release text is never copied (commercial reuse needs written permission): policy items are a dated title linking to the original.
 
 **Known limitations (next steps)**
 - The API should connect with a read-only database role over Railway's private network instead of the default role over the public proxy.

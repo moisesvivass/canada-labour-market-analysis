@@ -15,25 +15,8 @@
   --accent-soft: #e8eefc;
   --positive: #15803d;
   --negative: #c2410c;
+  /* Light only, by design: every visitor sees the same editorial page. */
   color-scheme: light;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0f1012;
-    --surface: #16171a;
-    --ink: #ececea;
-    --muted: #a3a7b0;
-    --subtle: #6f747d;
-    --border: #2a2c31;
-    --grid: #222429;
-    --context: #3a3d43;
-    --accent: #7ea6ff;
-    --accent-soft: #1b2440;
-    --positive: #5cc28a;
-    --negative: #f08a5d;
-    color-scheme: dark;
-  }
 }
 
 @theme inline {

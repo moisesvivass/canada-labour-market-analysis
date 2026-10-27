@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const TOKENS = [
   'ink',
@@ -15,7 +15,7 @@ const TOKENS = [
 export type ChartTheme = Record<(typeof TOKENS)[number], string>;
 
 // Chart.js draws on canvas and can't resolve CSS variables, so read the
-// design tokens from index.css once per color-scheme change.
+// design tokens from index.css once on mount.
 function readTheme(): ChartTheme {
   const styles = getComputedStyle(document.documentElement);
   return Object.fromEntries(
@@ -24,14 +24,6 @@ function readTheme(): ChartTheme {
 }
 
 export function useChartTheme(): ChartTheme {
-  const [theme, setTheme] = useState(readTheme);
-
-  useEffect(() => {
-    const media = window.matchMedia('(prefers-color-scheme: dark)');
-    const update = () => setTheme(readTheme());
-    media.addEventListener('change', update);
-    return () => media.removeEventListener('change', update);
-  }, []);
-
+  const [theme] = useState(readTheme);
   return theme;
 }

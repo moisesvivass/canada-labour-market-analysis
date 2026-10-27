@@ -9,11 +9,16 @@ from src.statcan_fetcher import _load_with_swap
 logger = logging.getLogger(__name__)
 
 BOC_VALET_BASE = "https://www.bankofcanada.ca/valet/observations"
-START_DATE = "2020-01-01"
+# A year before the dashboard window so CPI year-over-year change exists from 2020.
+START_DATE = "2019-01-01"
 
 SERIES = {
     "V39079": "overnight_rate",
     "STATIC_INFLATIONCALC": "cpi",
+    # The Bank of Canada's preferred core inflation measures (already year-over-year %).
+    "CPI_TRIM": "cpi_trim",
+    "CPI_MEDIAN": "cpi_median",
+    "CPI_COMMON": "cpi_common",
 }
 
 # Prevents concurrent scheduler + manual refresh from running simultaneously.

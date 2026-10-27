@@ -13,10 +13,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource-variable/inter": "5.3.0",
+    "@fontsource/source-serif-4": "5.3.1",
     "@tailwindcss/vite": "4.2.2",
     "chart.js": "4.5.1",
     "chartjs-plugin-annotation": "3.1.0",
     "clsx": "2.1.1",
+    "d3-geo": "3.1.1",
     "react": "19.2.4",
     "react-chartjs-2": "5.3.1",
     "react-dom": "19.2.4",
@@ -24,10 +27,12 @@
     "tailwindcss": "4.2.2"
   },
   "optionalDependencies": {
+    "@tailwindcss/oxide-linux-x64-gnu": "4.2.2",
     "lightningcss-linux-x64-gnu": "1.32.0"
   },
   "devDependencies": {
     "@eslint/js": "9.39.4",
+    "@types/d3-geo": "3.1.1",
     "@types/node": "24.12.0",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
@@ -39,6 +44,6 @@
     "serve": "14.2.6",
     "typescript": "5.9.3",
     "typescript-eslint": "8.57.2",
-    "vite": "5.4.11"
+    "vite": "5.4.21"
   }
 }

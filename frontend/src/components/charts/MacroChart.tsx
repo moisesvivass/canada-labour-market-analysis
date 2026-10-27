@@ -4,33 +4,37 @@ import { Line } from 'react-chartjs-2';
 import type { ChartOptions } from 'chart.js';
 import { useApi } from '@/hooks/useApi';
 import type { MacroDataPoint, UnemploymentResponse } from '@/types/api';
-import { YEARS } from '@/lib/constants';
+import { DEFAULT_YEAR_FROM, DEFAULT_YEAR_TO } from '@/lib/constants';
+import { baseLineOptions, percentTick } from '@/lib/chartConfig';
+import { formatMonth } from '@/lib/format';
+import { useChartTheme } from '@/lib/theme';
 import { AIInsight } from '@/components/AIInsight';
-import { Select } from '@/components/ui/select';
+import { ChartPanel } from '@/components/ui/ChartPanel';
+import { SOURCES } from '@/lib/attribution';
+import { LineLegend } from '@/components/ui/LineLegend';
+import { YearRange } from '@/components/ui/YearRange';
 
-const FONT_MONO = "'IBM Plex Mono', monospace";
-const GRID_COLOR = '#1a2030';
-const TEXT_COLOR = '#8892a4';
+function macroFinding(rateData: MacroDataPoint[]): string | null {
+  if (rateData.length === 0) return null;
+  const latest = rateData[rateData.length - 1];
+  const peak = rateData.reduce((max, d) => (d.value > max.value ? d : max));
+  if (peak.value === latest.value) {
+    return `The Bank of Canada's overnight rate stands at ${latest.value.toFixed(2)}% in ${formatMonth(latest.month)}, its high for this period.`;
+  }
+  return `The Bank of Canada's overnight rate is ${latest.value.toFixed(2)}% in ${formatMonth(latest.month)}, down from a peak of ${peak.value.toFixed(2)}% in ${formatMonth(peak.month)}.`;
+}
 
 export function MacroChart() {
-  const [yearFrom, setYearFrom] = useState('2020');
-  const [yearTo, setYearTo] = useState(String(new Date().getFullYear()));
-
-  const macroParams = useMemo(
-    () => ({ year_from: yearFrom, year_to: yearTo }),
-    [yearFrom, yearTo]
-  );
-
-  const unempParams = useMemo(
-    () => ({ geo: 'Canada', year_from: yearFrom, year_to: yearTo }),
-    [yearFrom, yearTo]
-  );
+  const theme = useChartTheme();
+  const [yearFrom, setYearFrom] = useState(DEFAULT_YEAR_FROM);
+  const [yearTo, setYearTo] = useState(DEFAULT_YEAR_TO);
+  const range = { year_from: yearFrom, year_to: yearTo };
 
   const { data: rateData, loading: rateLoading, error: rateError } =
-    useApi<MacroDataPoint[]>('/api/macro/overnight-rate', macroParams);
+    useApi<MacroDataPoint[]>('/api/macro/overnight-rate', range);
 
   const { data: unempData, loading: unempLoading, error: unempError } =
-    useApi<UnemploymentResponse>('/api/unemployment', unempParams);
+    useApi<UnemploymentResponse>('/api/unemployment', { ...range, geo: 'Canada' });
 
   const loading = rateLoading || unempLoading;
   const error = rateError || unempError;
@@ -40,165 +44,93 @@ export function MacroChart() {
 
     // Build unified month label set from both series
     const rateMonths = rateData.map((d) => d.month);
-    const unempMonths = (unempData.labels as string[]) ?? [];
+    const unempMonths = unempData.labels as string[];
     const allMonths = Array.from(new Set([...unempMonths, ...rateMonths])).sort();
 
     const rateByMonth = Object.fromEntries(rateData.map((d) => [d.month, d.value]));
     const unempValues = unempData['Canada'] as number[] | undefined;
-    const unempByMonth = unempMonths.reduce<Record<string, number>>((acc, m, i) => {
-      if (unempValues) acc[m] = unempValues[i];
-      return acc;
-    }, {});
+    const unempByMonth = Object.fromEntries(unempMonths.map((m, i) => [m, unempValues?.[i]]));
 
     return {
       labels: allMonths,
       datasets: [
         {
-          label: 'Unemployment Rate',
+          label: 'Unemployment rate',
           data: allMonths.map((m) => unempByMonth[m] ?? null),
-          borderColor: '#4f8ef7',
-          backgroundColor: 'transparent',
-          borderWidth: 2,
-          pointRadius: 0,
-          pointHoverRadius: 4,
-          tension: 0.3,
+          borderColor: theme.accent,
+          backgroundColor: theme.accent,
           yAxisID: 'y',
         },
         {
-          label: 'Overnight Rate',
+          label: 'Overnight rate',
           data: allMonths.map((m) => rateByMonth[m] ?? null),
-          borderColor: '#f59e0b',
-          backgroundColor: 'transparent',
-          borderWidth: 2,
-          pointRadius: 0,
-          pointHoverRadius: 4,
-          tension: 0.3,
+          borderColor: theme.ink,
+          backgroundColor: theme.ink,
+          stepped: true,
           yAxisID: 'y1',
         },
       ],
     };
-  }, [rateData, unempData]);
+  }, [rateData, unempData, theme]);
 
-  const options = useMemo<ChartOptions<'line'>>(
-    () => ({
-      responsive: true,
-      maintainAspectRatio: false,
-      interaction: { mode: 'index', intersect: false },
+  const options = useMemo<ChartOptions<'line'>>(() => {
+    const base = baseLineOptions(theme);
+    return {
+      ...base,
       plugins: {
-        legend: {
-          labels: {
-            color: TEXT_COLOR,
-            font: { family: FONT_MONO, size: 11 },
-            boxWidth: 12,
-            padding: 16,
-          },
-        },
+        ...base.plugins,
         tooltip: {
-          backgroundColor: '#1e2d45',
-          titleColor: '#e8edf5',
-          bodyColor: TEXT_COLOR,
-          borderColor: '#1e2d45',
-          borderWidth: 1,
-          titleFont: { family: FONT_MONO },
-          bodyFont: { family: FONT_MONO, size: 12 },
-          padding: 10,
-          itemSort: (a, b) => (b.parsed?.y ?? 0) - (a.parsed?.y ?? 0),
+          ...base.plugins?.tooltip,
           callbacks: {
-            label: (ctx) => ` ${ctx.dataset.label}: ${(ctx.parsed?.y ?? 0).toFixed(2)}%`,
+            ...base.plugins?.tooltip?.callbacks,
+            label: (ctx) =>
+              ` ${ctx.dataset.label}  ${(ctx.parsed.y ?? 0).toFixed(ctx.dataset.yAxisID === 'y1' ? 2 : 1)}%`,
           },
         },
       },
       scales: {
-        x: {
-          grid: { color: GRID_COLOR },
-          ticks: { color: TEXT_COLOR, font: { family: FONT_MONO, size: 11 } },
-        },
+        ...base.scales,
         y: {
+          ...base.scales?.y,
           position: 'left',
-          grid: { color: GRID_COLOR },
-          ticks: {
-            color: '#4f8ef7',
-            font: { family: FONT_MONO, size: 11 },
-            callback: (val) => `${Number(val).toFixed(1)}%`,
-          },
-          title: {
-            display: true,
-            text: 'Unemployment (%)',
-            color: '#4f8ef7',
-            font: { family: FONT_MONO, size: 11 },
-          },
+          title: { display: true, text: 'Unemployment', color: theme.accent },
         },
         y1: {
           position: 'right',
-          grid: { drawOnChartArea: false, color: GRID_COLOR },
-          ticks: {
-            color: '#f59e0b',
-            font: { family: FONT_MONO, size: 11 },
-            callback: (val) => `${Number(val).toFixed(2)}%`,
-          },
-          title: {
-            display: true,
-            text: 'Overnight Rate (%)',
-            color: '#f59e0b',
-            font: { family: FONT_MONO, size: 11 },
-          },
+          border: { display: false },
+          grid: { drawOnChartArea: false },
+          ticks: { color: theme.subtle, padding: 8, callback: percentTick },
+          title: { display: true, text: 'Overnight rate', color: theme.ink },
         },
       },
-    }),
-    []
-  );
+    };
+  }, [theme]);
 
   return (
-    <section className="relative rounded-lg border border-[#1e2d45] bg-[#161b27] p-5">
-      <h2
-        className="mb-4 text-lg font-bold text-[#e8edf5]"
-        style={{ fontFamily: 'Syne, sans-serif' }}
-      >
-        Interest Rate vs Unemployment Rate
-      </h2>
-
-      <div className="mb-4 flex flex-wrap gap-4">
-        <Select
-          label="Year from"
-          id="macro-year-from"
-          value={yearFrom}
-          onChange={(e) => setYearFrom(e.target.value)}
-        >
-          {YEARS.map((y) => (
-            <option key={y} value={y}>
-              {y}
-            </option>
-          ))}
-        </Select>
-        <Select
-          label="Year to"
-          id="macro-year-to"
-          value={yearTo}
-          onChange={(e) => setYearTo(e.target.value)}
-        >
-          {YEARS.map((y) => (
-            <option key={y} value={y}>
-              {y}
-            </option>
-          ))}
-        </Select>
-      </div>
-
-      <div className="relative h-72">
-        {loading && (
-          <div className="absolute inset-0 flex items-center justify-center font-mono text-sm text-[#8892a4]">
-            Loading…
-          </div>
-        )}
-        {error && (
-          <div className="absolute inset-0 flex items-center justify-center font-mono text-sm text-red-400">
-            Error: {error}
-          </div>
-        )}
-        {!loading && !error && <Line data={chartData} options={options} />}
-      </div>
-
-      <AIInsight chart="macro" geos="Canada" yearFrom={yearFrom} yearTo={yearTo} />
-    </section>
+    <ChartPanel
+      id="rates"
+      title="Interest rates and unemployment"
+      finding={rateData ? macroFinding(rateData) : null}
+      loading={loading}
+      error={error}
+      height={320}
+      sources={[SOURCES.lfs, SOURCES.overnightRate]}
+      legend={
+        <LineLegend
+          items={[
+            { label: 'Unemployment rate, Canada (left)', color: theme.accent },
+            { label: 'Bank of Canada overnight rate (right)', color: theme.ink },
+          ]}
+        />
+      }
+      controls={
+        <>
+          <YearRange idPrefix="macro" from={yearFrom} to={yearTo} onFromChange={setYearFrom} onToChange={setYearTo} />
+        </>
+      }
+      insight={<AIInsight chart="macro" geos="Canada" yearFrom={yearFrom} yearTo={yearTo} />}
+    >
+      <Line data={chartData} options={options} />
+    </ChartPanel>
   );
 }

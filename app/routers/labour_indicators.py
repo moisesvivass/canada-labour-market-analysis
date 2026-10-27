@@ -1,13 +1,11 @@
 from typing import Optional
 
-from fastapi import APIRouter, HTTPException, Query, Request
+from fastapi import APIRouter, Query, Request
 from sqlalchemy import text
 
-from app.dependencies import limiter, run_query, validate_geo
+from app.dependencies import limiter, run_query, validate_geo, validate_rate
 
 router = APIRouter(prefix="/api", tags=["labour-indicators"])
-
-VALID_CHARACTERISTICS = {"Employment rate", "Participation rate", "Unemployment rate"}
 
 
 @router.get("/labour-indicators")
@@ -19,12 +17,7 @@ async def get_labour_indicators(
     year_from: Optional[int] = Query(None),
     year_to: Optional[int] = Query(None),
 ):
-    if characteristic not in VALID_CHARACTERISTICS:
-        raise HTTPException(
-            status_code=400,
-            detail=f"Invalid characteristic '{characteristic}'. "
-                   f"Valid options: {', '.join(sorted(VALID_CHARACTERISTICS))}."
-        )
+    validate_rate(characteristic)
 
     conditions = ["characteristic = :characteristic"]
     params: dict = {"characteristic": characteristic}

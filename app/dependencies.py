@@ -1,21 +1,19 @@
+import logging
 import os
+from collections import defaultdict
 
 import anthropic
-from dotenv import load_dotenv
-from fastapi import HTTPException
+from fastapi import HTTPException, Request
 from slowapi import Limiter
 from slowapi.util import get_remote_address
-from sqlalchemy import create_engine, text
+from sqlalchemy import text
 
-load_dotenv()
+from app.db import make_engine
 
-DATABASE_URL = os.getenv('DATABASE_URL')
-if not DATABASE_URL:
-    raise RuntimeError(
-        "DATABASE_URL environment variable is not set. "
-        "Add it to .env (local) or Railway environment variables (production)."
-    )
-engine = create_engine(DATABASE_URL, pool_pre_ping=True, pool_recycle=1800)
+logger = logging.getLogger(__name__)
+
+# API reads are small; cap each statement so a slow query can't tie up the pool.
+engine = make_engine(statement_timeout_ms=10_000)
 
 ANTHROPIC_API_KEY = os.getenv('ANTHROPIC_API_KEY')
 if not ANTHROPIC_API_KEY:
@@ -31,7 +29,14 @@ if not REFRESH_SECRET:
         "Add it to .env (local) or Railway environment variables (production)."
     )
 
-limiter = Limiter(key_func=get_remote_address)
+def client_ip(request: Request) -> str:
+    # Railway's edge proxy sets X-Real-IP to the caller's address. The socket
+    # peer is the proxy itself (100.64.x.x), so keying on it would make every
+    # visitor share one rate-limit bucket.
+    return request.headers.get("x-real-ip") or get_remote_address(request)
+
+
+limiter = Limiter(key_func=client_ip)
 anthropic_client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
 VALID_GEOS = {
@@ -51,6 +56,17 @@ def validate_geo(geo: str) -> None:
         )
 
 
+VALID_RATES = {"Employment rate", "Participation rate", "Unemployment rate"}
+
+
+def validate_rate(characteristic: str) -> None:
+    if characteristic not in VALID_RATES:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Invalid characteristic '{characteristic}'. Valid options: {', '.join(sorted(VALID_RATES))}."
+        )
+
+
 def parse_extra_years(extra: str) -> tuple:
     parts = [p.strip() for p in extra.split(",")]
     if len(parts) != 2:
@@ -67,9 +83,21 @@ def parse_extra_years(extra: str) -> tuple:
         )
 
 
+def aligned_series(rows) -> tuple[list[str], dict[str, list]]:
+    """Rows of (month, key, value) -> sorted month labels and one aligned list per key (None for gaps)."""
+    labels = sorted({r[0] for r in rows})
+    index = {m: i for i, m in enumerate(labels)}
+    series: dict[str, list] = defaultdict(lambda: [None] * len(labels))
+    for month, key, value in rows:
+        series[key][index[month]] = float(value)
+    return labels, dict(series)
+
+
 def run_query(query, error_detail: str = "Database query failed."):
     try:
         with engine.connect() as conn:
             return conn.execute(query).fetchall()
     except Exception:
+        # Full error goes to the server log only; the client gets a generic message.
+        logger.exception(error_detail)
         raise HTTPException(status_code=500, detail=error_detail)

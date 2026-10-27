@@ -1,70 +1,70 @@
-import type { ChartOptions } from 'chart.js';
+import type { ChartOptions, TooltipOptions } from 'chart.js';
+import type { ChartTheme } from '@/lib/theme';
+import { formatMonth, signed } from '@/lib/format';
 
-const GRID_COLOR = '#1a2030';
-const TEXT_COLOR = '#8892a4';
-const FONT_MONO = "'IBM Plex Mono', monospace";
+function tooltip(theme: ChartTheme): Partial<TooltipOptions> {
+  return {
+    backgroundColor: theme.surface,
+    titleColor: theme.ink,
+    bodyColor: theme.muted,
+    borderColor: theme.border,
+    borderWidth: 1,
+    padding: 10,
+    cornerRadius: 6,
+    boxWidth: 8,
+    boxHeight: 8,
+    boxPadding: 4,
+    usePointStyle: true,
+    titleFont: { weight: 600 },
+  };
+}
 
-export const darkChartDefaults = {
-  backgroundColor: '#161b27',
-  color: TEXT_COLOR,
-};
+// Monthly series ("2024-03") get one tick per January, labelled with the year;
+// any other label (e.g. "Jan") is shown as is.
+function yearTick(this: { getLabelForValue: (v: number) => string }, value: string | number) {
+  const label = this.getLabelForValue(Number(value));
+  if (!/^\d{4}-\d{2}$/.test(label)) return label;
+  return label.endsWith('-01') ? label.slice(0, 4) : null;
+}
 
-export function baseLineOptions(yLabel = 'Rate (%)'): ChartOptions<'line'> {
+// Rounds away float noise from Chart.js tick steps (6.6000000000005 -> "6.6%").
+export function percentTick(value: string | number): string {
+  return `${Number(Number(value).toFixed(2))}%`;
+}
+
+export function baseLineOptions(theme: ChartTheme): ChartOptions<'line'> {
   return {
     responsive: true,
     maintainAspectRatio: false,
-    interaction: {
-      mode: 'index',
-      intersect: false,
-    },
+    interaction: { mode: 'index', intersect: false },
+    elements: { point: { radius: 0, hoverRadius: 4 }, line: { borderWidth: 2, tension: 0.25 } },
     plugins: {
-      legend: {
-        labels: {
-          color: TEXT_COLOR,
-          font: { family: FONT_MONO, size: 11 },
-          boxWidth: 12,
-          padding: 16,
-        },
-      },
+      legend: { display: false },
       tooltip: {
-        backgroundColor: '#1e2d45',
-        titleColor: '#e8edf5',
-        bodyColor: TEXT_COLOR,
-        borderColor: '#1e2d45',
-        borderWidth: 1,
-        titleFont: { family: FONT_MONO },
-        bodyFont: { family: FONT_MONO, size: 12 },
-        padding: 10,
-        itemSort: (a, b) => (b.parsed.y as number) - (a.parsed.y as number),
+        ...tooltip(theme),
+        itemSort: (a, b) => (b.parsed.y ?? 0) - (a.parsed.y ?? 0),
         callbacks: {
-          label: (ctx) => ` ${(ctx.parsed.y as number).toFixed(1)}%`,
+          title: (items) => formatMonth(items[0]?.label ?? ''),
+          label: (ctx) => ` ${ctx.dataset.label}  ${(ctx.parsed.y ?? 0).toFixed(1)}%`,
         },
       },
     },
     scales: {
       x: {
-        grid: { color: GRID_COLOR },
-        ticks: { color: TEXT_COLOR, font: { family: FONT_MONO, size: 11 } },
+        border: { color: theme.border },
+        grid: { display: false },
+        ticks: { color: theme.subtle, maxRotation: 0, autoSkip: false, callback: yearTick },
       },
       y: {
-        grid: { color: GRID_COLOR },
-        ticks: {
-          color: TEXT_COLOR,
-          font: { family: FONT_MONO, size: 11 },
-          callback: (val) => `${Number(val).toFixed(1)}%`,
-        },
-        title: {
-          display: true,
-          text: yLabel,
-          color: TEXT_COLOR,
-          font: { family: FONT_MONO, size: 11 },
-        },
+        border: { display: false },
+        grid: { color: theme.grid },
+        ticks: { color: theme.subtle, padding: 8, callback: percentTick },
       },
     },
   };
 }
 
-export function baseBarOptions(): ChartOptions<'bar'> {
+export function baseBarOptions(theme: ChartTheme): ChartOptions<'bar'> {
   return {
     responsive: true,
     maintainAspectRatio: false,
@@ -72,31 +72,22 @@ export function baseBarOptions(): ChartOptions<'bar'> {
     plugins: {
       legend: { display: false },
       tooltip: {
-        backgroundColor: '#1e2d45',
-        titleColor: '#e8edf5',
-        bodyColor: TEXT_COLOR,
-        borderColor: '#1e2d45',
-        borderWidth: 1,
-        titleFont: { family: FONT_MONO },
-        bodyFont: { family: FONT_MONO, size: 12 },
-        padding: 10,
+        ...tooltip(theme),
         callbacks: {
-          label: (ctx) => ` ${(ctx.parsed.x as number).toFixed(1)}%`,
+          label: (ctx) => ` ${signed(ctx.parsed.x ?? 0)}%`,
         },
       },
     },
     scales: {
       x: {
-        grid: { color: GRID_COLOR },
-        ticks: {
-          color: TEXT_COLOR,
-          font: { family: FONT_MONO, size: 11 },
-          callback: (val) => `${val}%`,
-        },
+        border: { display: false },
+        grid: { color: (ctx) => (ctx.tick.value === 0 ? theme.subtle : theme.grid) },
+        ticks: { color: theme.subtle, callback: (val) => `${signed(Number(val), Number.isInteger(Number(val)) ? 0 : 1)}%` },
       },
       y: {
-        grid: { color: GRID_COLOR },
-        ticks: { color: TEXT_COLOR, font: { family: FONT_MONO, size: 11 } },
+        border: { display: false },
+        grid: { display: false },
+        ticks: { color: theme.muted, font: { size: 12 } },
       },
     },
   };

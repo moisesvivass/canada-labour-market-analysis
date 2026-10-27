@@ -6,7 +6,7 @@ Railway cron setup (configure in Railway dashboard):
     Schedule:  0 6 1,8,15 * *   (1st, 8th, 15th of each month at 06:00 UTC)
     Command:   python src/etl.py statcan
 
-  Service 2 — Bank of Canada ETL
+  Service 2 — Bank of Canada ETL + official news (StatCan Daily, BoC, Canada.ca)
     Schedule:  0 6 2,9,16 * *   (2nd, 9th, 16th of each month at 06:00 UTC)
     Command:   python src/etl.py boc
 
@@ -40,8 +40,10 @@ def main() -> None:
         logger.error("Unknown target %r. Use: statcan | boc | all", target)
         sys.exit(1)
 
-    # Import engine here so DATABASE_URL is already loaded from .env above.
-    from app.dependencies import engine  # noqa: PLC0415
+    # app.db only needs DATABASE_URL, so cron services don't need the API's secrets.
+    from app.db import make_engine  # noqa: PLC0415
+
+    engine = make_engine()
 
     if target in ("statcan", "all"):
         from src.statcan_fetcher import fetch_and_load_all  # noqa: PLC0415
@@ -50,8 +52,11 @@ def main() -> None:
 
     if target in ("boc", "all"):
         from src.boc_fetcher import fetch_and_load_boc  # noqa: PLC0415
+        from src.official_feeds import fetch_and_load_feeds  # noqa: PLC0415
         logger.info("Starting Bank of Canada ETL...")
         fetch_and_load_boc(engine)
+        # Same cron as the BoC data, so official news needs no extra Railway service.
+        fetch_and_load_feeds(engine)
 
     logger.info("ETL complete.")
 

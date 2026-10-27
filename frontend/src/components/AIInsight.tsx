@@ -11,29 +11,20 @@ interface AIInsightProps {
 
 export function AIInsight({ chart, geos, yearFrom, yearTo }: AIInsightProps) {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [failed, setFailed] = useState(false);
   const [summary, setSummary] = useState<string | null>(null);
   const [detail, setDetail] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
-  // Dedicated geos watcher — resets on every province selection change
+  // A cached insight only applies to the selection it was generated for.
   useEffect(() => {
     setSummary(null);
     setDetail(null);
-    setError(null);
+    setFailed(false);
     setOpen(false);
     setExpanded(false);
-  }, [geos]);
-
-  // Reset on chart type or year range changes too
-  useEffect(() => {
-    setSummary(null);
-    setDetail(null);
-    setError(null);
-    setOpen(false);
-    setExpanded(false);
-  }, [chart, yearFrom, yearTo]);
+  }, [chart, geos, yearFrom, yearTo]);
 
   const handleClick = useCallback(async () => {
     if (open) {
@@ -45,7 +36,7 @@ export function AIInsight({ chart, geos, yearFrom, yearTo }: AIInsightProps) {
     if (summary) return; // already fetched, just re-open
 
     setLoading(true);
-    setError(null);
+    setFailed(false);
     try {
       const data = await fetchApi<InsightResponse>('/api/insights', {
         chart,
@@ -56,91 +47,50 @@ export function AIInsight({ chart, geos, yearFrom, yearTo }: AIInsightProps) {
       const parts = data.insight.split(/\s*\[MORE\]\s*/);
       setSummary(parts[0].trim());
       setDetail(parts[1]?.trim() ?? '');
-    } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : 'Unknown error';
-      setError(message);
+    } catch {
+      setFailed(true);
     } finally {
       setLoading(false);
     }
   }, [chart, geos, yearFrom, yearTo, open, summary]);
 
-  const geoLabel = geos
-    .split(',')
-    .map((g) => g.trim())
-    .filter(Boolean)
-    .join(', ');
-
   return (
-    <>
+    <div className="sm:max-w-md sm:text-right">
       <button
         type="button"
         onClick={() => void handleClick()}
         disabled={loading}
-        className="absolute right-5 top-5 rounded border border-[#1e2d45] bg-[#0d1117] px-3 py-1 font-mono text-xs text-[#4f8ef7] transition-colors hover:border-[#4f8ef7] disabled:opacity-50"
+        aria-expanded={open}
+        className="inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium text-accent transition-colors hover:bg-accent-soft disabled:opacity-60"
       >
-        {loading ? 'Analyzing…' : open ? 'AI Insights ↑' : 'AI Insights ↓'}
+        <span aria-hidden>✦</span>
+        {loading ? 'Summarizing…' : open ? 'Hide AI summary' : 'Summarize with AI'}
       </button>
 
-      <div
-        style={{
-          maxHeight: open ? '900px' : '0',
-          opacity: open ? 1 : 0,
-          overflow: open ? 'visible' : 'hidden',
-          marginTop: open ? '1rem' : '0',
-          transition: 'max-height 0.3s ease, opacity 0.25s ease, margin-top 0.25s ease',
-        }}
-      >
-        <div className="rounded-lg border border-[#1e2d45] bg-[#0d1117] p-4">
-          {/* Panel header */}
-          {(summary || loading) && (
-            <p className="mb-3 font-mono text-xs text-[#4f8ef7]">
-              Analyzing: {geoLabel} · {yearFrom}–{yearTo}
-            </p>
+      {open && !loading && (
+        <div className="mt-2 rounded-lg bg-accent-soft p-4 text-left text-sm leading-relaxed text-ink">
+          {failed && (
+            <p className="text-muted">The AI summary is unavailable right now. The chart and data above are unaffected.</p>
           )}
 
-          {loading && (
-            <p className="animate-pulse text-sm text-[#8892a4]">
-              Generating insights…
-            </p>
-          )}
-
-          {error && (
-            <p className="text-sm text-[#fb7185]">{error}</p>
-          )}
-
-          {!loading && summary && (
-            <div>
-              <p className="text-sm leading-relaxed text-[#c9d1d9]">
-                {summary}
-              </p>
-
+          {summary && (
+            <>
+              <p>{summary}</p>
+              {detail && expanded && <p className="mt-3 text-muted">{detail}</p>}
               {detail && (
-                <>
-                  <div
-                    style={{
-                      maxHeight: expanded ? '600px' : '0',
-                      overflowY: expanded ? 'auto' : 'hidden',
-                      transition: 'max-height 0.3s ease',
-                    }}
-                  >
-                    <p className="mt-3 border-t border-[#1e2d45] pt-3 text-sm leading-relaxed text-[#c9d1d9]">
-                      {detail}
-                    </p>
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={() => setExpanded((v) => !v)}
-                    className="mt-3 text-xs text-[#4f8ef7] hover:underline"
-                  >
-                    {expanded ? 'Show less ↑' : 'Read more ↓'}
-                  </button>
-                </>
+                <button
+                  type="button"
+                  onClick={() => setExpanded((v) => !v)}
+                  className="mt-2 text-xs font-medium text-accent hover:underline"
+                >
+                  {expanded ? 'Show less' : 'Read more'}
+                </button>
               )}
-            </div>
+              <p className="mt-3 text-[11px] text-subtle">Generated by Claude from the data shown. May contain errors.</p>
+            </>
           )}
         </div>
-      </div>
-    </>
+      )}
+    </div>
   );
 }

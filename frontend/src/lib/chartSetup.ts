@@ -24,3 +24,6 @@ ChartJS.register(
   Filler,
   annotationPlugin
 );
+
+ChartJS.defaults.font.family = "'Inter Variable', ui-sans-serif, system-ui, sans-serif";
+ChartJS.defaults.font.size = 11;

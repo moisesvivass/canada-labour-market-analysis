@@ -26,8 +26,8 @@ jobs:
       - run: pip install -r requirements.txt pip-audit==2.10.1
       - name: Audit Python dependencies for known vulnerabilities
         run: pip-audit -r requirements.txt
-      - name: Security tests (no database needed)
-        run: pytest tests/test_security.py -q
+      - name: Security and feed tests (no database needed)
+        run: pytest tests/test_security.py tests/test_feeds.py -q
         env:
           # Placeholders only: these tests never connect to a database or call the AI service.
           DATABASE_URL: postgresql://ci:ci@localhost:5432/ci

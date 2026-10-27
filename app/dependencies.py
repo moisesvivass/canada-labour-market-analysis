@@ -1,5 +1,6 @@
 import logging
 import os
+from collections import defaultdict
 
 import anthropic
 from fastapi import HTTPException, Request
@@ -55,6 +56,17 @@ def validate_geo(geo: str) -> None:
         )
 
 
+VALID_RATES = {"Employment rate", "Participation rate", "Unemployment rate"}
+
+
+def validate_rate(characteristic: str) -> None:
+    if characteristic not in VALID_RATES:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Invalid characteristic '{characteristic}'. Valid options: {', '.join(sorted(VALID_RATES))}."
+        )
+
+
 def parse_extra_years(extra: str) -> tuple:
     parts = [p.strip() for p in extra.split(",")]
     if len(parts) != 2:
@@ -69,6 +81,16 @@ def parse_extra_years(extra: str) -> tuple:
             status_code=400,
             detail="Both values in 'extra' must be integers."
         )
+
+
+def aligned_series(rows) -> tuple[list[str], dict[str, list]]:
+    """Rows of (month, key, value) -> sorted month labels and one aligned list per key (None for gaps)."""
+    labels = sorted({r[0] for r in rows})
+    index = {m: i for i, m in enumerate(labels)}
+    series: dict[str, list] = defaultdict(lambda: [None] * len(labels))
+    for month, key, value in rows:
+        series[key][index[month]] = float(value)
+    return labels, dict(series)
 
 
 def run_query(query, error_detail: str = "Database query failed."):

@@ -1,7 +1,8 @@
 import logging
 import os
 
-from fastapi import FastAPI
+from dotenv import load_dotenv
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 from slowapi import _rate_limit_exceeded_handler
@@ -12,8 +13,7 @@ from app.routers import admin, industries, insights, labour_indicators, macro, s
 
 logger = logging.getLogger(__name__)
 
-# load_dotenv() is called in dependencies.py at import time; CORS_ORIGINS is
-# safe to read here because dependencies is imported above.
+load_dotenv()
 CORS_ORIGINS = [o.strip() for o in os.getenv("CORS_ORIGINS", "http://localhost:5173").split(",")]
 
 # ETL scheduling is handled by Railway cron services (see src/etl.py).
@@ -22,10 +22,23 @@ app = FastAPI(title="Canada Labour Market Dashboard")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=CORS_ORIGINS,
-    allow_credentials=True,
+    allow_credentials=False,  # the API uses no cookies or auth headers from browsers
     allow_methods=["GET"],
     allow_headers=["*"],
 )
+
+_SECURITY_HEADERS = {
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "no-referrer",
+    "X-Frame-Options": "DENY",
+}
+
+
+@app.middleware("http")
+async def add_security_headers(request: Request, call_next):
+    response = await call_next(request)
+    response.headers.update(_SECURITY_HEADERS)
+    return response
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 

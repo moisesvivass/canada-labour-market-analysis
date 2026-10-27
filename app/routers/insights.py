@@ -1,3 +1,4 @@
+import logging
 from collections import defaultdict
 
 from fastapi import APIRouter, HTTPException, Query, Request
@@ -6,6 +7,7 @@ from sqlalchemy.engine import Connection
 
 from app.dependencies import anthropic_client, engine, limiter, parse_extra_years, validate_geo
 
+logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api", tags=["insights"])
 
 _PROMPT_TEMPLATE = (
@@ -272,9 +274,10 @@ async def get_insights(
     year_to: int = Query(default=2026),
     extra: str = Query(default="")
 ):
-    # geos takes priority over geo when present
+    # geos takes priority over geo when present. Duplicates are dropped so a
+    # repeated province can't inflate the prompt sent to the AI service.
     if geos:
-        geo_list = [g.strip() for g in geos.split(',') if g.strip()]
+        geo_list = list(dict.fromkeys(g.strip() for g in geos.split(',') if g.strip()))
         for g in geo_list:
             validate_geo(g)
     else:
@@ -298,6 +301,7 @@ async def get_insights(
     except HTTPException:
         raise
     except Exception:
+        logger.exception("Database error generating insight data")
         raise HTTPException(status_code=500, detail="Database error generating insight data.")
 
     if chart == "macro":
@@ -314,6 +318,8 @@ async def get_insights(
             messages=[{"role": "user", "content": prompt.format(data_summary=data_summary)}]
         )
     except Exception:
+        # e.g. a revoked API key shows up here as an authentication error.
+        logger.exception("AI service call failed")
         raise HTTPException(status_code=502, detail="Error calling AI service. Please try again.")
 
     text = message.content[0].text

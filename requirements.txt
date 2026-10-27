@@ -5,7 +5,7 @@ psycopg2-binary==2.9.11
 pandas==3.0.1
 python-dotenv==1.2.2
 anthropic==0.85.0
-apscheduler==3.11.2
+apscheduler==3.11.3
 requests==2.33.1
 slowapi==0.1.9
 httpx==0.28.1

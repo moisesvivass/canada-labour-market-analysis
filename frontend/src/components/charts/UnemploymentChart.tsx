@@ -6,10 +6,11 @@ import { useApi } from '@/hooks/useApi';
 import type { UnemploymentResponse } from '@/types/api';
 import { DEFAULT_YEAR_FROM, DEFAULT_YEAR_TO, PROVINCE_LIST, ANNOTATIONS, provinceColor } from '@/lib/constants';
 import { baseLineOptions } from '@/lib/chartConfig';
-import { formatMonth } from '@/lib/format';
+import { formatMonth, pct } from '@/lib/format';
 import { useChartTheme } from '@/lib/theme';
 import { AIInsight } from '@/components/AIInsight';
 import { ChartPanel } from '@/components/ui/ChartPanel';
+import { SOURCES } from '@/lib/attribution';
 import { YearRange } from '@/components/ui/YearRange';
 
 interface UnemploymentChartProps {
@@ -23,8 +24,8 @@ function trendFinding(data: UnemploymentResponse, geo: string): string | null {
   if (!values?.length) return null;
   const last = values.length - 1;
   const peak = values.indexOf(Math.max(...values));
-  if (peak === last) return `${geo} is at ${values[last]}% in ${formatMonth(labels[last])}, the highest in this period.`;
-  return `${geo} is at ${values[last]}% in ${formatMonth(labels[last])}, versus a peak of ${values[peak]}% in ${formatMonth(labels[peak])}.`;
+  if (peak === last) return `${geo} is at ${pct(values[last])} in ${formatMonth(labels[last])}, the highest in this period.`;
+  return `${geo} is at ${pct(values[last])} in ${formatMonth(labels[last])}, versus a peak of ${pct(values[peak])} in ${formatMonth(labels[peak])}.`;
 }
 
 export function UnemploymentChart({ selected, onSelectedChange }: UnemploymentChartProps) {
@@ -149,7 +150,7 @@ export function UnemploymentChart({ selected, onSelectedChange }: UnemploymentCh
       loading={loading}
       error={error}
       height={340}
-      source="Statistics Canada, Table 14-10-0287-01"
+      sources={[SOURCES.lfs]}
       legend={legend}
       controls={
         <>

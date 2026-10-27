@@ -10,6 +10,7 @@ import { formatMonth } from '@/lib/format';
 import { useChartTheme } from '@/lib/theme';
 import { AIInsight } from '@/components/AIInsight';
 import { ChartPanel } from '@/components/ui/ChartPanel';
+import { SOURCES } from '@/lib/attribution';
 import { LineLegend } from '@/components/ui/LineLegend';
 import { YearRange } from '@/components/ui/YearRange';
 
@@ -113,7 +114,7 @@ export function MacroChart() {
       loading={loading}
       error={error}
       height={320}
-      source="Bank of Canada Valet API (V39079) · Statistics Canada, Table 14-10-0287-01"
+      sources={[SOURCES.lfs, SOURCES.overnightRate]}
       legend={
         <LineLegend
           items={[

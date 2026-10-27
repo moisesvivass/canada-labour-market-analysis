@@ -9,6 +9,7 @@ import { signed } from '@/lib/format';
 import { useChartTheme } from '@/lib/theme';
 import { AIInsight } from '@/components/AIInsight';
 import { ChartPanel } from '@/components/ui/ChartPanel';
+import { SOURCES } from '@/lib/attribution';
 import { Select } from '@/components/ui/select';
 import { YearRange } from '@/components/ui/YearRange';
 
@@ -60,7 +61,7 @@ export function IndustryChart() {
       loading={loading}
       error={error}
       height={data ? Math.max(data.industries.length * 30, 300) : 420}
-      source="Statistics Canada, Table 14-10-0355-01 · change in average annual employment"
+      sources={[SOURCES.industries]}
       controls={
         <>
           <Select label="Region" id="ind-geo" value={geo} options={PROVINCE_LIST} onChange={(e) => setGeo(e.target.value)} />

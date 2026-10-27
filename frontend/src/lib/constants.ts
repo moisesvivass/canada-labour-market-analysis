@@ -53,9 +53,16 @@ export const ANNOTATIONS = {
 };
 
 export const SECTIONS = [
-  { id: 'trend', label: 'Trend' },
-  { id: 'year-over-year', label: 'Year over year' },
-  { id: 'provinces', label: 'Provinces' },
+  { id: 'where', label: 'Where' },
+  { id: 'who', label: 'Who' },
+  { id: 'cities', label: 'Cities' },
+  { id: 'tightness', label: 'Jobs' },
+  { id: 'inflation', label: 'Prices & pay' },
   { id: 'industries', label: 'Industries' },
-  { id: 'rates', label: 'Interest rates' },
+  { id: 'rates', label: 'Rates' },
+  { id: 'policy', label: 'Policy' },
+  { id: 'methodology', label: 'Methods' },
 ];
+
+// Extra series colors for non-province charts, drawn from the same muted palette.
+export const SERIES_COLORS = { teal: '#2a9d8f', rose: '#b56576' };

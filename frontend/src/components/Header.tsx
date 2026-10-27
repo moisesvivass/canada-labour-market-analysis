@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { useApi } from '@/hooks/useApi';
-import { signed } from '@/lib/format';
+import { pct, signed } from '@/lib/format';
 import type { SummaryResponse } from '@/types/api';
 
 interface HeaderProps {
@@ -9,7 +9,7 @@ interface HeaderProps {
 
 function headline(d: SummaryResponse): string {
   const verb = !d.monthly_delta ? 'held at' : d.monthly_delta > 0 ? 'rose to' : 'fell to';
-  return `Unemployment ${verb} ${d.canada_rate}% in ${d.most_recent_month}`;
+  return `Unemployment ${verb} ${pct(d.canada_rate)} in ${d.most_recent_month}`;
 }
 
 function dek(d: SummaryResponse): string {
@@ -20,7 +20,7 @@ function dek(d: SummaryResponse): string {
       `consumer prices are ${d.cpi_yoy < 0 ? 'down' : 'up'} ${Math.abs(d.cpi_yoy).toFixed(1)}% from a year earlier`,
   ].filter(Boolean);
   const rest = clauses.join(', and ');
-  const lead = `${d.worst_province.name} has the highest rate at ${d.worst_province.rate}%.`;
+  const lead = `${d.worst_province.name} has the highest rate at ${pct(d.worst_province.rate)}.`;
   return rest ? `${lead} ${rest.charAt(0).toUpperCase()}${rest.slice(1)}.` : lead;
 }
 
@@ -84,7 +84,7 @@ export function Header({ onFilterProvince }: HeaderProps) {
       <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-[var(--border)] sm:grid-cols-3 lg:grid-cols-6">
         <Stat
           label="Unemployment rate"
-          value={value(data?.canada_rate, (n) => `${n}%`)}
+          value={value(data?.canada_rate, pct)}
           note={
             delta === null || loading ? (
               'Canada'
@@ -98,17 +98,17 @@ export function Header({ onFilterProvince }: HeaderProps) {
         />
         <Stat
           label="Employment rate"
-          value={value(data?.employment_rate, (n) => `${n}%`)}
+          value={value(data?.employment_rate, pct)}
           note="Share of population 15+"
         />
         <Stat
           label="Participation rate"
-          value={value(data?.participation_rate, (n) => `${n}%`)}
+          value={value(data?.participation_rate, pct)}
           note="Working or looking"
         />
         <Stat
           label="Highest province"
-          value={value(data?.worst_province.rate, (n) => `${n}%`)}
+          value={value(data?.worst_province.rate, pct)}
           note={data?.worst_province.name ?? ' '}
           onClick={data ? () => onFilterProvince(data.worst_province.name) : undefined}
         />

@@ -9,6 +9,7 @@ import { formatMonth } from '@/lib/format';
 import { useChartTheme } from '@/lib/theme';
 import { AIInsight } from '@/components/AIInsight';
 import { ChartPanel } from '@/components/ui/ChartPanel';
+import { SOURCES } from '@/lib/attribution';
 import { LineLegend } from '@/components/ui/LineLegend';
 import { Select } from '@/components/ui/select';
 import { YearRange } from '@/components/ui/YearRange';
@@ -75,7 +76,7 @@ export function ProvincialGapChart() {
       loading={loading}
       error={error}
       height={320}
-      source="Statistics Canada, Table 14-10-0287-01"
+      sources={[SOURCES.lfs]}
       legend={<LineLegend items={[{ label: geoA, color: colorA }, { label: geoB, color: colorB }]} />}
       controls={
         <>

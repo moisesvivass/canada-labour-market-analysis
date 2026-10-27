@@ -9,6 +9,7 @@ import { average } from '@/lib/format';
 import { useChartTheme } from '@/lib/theme';
 import { AIInsight } from '@/components/AIInsight';
 import { ChartPanel } from '@/components/ui/ChartPanel';
+import { SOURCES } from '@/lib/attribution';
 import { LineLegend } from '@/components/ui/LineLegend';
 import { Select } from '@/components/ui/select';
 
@@ -68,7 +69,7 @@ export function CompareChart() {
       loading={loading}
       error={error}
       height={300}
-      source="Statistics Canada, Table 14-10-0287-01"
+      sources={[SOURCES.lfs]}
       legend={<LineLegend items={[...new Set([yearA, yearB])].map((y) => ({ label: y, color: colorFor(y) }))} />}
       controls={
         <>

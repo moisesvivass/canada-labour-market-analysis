@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 const TOKENS = [
+  'bg',
   'ink',
   'muted',
   'subtle',
@@ -9,6 +10,7 @@ const TOKENS = [
   'context',
   'surface',
   'accent',
+  'positive',
   'negative',
 ] as const;
 

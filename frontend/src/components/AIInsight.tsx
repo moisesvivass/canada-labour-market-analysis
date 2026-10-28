@@ -9,7 +9,15 @@ interface AIInsightProps {
   yearTo: string;
 }
 
-export function AIInsight({ chart, geos, yearFrom, yearTo }: AIInsightProps) {
+// Off unless VITE_ENABLE_AI_INSIGHTS=true at build time, so the button never shows
+// while the backend has no working Anthropic key. Set it in Vercel to turn it on.
+const AI_INSIGHTS_ENABLED = import.meta.env.VITE_ENABLE_AI_INSIGHTS === 'true';
+
+export function AIInsight(props: AIInsightProps) {
+  return AI_INSIGHTS_ENABLED ? <AIInsightPanel {...props} /> : null;
+}
+
+function AIInsightPanel({ chart, geos, yearFrom, yearTo }: AIInsightProps) {
   const [loading, setLoading] = useState(false);
   const [failed, setFailed] = useState(false);
   const [summary, setSummary] = useState<string | null>(null);
